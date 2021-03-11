@@ -1,0 +1,111 @@
+ <!-- content-here -->
+ <div class="flash-success" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+         <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col-lg-6 main-header">                  
+                  <h6 class="mb-0">admin panel</h6>
+                </div>                
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">                      
+              <!-- Row Borders styles-->
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5>All users</h5>
+                  </div>
+                  <div class="card-body">
+                    <a href="<?=base_url('users/register');?>" class="btn btn-primary btn-sm mb-4 pull-right rounded-pill"><i class="fa fa-plus"></i> Add User</a>
+                    <div class="table-responsive">
+                      <table class="row-border" id="example-style-7">
+                        <thead>
+                          <tr>
+                            <th>Foto</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>NIK</th>
+                            <th>Akses</th>                            
+                            <th>Status</th>
+                            <th>Opsi</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php foreach ($allUsers as $usr) :?>
+                          <tr>
+                            <td><img src="<?=base_url('assets/img/' . $usr['image']);?>" class="img-fluid img-thumbnail" width="60"></td>
+                            <td><?=$usr['name'];?></td>
+                            <td><?=$usr['email'];?></td>
+                            <td><?=$usr['nik'];?></td>
+                            <td><?=$usr['role'];?></td>
+                            <?php if($usr['is_active'] < 1 ) : ?>
+                            <td><span class="badge badge-danger">Pending</span></td>
+                            <?php else : ?>
+                            <td><span class="badge badge-info">Active</span></td>
+                            <?php endif; ?>
+                            <td>
+                              <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr['id'];?>" data-role="<?=$usr['role'];?>" data-active="<?=$usr['is_active'];?>"><i class="fa fa-pencil"></i></a>
+
+                              <?php if($usr['role'] != "admin") :?>
+                              <a id="delUsers" href="<?=base_url('users/destroy/' . $usr['id']);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                            <?php endif;?>
+                            </td>
+                          </tr>
+                          <?php endforeach; ?>                       
+                        </tbody>                       
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Row Borders Ends-->                          
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        <!-- end content -->
+
+
+        <!-- modal update -->
+          <div class="modal fade" id="modalUserUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Update user</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body" id="formUpdateUser">
+                    <form action="<?=base_url('users/update');?>" method="post" class="needs-validation" novalidate="">
+                      <input type="hidden" name="id" id="id">
+                      <div class="form-row">
+                        <div class="col-md-6">
+                          <label for="role" class="mb-0">Role *</label>
+                          <select class="form-control" name="role" id="role" type="text" required="">
+                              <option value="">--Select--</option>
+                              <option value="admin">admin</option>
+                              <option value="user">user</option>
+                          </select>
+                          <div class="invalid-feedback">The field is required</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="is_active" class="mb-0">Status *</label>
+                          <select class="form-control" name="is_active" id="is_active" type="text" required="">
+                            <option value="" selected>--Select--</option>
+                            <option value="1">Active</option>
+                            <option value="0">Pending</option>                            
+                          </select>
+                          <div class="invalid-feedback">The field is required</div>
+                        </div>
+                      </div>                      
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+<!-- end modal update -->
+<script src="<?=base_url('assets');?>/js/form-validation-custom.js"></script>
