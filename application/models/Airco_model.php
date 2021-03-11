@@ -4,14 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Airco_model extends CI_Model
 {
 
-    // function joinTab()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('tb_ac');
-    //     $this->db->join('tb_ac_details','tb_ac_details.id = tb_ac.id');      
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    // }
+    function joinTab()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_ac');
+        $this->db->join('tb_ac_details','tb_ac_details.id = tb_ac.id');      
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 	function getAc()
 	{
