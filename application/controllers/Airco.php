@@ -16,7 +16,7 @@ class Airco extends CI_Controller {
 		
 		$data['title'] = 'Air Conditioner';
 
-		$data['airco'] = $this->Airco_model->joinTab();
+		$data['airco'] = $this->Airco_model->getAc();
 				
 					
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
