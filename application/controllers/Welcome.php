@@ -13,9 +13,9 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		 if ($this->session->userdata('nik')) {
-            redirect('home');
-        }
+		 // if ($this->session->userdata('nik')) {
+   //          redirect('home');
+   //      }
 		
 		$this->load->view('welcome_message');
 	}

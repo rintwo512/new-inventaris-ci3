@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
 	 public function __construct()
 
     {
-        parent::__construct();
+        parent::__construct();        
         $this->load->model('Auth_model');
      
     }
@@ -16,6 +16,7 @@ class Auth extends CI_Controller {
         if ($this->session->userdata('nik')) {
             redirect('home');
         }
+       
 		$this->load->view('auth/login');
 	}
 
@@ -78,6 +79,6 @@ class Auth extends CI_Controller {
 
         $this->session->unset_userdata('nik');
         $this->session->unset_userdata('role');
-        redirect('auth');
+        redirect('/');
     }
 }

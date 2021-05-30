@@ -8,7 +8,7 @@
   <title>Login page</title>
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?=base_url('assets');?>/auth_assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?=base_url('assets');?>/css/authstyle.css">
   
 </head>
@@ -37,9 +37,9 @@
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                     <?= form_error('password', '<small class="c_alert pl-2 text-danger" id="log_alert_password">', '</small>'); ?>
                   </div>
-                  <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit">Sign In</button>
+                  <button class="btn btn-block login-btn mb-4" type="submit">Sign In</button>
                 </form>                
-                <p class="login-card-footer-text">Don't have an account? <a href="<?=base_url('auth/register');?>" class="text-reset">Register here</a></p>
+                <p class="login-card-footer-text">Don't have an account? <a href="" id="login" class="text-reset">Register here</a></p>
             </div>
           </div>
         </div>
@@ -56,7 +56,19 @@
     $(".c_alert").slideUp(500, function() {
         $(this).remove();
     });
-}, 5000);
+}, 5000);  
+</script>
+<script>
+  $(document).ready(function(){
+    $(document).on("click","#login", function(e){
+          e.preventDefault();
+          Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Silahkan hubungi admin!'         
+        })
+      });
+});
 </script>
 </body>
 </html>

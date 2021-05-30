@@ -14,14 +14,14 @@
               </li>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-users"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
-                  <li><a href="<?=base_url('users');?>">User list</a></li>                  
+                  <li><a href="<?=base_url('users');?>">Users</a></li>                  
                 </ul>
               </li> 
               <?php endif;?>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-portfolio"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
                   <li><a href="<?=base_url('airco');?>">Air Conditioner</a></li>
-                  <li><a href="#">Apart</a></li>
+                  <li><a href="<?=base_url('stock');?>">Daftar Aset ME</a></li>
                 </ul>
               </li>                          
             </ul>

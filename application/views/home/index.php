@@ -9,7 +9,7 @@
             <div class="page-header">
               <div class="row">
                 <div class="col-lg-6 main-header">                 
-                  <h6 class="mb-0 ml-5">Admin panel</h6>
+                  <!-- <h6 class="mb-0 ml-5">Admin panel</h6> -->
                 </div>                
               </div>
             </div>
@@ -83,9 +83,9 @@
                 <div class="card gradient-primary o-hidden">
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget">
-                      <div class="align-self-center text-center"><i data-feather="database"></i></div>
-                      <div class="media-body"><span class="m-0 text-white">Data</span>
-                        <h4 class="mb-0 counter">10</h4><i class="icon-bg" data-feather="database"></i>
+                      <div class="align-self-center text-center"><i data-feather="archive"></i></div>
+                      <div class="media-body"><span class="m-0 text-white">Air Conditioner</span>
+                        <h4 class="mb-0 counter"><?=$count ?></h4><i class="icon-bg" data-feather="archive"></i>
                       </div>
                     </div>
                   </div>
@@ -122,10 +122,10 @@
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget">
                       <div class="align-self-center text-center">
-                        <div class="text-white i" data-feather="user-plus"></div>
+                        <div class="text-white i" data-feather="users"></div>
                       </div>
-                      <div class="media-body"><span class="m-0 text-white">New user</span>
-                        <h4 class="mb-0 counter text-white">100</h4><i class="icon-bg" data-feather="user-plus"></i>
+                      <div class="media-body"><span class="m-0 text-white">User Registration</span>
+                        <h4 class="mb-0 counter text-white"><?=$count_users;?></h4><i class="icon-bg" data-feather="users"></i>
                       </div>
                     </div>
                   </div>

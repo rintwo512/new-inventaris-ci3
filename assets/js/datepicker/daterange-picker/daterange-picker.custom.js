@@ -25,7 +25,7 @@
             function(start, end, label) {
                 var years = moment().diff(start, 'years');               
             });
-    });
+    });    
 
 
 //Predefined Ranges

@@ -16,6 +16,10 @@ class Home extends CI_Controller {
 
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 
+		$data['count'] = $this->db->count_all('tb_ac');
+		$data['count_users'] = $this->db->count_all('users');
+		
+
 		$this->load->view('master/header', $data);
 		$this->load->view('master/topbar', $data);
 		$this->load->view('master/sidebar');

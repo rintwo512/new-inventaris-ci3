@@ -14,3 +14,8 @@ function user_access()
         redirect('blocked');
     }
 }
+
+function myTime()
+{
+    date_default_timezone_set("Asia/Makassar");
+}
