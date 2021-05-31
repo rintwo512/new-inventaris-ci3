@@ -1,9 +1,4 @@
 
-![Screenshot 2021-06-01 022441](https://user-images.githubusercontent.com/59271775/120229913-c6180f00-c280-11eb-88b8-ae48e94a24b1.png)
-
-
-
-
 ###################
 What is CodeIgniter
 ###################
