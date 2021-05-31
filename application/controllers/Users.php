@@ -78,7 +78,7 @@ class Users extends CI_Controller {
 		$data['title'] = 'User list';
 		$data['allUsers'] = $this->Allusers_model->getUsers();
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
-		 $this->form_validation->set_rules('role', 'Role', 'required');
+		 
         $this->form_validation->set_rules('is_active', 'Is_active', 'required');
         if($this->form_validation->run() == false){
 
@@ -94,9 +94,7 @@ class Users extends CI_Controller {
         	$id = $this->input->post('id');
         	$data = [
 
-        		'role' => $this->input->post('role'),
         		'is_active' => $this->input->post('is_active')
-
         	];
         $this->Allusers_model->updateDataUser($id,$data);
         $this->session->set_flashdata('message', 'Success');        

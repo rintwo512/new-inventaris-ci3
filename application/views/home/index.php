@@ -83,9 +83,9 @@
                 <div class="card gradient-primary o-hidden">
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget">
-                      <div class="align-self-center text-center"><i data-feather="archive"></i></div>
+                      <div class="align-self-center text-center"><i data-feather="package"></i></div>
                       <div class="media-body"><span class="m-0 text-white">Air Conditioner</span>
-                        <h4 class="mb-0 counter"><?=$count ?></h4><i class="icon-bg" data-feather="archive"></i>
+                        <h4 class="mb-0 counter"><?=$count ?></h4><i class="icon-bg" data-feather="package"></i>
                       </div>
                     </div>
                   </div>
@@ -95,9 +95,9 @@
                 <div class="card gradient-secondary o-hidden">
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget">
-                      <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
-                      <div class="media-body"><span class="m-0">Products</span>
-                        <h4 class="mb-0 counter">1000</h4><i class="icon-bg" data-feather="shopping-bag"></i>
+                      <div class="align-self-center text-center"><i data-feather="zap"></i></div>
+                      <div class="media-body"><span class="m-0">Assets ME</span>
+                        <h4 class="mb-0 counter"><?= $count_assets; ?></h4><i class="icon-bg" data-feather="zap"></i>
                       </div>
                     </div>
                   </div>

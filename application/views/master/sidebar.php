@@ -9,7 +9,7 @@
               <li><a class="bar-icons" href="javascript:void(0)">
                   <i class="pe-7s-home"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
-                  <li class="mt-2"><a href="<?=base_url('home');?>">Home</a></li>
+                  <li class="mt-2"><a href="<?=base_url('home');?>">Dashboard</a></li>
                 </ul>
               </li>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-users"></i></a>
@@ -19,11 +19,23 @@
               </li> 
               <?php endif;?>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-portfolio"></i></a>
-                <ul class="iconbar-mainmenu custom-scrollbar">                  
+                <ul class="iconbar-mainmenu custom-scrollbar">          
                   <li><a href="<?=base_url('airco');?>">Air Conditioner</a></li>
-                  <li><a href="<?=base_url('stock');?>">Daftar Aset ME</a></li>
+                  <li><a href="<?=base_url('stock');?>">Aset ME</a></li>
                 </ul>
-              </li>                          
+              </li>
+              <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-user"></i></a>
+                <ul class="iconbar-mainmenu custom-scrollbar">                  
+                  <li><a href="<?=base_url('settings/userProfile');?>">My profile</a></li>
+                </ul>
+              </li>  
+              <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-settings"></i></a>
+                <ul class="iconbar-mainmenu custom-scrollbar">                  
+                  <li><a href="<?=base_url('settings/settings');?>">Settings</a></li>
+                </ul>
+              </li>
+              <li><a class="bar-icons" href="<?=base_url('auth/logout');?>"><i class="pe-7s-power"></i></a>
+              </li>                           
             </ul>
           </div>
         </div>

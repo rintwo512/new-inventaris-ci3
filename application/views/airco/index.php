@@ -34,7 +34,7 @@
 
                     <div class="table-responsive">
                       <table class="hover" id="example-style-4">
-                        <thead style="background: #2C3054;color:rgba(255,255,255,0.7);">
+                        <thead class="myColor">
                           <tr>
                             <th>No</th>
                             <th>Wing</th>
@@ -121,7 +121,7 @@
                                 data-btu="<?=$ac['btu'] ?>"
                                 data-tegangan="<?= $ac['tegangan_kerja'] ?> Volt"
                                 data-update="<?= 'Di update oleh'. ' ' . $ac['update_by'].' '.date('m/d/Y H:i',$ac['updated']);?>">
-                                <i class="fa fa-eye" style="color:#fff"></i>
+                                <i class="fa fa-info" style="color:#fff"></i>
                               </a>
 
 

@@ -14,7 +14,7 @@
                     <a href="<?=base_url('users/register');?>" class="btn btn-primary btn-sm mb-4 pull-right rounded-pill"><i class="fa fa-plus"></i> Add User</a>
                     <div class="table-responsive">
                       <table class="row-border" id="example-style-7">
-                        <thead style="background: #2C3054;color:rgba(255,255,255,0.7);">
+                        <thead class="myColor">
                           <tr>
                             <th>Foto</th>
                             <th>Nama</th>
@@ -74,26 +74,16 @@
                 <div class="modal-body" id="formUpdateUser">
                     <form action="<?=base_url('users/update');?>" method="post" class="needs-validation" novalidate="">
                       <input type="hidden" name="id" id="id">
-                      <div class="form-row">
-                        <div class="col-md-6">
-                          <label for="role" class="mb-0">Role</label>
-                          <select class="form-control" name="role" id="role" type="text" required="">
-                              <option value="">--Select--</option>
-                              <option value="admin">admin</option>
-                              <option value="user">user</option>
-                          </select>
-                          <div class="invalid-feedback">The field is required</div>
-                        </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-12 mb-3">
                           <label for="is_active" class="mb-0">Status</label>
                           <select class="form-control" name="is_active" id="is_active" type="text" required="">
                             <option value="" selected>--Select--</option>
                             <option value="1">Active</option>
-                            <option value="0">Non-active</option>                            
+                            <option value="0">Non-active</option>             
                           </select>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
-                      </div>                      
+                                     
                         <button type="submit" class="btn btn-primary">Update</button>
                       </form>
                   </div>

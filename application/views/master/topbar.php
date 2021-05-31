@@ -1,3 +1,10 @@
+<?php 
+
+
+$log = $this->db->get('users')->result_array();
+
+ ?>
+
 <body>
     <!-- Loader starts-->
     <div class="loader-wrapper">
@@ -28,7 +35,7 @@
                     <div class="Typeahead Typeahead--twitterUsers">
                       <div class="u-posRelative">
                         <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q" placeholder="Search..." style="::placeholder:color:red !important">
-                        <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
+                        <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Mohon tunggu...</span></div><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
                       </div>
                       <div class="Typeahead-menu"></div>
                     </div>
@@ -37,37 +44,43 @@
               </li>
               <li><a class="text-white" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>                          
               <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?=base_url('assets');?>/img/notification.png" alt="">
+                
+                <span class="notify" id="notif"></span>
+                
                 <ul class="onhover-show-div notification-dropdown">
                   <li class="g-info">
-                    <h5 class="f-w-700">Notifications</h5><span>You have 3 unread messages</span>
+                    <h5 class="f-w-700" >Users Notification</h5>  
                   </li>
+                  <?php foreach($log as $lo) : ?>
+                  
                   <li>
                     <div class="media">
-                      <div class="notification-icons bg-success mr-3"><i class="mt-0" data-feather="thumbs-up"></i></div>
+                    <?php if($lo['user_login'] == 'online') : ?>
+                      <div class="notification-icons bg-success mr-3"><i class="mt-0" data-feather="check"></i></div>
                       <div class="media-body">
-                        <h6>Your Posts</h6>
-                        <p class="mb-0"> 1 Day Ago</p>
+                        <h6><?=$lo['name'] ?></h6>                       
+                          <p class="mb-0" style="color:green"><?= $lo['user_login']; ?></p>
                       </div>
+                      <?php else : ?>
+                        <div class="notification-icons bg-danger mr-3"><i class="mt-0" data-feather="x"></i></div>
+                      <div class="media-body">
+                        <h6><?=$lo['name'] ?></h6>                       
+                          <p class="mb-0" style="color:red"><?= $lo['user_login']; ?></p>
+                      </div>
+                      <?php endif;?>
                     </div>
                   </li>
-                  <li class="pt-0">
-                    <div class="media">
-                      <div class="notification-icons bg-info mr-3"><i class="mt-0" data-feather="message-circle"></i></div>
-                      <div class="media-body">
-                        <h6>1 New Comments</h6>
-                        <p class="mb-0"> 1 Day Ago</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="bg-light txt-dark"><a href="#">All </a> notification</li>
-                </ul>
-              </li>              
+                  
+              <?php endforeach;?> 
+              </ul>
+              </li>
+                       
               <li class="onhover-dropdown"> <span class="media user-header"><img class="img-fluid" src="<?=base_url('assets/img/'). $user['image'];?>" alt=""></span>
                 <ul class="onhover-show-div profile-dropdown">
                   <li class="g-info">
                     <h5 class="f-w-600 mb-0"><?=$user['name'];?></h5><span><?=$user['role'];?></span>
                   </li>
-                  <li><a href="#" class="text-info"><i class="fa fa-user mr-2"></i>Profile</a></li>                  
+                  <li><a href="<?=base_url('settings/userProfile');?>" class="text-info"><i class="fa fa-user mr-2"></i>Profile</a></li>                  
                   <li><a href="<?=base_url('auth/logout');?>" class="text-info"><i class="fa fa-sign-out mr-2"></i>Log Out</a></li>                  
                 </ul>
               </li>
@@ -79,5 +92,6 @@
       <!-- Page Header Ends-->
 
 
+       
 
-     
+

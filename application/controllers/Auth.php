@@ -35,7 +35,8 @@ class Auth extends CI_Controller {
 
 		}else {
             $nik = $this->input->post('nik');
-            $password = $this->input->post('password');            
+            $password = $this->input->post('password');  
+            $user_login = 'online';
             $user = $this->db->get_where('users', ['nik' => $nik])->row_array();
 
 
@@ -53,9 +54,15 @@ class Auth extends CI_Controller {
                             'name' => $user['name']
                         ];
                         $this->session->set_userdata($data);
-                        if ($user['role'] == "admin") {                            
+                        if ($user['role'] == "admin") {
+                            $this->db->set('user_login', $user_login);
+                            $this->db->where('nik', $this->session->userdata('nik'));
+                            $this->db->update('users');                         
                             redirect('home');
-                        } else {                            
+                        } else {
+                            $this->db->set('user_login', $user_login);
+                            $this->db->where('nik', $this->session->userdata('nik'));
+                            $this->db->update('users');                            
                             redirect('airco');
                         }
                     } else {
@@ -76,7 +83,10 @@ class Auth extends CI_Controller {
 
 	 public function logout()
     {
-
+        $user_login = "offline";
+        $this->db->set('user_login', $user_login);
+        $this->db->where('nik', $this->session->userdata('nik'));
+        $this->db->update('users');
         $this->session->unset_userdata('nik');
         $this->session->unset_userdata('role');
         redirect('/');
