@@ -588,7 +588,7 @@
                             <textarea class="form-control" name="jenis_kerusakan" id="jenis_kerusakann" rows="3" placeholder="Please fill in"></textarea>
                           </div>
                       </div>                    
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
               </div>

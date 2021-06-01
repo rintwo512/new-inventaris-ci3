@@ -29,10 +29,10 @@ $(document).on("click", "#updateBarang", function(event) {
     $("#update-modal-body #nama_barang").val(nama);    
     $("#update-modal-body #merk").val(merk);    
     $("#update-modal-body #tgl_pengadaan").val(pengadaan);    
-    $("#update-modal-body #status").val(status); 
+    $("#update-modal-body #status_update").val(status); 
     $("#update-modal-body #daya").val(daya);    
     $("#update-modal-body #berat").val(berat);    
-    $("#update-modal-body #catatan").val(catatan);    
+    $("#update-modal-body #catatan_update").val(catatan);    
 });
 
 

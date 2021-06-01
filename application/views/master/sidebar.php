@@ -1,4 +1,14 @@
 
+      <style>
+        .log-out .bar-icons .btn-log{
+          background: none;
+          border:none;
+        }
+        .log-out .bar-icons .btn-log:focus{
+          outline:none;
+        }
+      </style>
+
       <!-- Page Body Start-->
       <div class="page-body-wrapper">
         <!-- Page Sidebar Start-->
@@ -34,7 +44,8 @@
                   <li><a href="<?=base_url('settings/settings');?>">Settings</a></li>
                 </ul>
               </li>
-              <li><a class="bar-icons" href="<?=base_url('auth/logout');?>"><i class="pe-7s-power"></i></a>
+              <li>                
+                  <a id="logout" class="bar-icons" href="<?=base_url('auth/logout');?>"><i class="pe-7s-power"></i></a>                
               </li>                           
             </ul>
           </div>

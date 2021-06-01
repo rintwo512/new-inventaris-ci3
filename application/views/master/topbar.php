@@ -1,7 +1,8 @@
 <?php 
 
-
+$online = $this->db->get_where('users', ['user_login' => 'online'])->num_rows();
 $log = $this->db->get('users')->result_array();
+
 
  ?>
 
@@ -9,7 +10,7 @@ $log = $this->db->get('users')->result_array();
     <!-- Loader starts-->
     <div class="loader-wrapper">
       <div class="typewriter">
-        <h1>Loading...</h1>
+        <h1>Mohon tunggu...</h1>
       </div>
     </div>
     <!-- Loader ends-->
@@ -46,6 +47,7 @@ $log = $this->db->get('users')->result_array();
               <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?=base_url('assets');?>/img/notification.png" alt="">
                 
                 <span class="notify" id="notif"></span>
+              
                 
                 <ul class="onhover-show-div notification-dropdown">
                   <li class="g-info">
@@ -81,7 +83,7 @@ $log = $this->db->get('users')->result_array();
                     <h5 class="f-w-600 mb-0"><?=$user['name'];?></h5><span><?=$user['role'];?></span>
                   </li>
                   <li><a href="<?=base_url('settings/userProfile');?>" class="text-info"><i class="fa fa-user mr-2"></i>Profile</a></li>                  
-                  <li><a href="<?=base_url('auth/logout');?>" class="text-info"><i class="fa fa-sign-out mr-2"></i>Log Out</a></li>                  
+                  <li><a id="logout" href="<?=base_url('auth/logout');?>" class="text-info"><i class="fa fa-sign-out mr-2"></i>Log Out</a></li>                  
                 </ul>
               </li>
             </ul>

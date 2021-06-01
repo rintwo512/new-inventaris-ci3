@@ -46,6 +46,7 @@
  <script src="<?= base_url('assets'); ?>/myscript/list-ac.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/list-barang.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/list-users.js"></script>
+ 
  <!-- login js-->
  <!-- Plugin used-->
 
@@ -104,6 +105,27 @@ if (flerr) {
         $(this).next('.custom-file-label').addClass("selected").html(filename);
 
     });
+</script>
+<script>
+$(document).ready(function() {
+    $(document).on('click', '#logout', function(e) {
+        const href = $(this).attr('href')
+        e.preventDefault();
+        Swal.fire({
+            title: 'Yakin ingin keluar ?',
+            imageUrl: "<?= base_url('assets/img/banner2.png'); ?>",
+            imageWidth: 700,
+            imageHeight: 300,
+            imageAlt: 'Custom image'
+
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+
+            }
+        });
+    });
+});
 </script>
 
 

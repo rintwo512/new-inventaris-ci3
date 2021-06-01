@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="ttl-info text-left">
-                                <h6><i class="fa fa-calendar"></i> BD</h6><span>16 August 1992</span>
+                                <h6><i class="fa fa-calendar"></i> BD</h6><span>none</span>
                               </div>
                             </div>
                           </div>
@@ -53,23 +53,13 @@
                       <hr>
                       <div class="social-media">
                         <ul class="list-inline">
-                          <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>                          
-                          <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                          <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                          <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                          <li class="list-inline-item"><a href="#"><i class="fa fa-github-square"></i></a></li>
+                          <li class="list-inline-item"><a href="https://facebook.com" target="_blank" ><i style="color:#3b5999" class="fa fa-facebook"></i></a></li>                          
+                          <li class="list-inline-item"><a href="https://twitter.com" target="_blank"><i style="color:#55acee" class="fa fa-twitter"></i></a></li>
+                          <li class="list-inline-item"><a href="https://instagram.com" target="_blank"><i style="color:#e4405f" class="fa fa-instagram"></i></a></li>
+                          <li class="list-inline-item"><a href="https://youtube.com" target="_blank"><i style="color:#cd201f" class="fa fa-youtube-play"></i></a></li>
                         </ul>
                       </div>
-                      <div class="follow">
-                        <div class="row">
-                          <div class="col-6 text-md-right border-right">
-                            <div class="follow-num counter">999</div><span>Follower</span>
-                          </div>
-                          <div class="col-6 text-md-left">
-                            <div class="follow-num counter">999</div><span>Following</span>
-                          </div>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>

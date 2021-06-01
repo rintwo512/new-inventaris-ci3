@@ -153,7 +153,7 @@ table.details tr:hover {
                            <div id="note"></div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="btnTambah">Submit form</button>
+                    <button type="submit" class="btn btn-primary" id="btnTambah">Submit</button>
                 </form>
             </div>
         </div>
@@ -202,7 +202,7 @@ table.details tr:hover {
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Form add data</h4>
+                <h4 class="modal-title" id="myLargeModalLabel">Form update data</h4>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
@@ -242,8 +242,8 @@ table.details tr:hover {
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="status" class="mb-0">Status</label>
-                            <select class="form-control" name="status" id="status" type="text"
+                            <label for="status_update" class="mb-0">Status</label>
+                            <select class="form-control" name="status" id="status_update" type="text"
                                 placeholder="Please fill in" required="">
                                 <option value="" selected>--Select--</option>
                                 <option value="normal">Normal</option>
@@ -255,15 +255,17 @@ table.details tr:hover {
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="catatan">Catatan</label><textarea class="form-control" name="catatan" id="catatan" rows="3" placeholder="Please fill in"></textarea>
+                            <label for="catatan_update">Catatan</label>
+                            <textarea class="form-control" name="catatan" id="catatan_update" rows="3"></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="btnTambah">Submit form</button>
+                    <button type="submit" class="btn btn-primary" id="btnTambah">Update</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 <!-- end-modal-update -->
 
 <script src="<?= base_url('assets'); ?>/js/form-validation-custom.js"></script>
