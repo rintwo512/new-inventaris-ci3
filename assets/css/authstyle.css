@@ -116,8 +116,9 @@ body {
 
 .card-signin .card-img-left {
   width: 45%;  
-  background: scroll center url('../../assets/img/16.jpg');
+  background: scroll center url('../../assets/img/regis-img.jpg');
   background-size: cover;
+  
   
 }
 

@@ -34,6 +34,7 @@
  <script src="<?= base_url('assets'); ?>/js/tooltip-init.js"></script>
  <script src="<?= base_url('assets'); ?>/js/autoNumeric/autoNumeric.js"></script>
  <script src="<?= base_url('assets'); ?>/js/autoNumeric/autoNumeric-custom.js"></script>
+ 
 
  <!-- Plugins JS Ends-->
  <!-- Theme js-->
@@ -46,6 +47,7 @@
  <script src="<?= base_url('assets'); ?>/myscript/list-ac.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/list-barang.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/list-users.js"></script>
+ <script src="<?= base_url('assets'); ?>/myscript/apart.js"></script>
  
  <!-- login js-->
  <!-- Plugin used-->

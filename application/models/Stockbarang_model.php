@@ -2,7 +2,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Stockbarang_model extends CI_Model
-{
+{   
+    
     function getBarang()
     {
         $query = $this->db->get('tb_daftar_barang')->result_array();

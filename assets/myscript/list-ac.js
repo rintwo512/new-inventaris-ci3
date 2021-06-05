@@ -23,6 +23,7 @@ $(document).on("click", "#btnUpdate", function(event) {
     const tegangan = $(this).data('tegangan1');   
     const statuss = $(this).data('status');   
     const jenis_kerusakann = $(this).data('jenis_kerusakan');   
+    const status_kompresor = $(this).data('status_kompresor');   
     
     $("#modal-update #id").val(id);
     $("#modal-update #label").val(label);    
@@ -44,6 +45,7 @@ $(document).on("click", "#btnUpdate", function(event) {
     $("#modal-update #tegangan_kerja").val(tegangan); 
     $("#modal-update #statuss").val(statuss); 
     $("#modal-update #jenis_kerusakann").val(jenis_kerusakann);
+    $("#modal-update #status_kompresor").val(status_kompresor);
 });
 
 
@@ -61,6 +63,8 @@ $(document).on("click", "#btnDetail", function() {
     const refrigerant = $(this).data('refrigerant');
     const kapasitas = $(this).data('kapasitas');
     const kerusakan = $(this).data('kerusakan');
+    const kompresor = $(this).data('kompresor');
+    const insert = $(this).data('insert');
     const updated = $(this).data('update');
     
     $("#modal-body #pipa").text(pipa);
@@ -74,6 +78,8 @@ $(document).on("click", "#btnDetail", function() {
     $("#modal-body #refrigerant").text(refrigerant);
     $("#modal-body #kapasitas").text(kapasitas);
     $("#modal-body #jenis_kerusakan").text(kerusakan);
+    $("#modal-body #status_kompresor").text(kompresor);
+    $("#modal-body #insert_at").text(insert);
     $("#modal-body #updated_at").text(updated);
 });
 

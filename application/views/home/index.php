@@ -84,7 +84,7 @@
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget">
                       <div class="align-self-center text-center"><i data-feather="package"></i></div>
-                      <div class="media-body"><span class="m-0 text-white">Air Conditioner</span>
+                      <div class="media-body"><span class="m-0 text-white">AC</span>
                         <h4 class="mb-0 counter"><?=$count ?></h4><i class="icon-bg" data-feather="package"></i>
                       </div>
                     </div>
@@ -108,10 +108,10 @@
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget">
                       <div class="align-self-center text-center">
-                        <div class="text-white i" data-feather="message-circle"></div>
+                        <div class="text-white i" data-feather="inbox"></div>
                       </div>
-                      <div class="media-body"><span class="m-0 text-white">Messages</span>
-                        <h4 class="mb-0 counter text-white">20</h4><i class="icon-bg" data-feather="message-circle"></i>
+                      <div class="media-body"><span class="m-0 text-white">Apar</span>
+                        <h4 class="mb-0 counter text-white"><?=$count_apar;?></h4><i class="icon-bg" data-feather="inbox"></i>
                       </div>
                     </div>
                   </div>
@@ -124,8 +124,22 @@
                       <div class="align-self-center text-center">
                         <div class="text-white i" data-feather="users"></div>
                       </div>
-                      <div class="media-body"><span class="m-0 text-white">User Registration</span>
+                      <div class="media-body"><span class="m-0 text-white">Users registration</span>
                         <h4 class="mb-0 counter text-white"><?=$count_users;?></h4><i class="icon-bg" data-feather="users"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-sm-6 col-xl-3 col-lg-6 box-col-6">
+                <div class="card gradient-success o-hidden">
+                  <div class="b-r-4 card-body">
+                    <div class="media static-top-widget">
+                      <div class="align-self-center text-center">
+                        <div class="text-white i" data-feather="database"></div>
+                      </div>
+                      <div class="media-body"><span class="m-0 text-white">Menu</span>
+                        <h4 class="mb-0 counter text-white">7</h4><i class="icon-bg" data-feather="database"></i>
                       </div>
                     </div>
                   </div>

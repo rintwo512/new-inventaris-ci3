@@ -205,6 +205,8 @@ $(document).ready(function() {
     $('#example-style-2').DataTable();
     $('#example-style-3').DataTable();
     $('#example-style-4').DataTable();
+    $('#example-style-44').DataTable();
+    $('#example-style-apart').DataTable();
     $('#example-style-5').DataTable();
     $('#example-style-6').DataTable();
     $('#example-style-7').DataTable();

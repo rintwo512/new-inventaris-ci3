@@ -51,6 +51,9 @@ class Stock extends CI_Controller {
 			 redirect('stock');
 		}else{
 
+			$tanggal = date('d/M/Y', time());
+			$pukul = date('G:i', time());
+			$inserts = 'Di tambahkan tanggal,' .' '. $tanggal . ' ' . 'oleh';
 			$data = 
 			[
 
@@ -60,7 +63,8 @@ class Stock extends CI_Controller {
 				"tgl_pengadaan" => $this->input->post('tgl_pengadaan'),
 				"status" => $this->input->post('status'),
 				"daya" => $this->input->post('daya'),
-				"berat" => $this->input->post('berat'),				
+				"berat" => $this->input->post('berat'),
+				"insert_by" => $inserts . ' ' . $this->session->userdata('role') .' '. 'pukul' . ' ' . $pukul,
 				"updated" => time()
 
 			];
@@ -95,7 +99,9 @@ class Stock extends CI_Controller {
 		}else{
 
 			$id = $this->input->post('id');
-
+			$tanggal = date('d/M/Y', time());
+			$pukul = date('G:i', time());
+			$updates = 'Di ubah tanggal' .', ' . $tanggal . ' ' . ' ' . 'oleh';
 			$data = 
 			[
 
@@ -106,7 +112,7 @@ class Stock extends CI_Controller {
 				"status" => $this->input->post('status'),
 				"daya" => $this->input->post('daya'),
 				"berat" => $this->input->post('berat'),
-				"update_by" => $this->session->userdata('name'),				
+				"update_by" => $updates .' ' . $this->session->userdata('name') . ' ' . 'pukul' .' ' .$pukul,				
 				"updated" => time()				
 
 			];

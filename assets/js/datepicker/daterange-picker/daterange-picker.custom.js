@@ -12,7 +12,7 @@
             timePicker: true,
             timePickerIncrement: 30,
             locale: {
-                format: 'MM/DD/YYYY h:mm A'
+                format: 'DD/MM/YYYY h:mm A'
             }
         });
     });
@@ -65,7 +65,7 @@
         });
 
         $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
         });
 
         $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {

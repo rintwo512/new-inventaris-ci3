@@ -4,11 +4,13 @@
     const daya = $(this).data('daya');
     const berat = $(this).data('berat');
     const catatan = $(this).data('catatan');
+    const insert = $(this).data('insert');
     const updated = $(this).data('updated');       
     
     $("#modal-barang #daya").text(daya);
     $("#modal-barang #berat").text(berat);
     $("#modal-barang #catatan").text(catatan);
+    $("#modal-barang #inserts").text(insert);
     $("#modal-barang #updated").text(updated);    
    
 });

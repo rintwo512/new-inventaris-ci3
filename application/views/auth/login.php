@@ -20,7 +20,7 @@
       <div class="card login-card">
         <div class="row no-gutters">
           <div class="col-md-5">
-            <img src="<?=base_url('assets');?>/img/14.jpg" alt="login" class="login-card-img">
+            <img src="<?=base_url('assets');?>/img/regis-img.jpg" alt="login" class="login-card-img">
           </div>
           <div class="col-md-7">
             <div class="card-body">

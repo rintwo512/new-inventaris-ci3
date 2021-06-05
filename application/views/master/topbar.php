@@ -1,7 +1,7 @@
 <?php 
 
-$online = $this->db->get_where('users', ['user_login' => 'online'])->num_rows();
 $log = $this->db->get('users')->result_array();
+
 
 
  ?>
@@ -35,7 +35,7 @@ $log = $this->db->get('users')->result_array();
                   <div class="form-group">
                     <div class="Typeahead Typeahead--twitterUsers">
                       <div class="u-posRelative">
-                        <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q" placeholder="Search..." style="::placeholder:color:red !important">
+                        <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q" placeholder="Search...">
                         <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Mohon tunggu...</span></div><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
                       </div>
                       <div class="Typeahead-menu"></div>
@@ -61,13 +61,16 @@ $log = $this->db->get('users')->result_array();
                       <div class="notification-icons bg-success mr-3"><i class="mt-0" data-feather="check"></i></div>
                       <div class="media-body">
                         <h6><?=$lo['name'] ?></h6>                       
-                          <p class="mb-0" style="color:green"><?= $lo['user_login']; ?></p>
+                          <p class="mb-0" style="color:green">Sedang <?= $lo['user_login']; ?>...</p>        
+
                       </div>
                       <?php else : ?>
                         <div class="notification-icons bg-danger mr-3"><i class="mt-0" data-feather="x"></i></div>
                       <div class="media-body">
                         <h6><?=$lo['name'] ?></h6>                       
-                          <p class="mb-0" style="color:red"><?= $lo['user_login']; ?></p>
+                          <p class="mb-0" style="color:red">online</p>
+                          <p><?= $lo['login_time'] ?> yang lalu</p>
+                           
                       </div>
                       <?php endif;?>
                     </div>
@@ -83,7 +86,7 @@ $log = $this->db->get('users')->result_array();
                     <h5 class="f-w-600 mb-0"><?=$user['name'];?></h5><span><?=$user['role'];?></span>
                   </li>
                   <li><a href="<?=base_url('settings/userProfile');?>" class="text-info"><i class="fa fa-user mr-2"></i>Profile</a></li>                  
-                  <li><a id="logout" href="<?=base_url('auth/logout');?>" class="text-info"><i class="fa fa-sign-out mr-2"></i>Log Out</a></li>                  
+                  <li><a href="<?=base_url('auth/logout');?>" class="text-info"><i class="fa fa-sign-out mr-2"></i>Log Out</a></li>                  
                 </ul>
               </li>
             </ul>

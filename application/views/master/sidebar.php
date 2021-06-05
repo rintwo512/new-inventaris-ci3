@@ -30,8 +30,9 @@
               <?php endif;?>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-portfolio"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">          
-                  <li><a href="<?=base_url('airco');?>">Air Conditioner</a></li>
-                  <li><a href="<?=base_url('stock');?>">Aset ME</a></li>
+                  <li><a href="<?=base_url('airco');?>">Data Ac</a></li>
+                  <li><a href="<?=base_url('apart');?>">Data Apart</a></li>
+                  <li><a href="<?=base_url('stock');?>">Data Aset ME</a></li>
                 </ul>
               </li>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-user"></i></a>
@@ -42,6 +43,11 @@
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-settings"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
                   <li><a href="<?=base_url('settings/settings');?>">Settings</a></li>
+                </ul>
+              </li>
+              <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-pendrive"></i></a>
+                <ul class="iconbar-mainmenu custom-scrollbar">                  
+                  <li><a href="<?=base_url('master');?>">Master data</a></li>
                 </ul>
               </li>
               <li>                

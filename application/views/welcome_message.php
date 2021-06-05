@@ -10,8 +10,10 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
 
     body {
-        background-image: url(./assets/img/welcome3.jpg);
+        background-image: url(./assets/img/img-auth.jpg);
         background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         font-family: 'Poppins', sans-serif;
     }
 
@@ -27,9 +29,10 @@
     }
 
     .title {
-        color: #7E37D8;
+        color: #fff;
         letter-spacing: 2px;
         font-size: 40px;
+        -webkit-text-stroke:1px solid black;
     }
 
     .btn {
@@ -38,11 +41,11 @@
         padding: 10px 20px;
         outline: none;
         border-radius: 5px;
-        border: 1px solid #7E37D8;
-        background: linear-gradient(-45deg, transparent 0 calc(50% - 10px), aliceblue calc(50% - 10px) calc(50% + 10px), #7E37D8 calc(50% - 10px) 100%);
+        /*border: 1px solid #54e346;*/
+        background: linear-gradient(-45deg, #e40017 0 calc(50% - 10px), aliceblue calc(50% - 10px) calc(50% + 10px), #54e346 calc(50% - 10px) 100%);
         background-size: 250% 100%;
         background-position: 100% 50%;
-        color: #7E37D8;
+        color: #fff;
         cursor: pointer;
         transition: 0.5s all;
     }
@@ -71,6 +74,7 @@
             font-size: 10px;
         }
     }
+
     </style>
 </head>
 
@@ -78,8 +82,8 @@
     <div class="container">
         <div class="box">
             <h1 class="title" data-period="1000"><span class="title_run" data-period="3000"
-                    data-type='["Welcome to your application"]'></span></h1>
-            <a class="btn" href="<?= base_url('auth'); ?>">Get Started</a>
+                    data-type='["Welcome to inventory app"]'></span></h1>
+            <a class="btn" href="<?= base_url('auth'); ?>">Getting started</a>
         </div>
     </div>
     <script>

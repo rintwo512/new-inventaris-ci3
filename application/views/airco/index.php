@@ -90,7 +90,8 @@
                                 data-tgl_maintenance="<?=$ac['tgl_maintenance'];?>"
                                 data-status="<?=$ac['status'];?>"
                                 data-jenis_kerusakan="<?=$ac['jenis_kerusakan'];?>"
-                                data-arus1="<?= $ac['arus'] ?>"
+                                data-arus1="<?= $ac['arus'] ?>" 
+                                data-status_kompresor="<?= $ac['status_kompresor'] ?>"
                                 data-phasa="<?= $ac['phasa'] ?>"
                                 data-pipa="<?= $ac['pipa'] ?>"
                                 data-btu="<?= $ac['btu'] ?>"
@@ -114,13 +115,14 @@
                                 data-product="<?= $ac['product']; ?>"
                                 data-pemasangan="<?= $ac['tgl_pemasangan']; ?>"
                                 data-maintenance="<?= $ac['tgl_maintenance']; ?>"
-                                data-kerusakan="<?= $ac['jenis_kerusakan'] ?>"
+                                data-kerusakan="<?= $ac['jenis_kerusakan'] ?>" 
+                                data-kompresor="<?= $ac['status_kompresor'] ?>"
                                 data-arus="<?= $ac['arus'] ?> Amper" 
                                 data-phasa="<?= $ac['phasa'] ?>" 
                                 data-pipa="<?= $ac['pipa'] ?>" 
                                 data-btu="<?=$ac['btu'] ?>"
-                                data-tegangan="<?= $ac['tegangan_kerja'] ?> Volt"
-                                data-update="<?= 'Di update oleh'. ' ' . $ac['update_by'].' '.date('m/d/Y H:i',$ac['updated']);?>">
+                                data-tegangan="<?= $ac['tegangan_kerja'] ?> Volt" data-insert="<?=$ac['insert_by'] ?>"
+                                data-update="<?=$ac['update_by']; ?>">
                                 <i class="fa fa-info" style="color:#fff"></i>
                               </a>
 
@@ -305,15 +307,19 @@
                         </div> 
                          <div class="form-group col-md-6">
                             <label for="phasa" class="mb-0" style="font-size:13px">Arus kerja <small>( phasa )</small> <em class="text-danger">*</em></label>
-                            <input class="form-control" name="phasa" id="phasa" required autocomplete="off">
-                        </div>                          
+                            <input class="form-control" name="phasa" id="phasa" required autocomplete="off" placeholder="Please fill in">
+                        </div>
+                         <div class="form-group col-md-12">
+                            <label for="status_kompresor" class="mb-0" style="font-size:13px" placeholder="Please fill in">Statu Kompresor <em class="text-danger">*</em></label>
+                            <textarea class="form-control" name="status_kompresor" id="status_kompresor" required autocomplete="off" placeholder="Please fill in"></textarea>
+                        </div>                           
                       </div>
                       <div class="form-row">                        
                          <div class="form-group col-md-12">
                             <label for="jenis_kerusakan" class="mb-0" style="font-size:13px">Catatan</label>
                             <textarea class="form-control" name="jenis_kerusakan" id="jenis_kerusakan" rows="3" placeholder="Please fill in"></textarea>
                           </div>
-                      </div>                    
+                      </div>
                       <button type="submit" class="btn btn-primary" id="btnTambah">Submit</button>
                     </form>
                 </div>
@@ -373,17 +379,21 @@
                           <td id="kapasitas"></td>                          
                         </tr>
                         <tr>
-                          <th>Catatan</th>
-                          <?php if($ac['jenis_kerusakan'] == NULL) :?>                        
-                          <td>Tidak ada Kerusakan</td>
-                          <?php else: ?>                          
-                          <td id="jenis_kerusakan"></td>
-                        <?php endif;?>
+                          <th>Status kompresor</th>       
+                          <td id="status_kompresor"></td>     
+                        </tr>
+                        <tr>
+                          <th>Catatan</th>                                      
+                          <td id="jenis_kerusakan"></td>                        
                         </tr>
                         <tr>
                           <th>Tanggal Update</th>
-                          <td id="updated_at"></td>                          
-                        </tr>                     
+                          <td id="updated_at"></td>
+                        </tr>
+                        <tr>
+                          <th style="font-weight: 900">Di tambah</th>
+                          <td id="insert_at" style="font-weight: 900"></td>
+                        </tr>                    
                     </table>
                   </div>
               </div>
@@ -564,7 +574,7 @@
                         </div>
                       </div>
                        <div class="form-row">                        
-                         <div class="form-group col-md-6">
+                         <div class="form-group col-md-4">
                             <label for="phasa" class="mb-0" style="font-size:13px">Arus kerja <small>( Phasa )</small></label>
                             <select class="form-control" name="phasa" id="phasa" required value="">
                               <option value="">--Select--</option>
@@ -572,13 +582,18 @@
                               <option value="3 phasa">3 Phasa</option>
                             </select>                              
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                           <label for="tegangan_kerja" class="mb-0" style="font-size:13px">Tegangan kerja <small>( volt )</small></label>
                           <select class="form-control" id="tegangan_kerja" name="tegangan_kerja" type="text" required>
                             <option value="" selected>--Select--</option>
                             <option value="220">220 Volt</option>
                             <option value="380">380 Volt</option>
                           </select>
+                          <div class="invalid-feedback">The field is required</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                          <label for="status_kompresor" class="mb-0" style="font-size:13px">Status kompresor</label>
+                          <textarea class="form-control" id="status_kompresor" name="status_kompresor" type="text" required></textarea>
                           <div class="invalid-feedback">The field is required</div>
                         </div>   
                       </div>

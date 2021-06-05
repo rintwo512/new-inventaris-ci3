@@ -19,7 +19,7 @@ table.details tr:hover {
             <div class="col-sm-12 mt-5">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data Stock Barang</h5>
+                        <h5>Data Stock Barang</h5>                       
                     </div>
                     <div class="card-body">
                         <?php if ($user['role'] == "admin") : ?>
@@ -66,8 +66,9 @@ table.details tr:hover {
                                             <a id="detailBarang" class="btn btn-warning btn-xs" data-toggle="modal"
                                                 data-target="#modalDetail" data-daya="<?= $list['daya']; ?>"
                                                 data-berat="<?= $list['berat']; ?>"
-                                                data-catatan="<?= $list['catatan']; ?>"
-                                                data-updated="<?= 'Di update oleh' . ' ' . $list['update_by'] . ' ' . date('m/d/Y H:i', $list['updated']); ?>">
+                                                data-catatan="<?= $list['catatan']; ?>" 
+                                                data-insert="<?= $list['insert_by'] ?>"
+                                                data-updated="<?=$list['update_by'];?>">
                                                 <i class="fa fa-info text-white"></i>
                                             </a>
                                             <?php if ($user['role'] == "admin") : ?>
@@ -170,7 +171,7 @@ table.details tr:hover {
                 <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
-            </div>
+            </div>         
             <div id="modal-barang">
                 <table class="table details colorTable">
                     <tr>
@@ -184,10 +185,14 @@ table.details tr:hover {
                     <tr>
                         <th>Catatan</th>
                         <td id="catatan"></td>
+                    </tr>                    
+                    <tr>
+                        <th>Tanggal updated</th>
+                        <td id="updated"></td>
                     </tr>
                     <tr>
-                        <th>Updated</th>
-                        <td id="updated"></td>
+                        <th style="font-weight: 900">Ditambah</th>
+                        <td id="inserts" style="font-weight: 900"></td>
                     </tr>
                 </table>
             </div>

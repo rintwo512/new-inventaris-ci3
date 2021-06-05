@@ -60,7 +60,8 @@ class Airco extends CI_Controller {
         $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required');
         $this->form_validation->set_rules('product', 'Product', 'required');
         $this->form_validation->set_rules('tgl_maintenance', 'Tgl_maintenance', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');   
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('status_kompresor', 'Status kompresor', 'required');
 
 
 		if($this->form_validation->run() == false)
@@ -79,6 +80,9 @@ class Airco extends CI_Controller {
 		else
 		{
 
+			$tanggal = date('d/M/Y', time());
+			$pukul = date('G:i', time());
+			$inserts = 'Di tambahkan tanggal,' .' '. $tanggal . ' ' . 'oleh';
 									
 			$data = [ 
                 
@@ -101,6 +105,8 @@ class Airco extends CI_Controller {
 	                "tegangan_kerja" => $this->input->post('tegangan_kerja'),
                     "status" => $this->input->post('status'),
                     "jenis_kerusakan" => $this->input->post('jenis_kerusakan'),
+                    "status_kompresor" => $this->input->post('status_kompresor'),
+                    "insert_by" => $inserts .' ' . $this->session->userdata('role') . ' ' . 'pukul' .' ' .$pukul,
                     "updated" => time()
              ];
 
@@ -134,6 +140,7 @@ class Airco extends CI_Controller {
         $this->form_validation->set_rules('arus', 'Arus', 'required');
         $this->form_validation->set_rules('tegangan_kerja', 'Tegangan_kerja', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('status_kompresor', 'Status kompresor', 'required');
           
 
 
@@ -151,6 +158,10 @@ class Airco extends CI_Controller {
 
 		}else{
 			 $id = $this->input->post('id');
+			$tanggal = date('d/M/Y', time());
+			$pukul = date('G:i', time());
+			$updates = 'Di ubah tanggal' .', ' . $tanggal . ' ' . ' ' . 'oleh';
+
        $data = 
 		       [
 		       	 "label" => $this->input->post('label'),
@@ -172,7 +183,8 @@ class Airco extends CI_Controller {
 		       	 "tegangan_kerja" => $this->input->post('tegangan_kerja'),
 		       	 "status" => $this->input->post('status'),
 		       	 "jenis_kerusakan" => $this->input->post('jenis_kerusakan'),
-		       	 "update_by" => $this->session->userdata('name'),
+		       	 "status_kompresor" => $this->input->post('status_kompresor'),
+		       	 "update_by" => $updates .' ' . $this->session->userdata('name') . ' ' . 'pukul' .' ' .$pukul,
 		       	 "updated" => time()
 		       ];
 
