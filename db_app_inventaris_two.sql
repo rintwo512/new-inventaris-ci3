@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2021 at 05:27 PM
+-- Generation Time: Jun 19, 2021 at 08:57 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -51,6 +51,7 @@ CREATE TABLE `tb_ac` (
   `status_kompresor` varchar(500) NOT NULL,
   `insert_by` varchar(255) NOT NULL,
   `update_by` varchar(100) NOT NULL,
+  `petugas` varchar(255) NOT NULL,
   `updated` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -58,9 +59,9 @@ CREATE TABLE `tb_ac` (
 -- Dumping data for table `tb_ac`
 --
 
-INSERT INTO `tb_ac` (`id`, `label`, `wing`, `lantai`, `ruangan`, `merk`, `model`, `jenis`, `tgl_pemasangan`, `refrigerant`, `kapasitas`, `product`, `tgl_maintenance`, `status`, `arus`, `phasa`, `pipa`, `btu`, `tegangan_kerja`, `jenis_kerusakan`, `status_kompresor`, `insert_by`, `update_by`, `updated`) VALUES
-(64, '01', 'W-A', 'Lt1', 'Staff', 'Daikin', 'Splite', 'Inverter', '06/04/2021', 'R410', '1,5pk', 'Thailand', '06/04/2021 - 06/04/2021', 'Rusak', '6', '1 phasa', '3/8 - 1/2', '2,300', '220', 'error pada modul', 'sudah ganti', 'Di tambahkan tanggal, 04/Jun/2021 oleh admin pukul 21:41', 'Di ubah tanggal, 04/Jun/2021  oleh Rinto Harahap pukul 22:22', '1622816552'),
-(65, '05', 'W-B', 'Lt1', 'Manager', 'Mitsubhisi', 'Cassette', 'Standar', '06/17/2021', 'R22', '3pk', 'Malaysia', '06/09/2021 - 10/22/2021', 'Normal', '9', '3 phasa', '3/8 - 1/2', '8,800', '380', NULL, 'ori', 'Di tambahkan tanggal, 04/Jun/2021 oleh admin pukul 21:42', 'Di ubah tanggal, 04/Jun/2021  oleh Rinto Harahap pukul 22:23', '1622816584');
+INSERT INTO `tb_ac` (`id`, `label`, `wing`, `lantai`, `ruangan`, `merk`, `model`, `jenis`, `tgl_pemasangan`, `refrigerant`, `kapasitas`, `product`, `tgl_maintenance`, `status`, `arus`, `phasa`, `pipa`, `btu`, `tegangan_kerja`, `jenis_kerusakan`, `status_kompresor`, `insert_by`, `update_by`, `petugas`, `updated`) VALUES
+(88, '', 'W-B', 'Lt1', 'staff', 'Panasonic', 'Standing floor', 'Standar', '', 'R22', '2,5pk', 'Jepang', '', 'Normal', '10 amper', '1 phasa', '1/4 - 1/2', '', '220', NULL, 'ori', 'Di tambahkan tanggal, 20/Jun/2021 oleh admin pukul 0:49', '', '', '1624121374'),
+(89, '', 'W-D', 'Lt2', 'osm', 'LG', 'Cassette', 'Standar', '', 'R22', '2pk', 'China', '', 'Rusak', '3 amper', '3 phasa', '1/4 - 5/8', '', '380', 'error pada modul indoor', 'ori', 'Di tambahkan tanggal, 20/Jun/2021 oleh admin pukul 0:50', '', '', '1624121423');
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ INSERT INTO `tb_ac` (`id`, `label`, `wing`, `lantai`, `ruangan`, `merk`, `model`
 
 CREATE TABLE `tb_apart` (
   `id` int(11) NOT NULL,
-  `no_apart` int(3) NOT NULL,
+  `no_apart` varchar(100) NOT NULL,
   `wing` varchar(255) NOT NULL,
   `lantai` varchar(255) NOT NULL,
   `lokasi` varchar(255) NOT NULL,
@@ -83,16 +84,21 @@ CREATE TABLE `tb_apart` (
   `created_by` varchar(255) NOT NULL,
   `updated_by` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT current_timestamp(),
-  `catatan` varchar(255) NOT NULL
+  `catatan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tb_apart`
+-- Table structure for table `tb_charts`
 --
 
-INSERT INTO `tb_apart` (`id`, `no_apart`, `wing`, `lantai`, `lokasi`, `merk`, `jenis`, `berat`, `tgl_expired`, `tgl_pengadaan`, `status`, `created_by`, `updated_by`, `created_at`, `catatan`) VALUES
-(15, 7, 'W-A', 'Lt2', 'area toilet', 'Ghunnebo', 'Foam', '8kg', '2021-06-15', '2021-06-30', 'Rusak', 'Di tambahkan tanggal, 05/Jun/2021 oleh admin pukul 21:36', 'Di ubah tanggal, 05/Jun/2021  oleh Rinto Harahap pukul 23:22', 1622900219, 'dfdf'),
-(16, 9, 'W-B', 'Lt3', 'area toilet', 'Chubb', 'Powder', '2kg', '2021-06-09', '2021-06-25', 'Normal', 'Di tambahkan tanggal, 05/Jun/2021 oleh admin pukul 21:43', 'Di ubah tanggal, 05/Jun/2021  oleh Rinto Harahap pukul 23:21', 1622900586, '');
+CREATE TABLE `tb_charts` (
+  `id` int(11) NOT NULL,
+  `tahun` varchar(50) NOT NULL,
+  `bulan` varchar(50) NOT NULL,
+  `unit` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -112,28 +118,6 @@ CREATE TABLE `tb_daftar_barang` (
   `update_by` varchar(255) NOT NULL,
   `insert_by` varchar(255) NOT NULL,
   `updated` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_daftar_barang`
---
-
-INSERT INTO `tb_daftar_barang` (`id`, `nama_barang`, `catatan`, `merk`, `tgl_pengadaan`, `status`, `daya`, `berat`, `update_by`, `insert_by`, `updated`) VALUES
-(31, 'bor beton', 'rusaki', 'bosch', '2021-06-04', 'rusak', '22', '4', 'Di ubah tanggal, 02/Jun/2021  oleh Rinto Harahap pukul 23:25', 'Di tambahkan tanggal, 01/Jun/2021 oleh Rinto Harahap pukul 21:55', '1622647515'),
-(33, 'mesin las', NULL, 'lakoni', '2021-06-23', 'normal', '900 watt ', '3 kg', '', 'Di tambahkan tanggal, 02/Jun/2021 oleh admin pukul 23:48', '1622648892');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_details`
---
-
-CREATE TABLE `tb_details` (
-  `id` int(11) NOT NULL,
-  `detail_id` int(11) NOT NULL,
-  `label` int(100) NOT NULL,
-  `tegangan_kerja` varchar(100) NOT NULL,
-  `arus` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -161,9 +145,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `nik`, `image`, `password`, `role`, `is_active`, `user_login`, `login_time`, `created_at`) VALUES
-(24, 'Rinto Harahap', 'ryntooh@gmail.com', 15920011, 'avatar24.png', '$2y$10$f1rUv4I7XqVhX7Chln7tL..FxuhrNGUsit9lCMjzvO9CgvA.WYcSW', 'admin', 1, 'online', '05/Jun/2021 | 22:42', 1615117910),
-(28, 'ryan', 'ryanmax798@gmail.com', 15920002, 'avatar42.png', '$2y$10$1haBySyNcwa11svG3VuxTuK43eKI6CVAZpFEAutfVr0azSaewktrm', 'user', 1, 'offline', '01/Jun/2021 | 23:01', 1616161068),
-(29, 'john doe', 'jhon@gmail.com', 15920001, 'default.png', '$2y$10$1R0IGvIHaWQmRsTjB9my5O/Z4K1bwDZxcomcdhR5942adEQfhZMQO', 'user', 1, 'offline', '05/Jun/2021 | 20:45', 1622520015);
+(24, 'Rinto Harahap', 'ryntooh@gmail.com', 15920011, 'avatar24.png', '$2y$10$f1rUv4I7XqVhX7Chln7tL..FxuhrNGUsit9lCMjzvO9CgvA.WYcSW', 'admin', 1, 'online', '20/Jun/2021 | 0:35', 1615117910),
+(29, 'john doe', 'jhon@gmail.com', 15920001, 'default.png', '$2y$10$1R0IGvIHaWQmRsTjB9my5O/Z4K1bwDZxcomcdhR5942adEQfhZMQO', 'user', 1, 'offline', '14/Jun/2021 | 1:17', 1622520015);
 
 --
 -- Indexes for dumped tables
@@ -182,15 +165,15 @@ ALTER TABLE `tb_apart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_daftar_barang`
+-- Indexes for table `tb_charts`
 --
-ALTER TABLE `tb_daftar_barang`
+ALTER TABLE `tb_charts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_details`
+-- Indexes for table `tb_daftar_barang`
 --
-ALTER TABLE `tb_details`
+ALTER TABLE `tb_daftar_barang`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -207,25 +190,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tb_ac`
 --
 ALTER TABLE `tb_ac`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `tb_apart`
 --
 ALTER TABLE `tb_apart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `tb_charts`
+--
+ALTER TABLE `tb_charts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tb_daftar_barang`
 --
 ALTER TABLE `tb_daftar_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT for table `tb_details`
---
-ALTER TABLE `tb_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `users`
