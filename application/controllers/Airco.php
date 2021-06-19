@@ -41,25 +41,23 @@ class Airco extends CI_Controller {
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
 
 
-        $this->form_validation->set_rules('label', 'Label', 'required|numeric',
-        	["numeric" => "only filled with numbers !"]
-    	);
+     //    $this->form_validation->set_rules('label', 'Label', 'required|numeric',
+     //    	["numeric" => "only filled with numbers !"]
+    	// );
         $this->form_validation->set_rules('wing', 'Wing', 'required');
         $this->form_validation->set_rules('lantai', 'Lantai', 'required');
         $this->form_validation->set_rules('ruangan', 'Ruangan', 'required');
         $this->form_validation->set_rules('merk', 'Merk', 'required');
         $this->form_validation->set_rules('model', 'Model', 'required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
-        $this->form_validation->set_rules('tgl_pemasangan', 'Tgl_pemasangan', 'required');
+        // $this->form_validation->set_rules('tgl_pemasangan', 'Tgl_pemasangan', 'required');
         $this->form_validation->set_rules('refrigerant', 'Refrigerant', 'required');
         $this->form_validation->set_rules('phasa', 'Phasa', 'required');        
-        $this->form_validation->set_rules('arus', 'Arus', 'required|numeric',
-        	["numeric" => "only filled with numbers !"]
+        $this->form_validation->set_rules('arus', 'Arus', 'required'
     	);
         $this->form_validation->set_rules('tegangan_kerja', 'Tegangan_kerja', 'required');
         $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required');
         $this->form_validation->set_rules('product', 'Product', 'required');
-        $this->form_validation->set_rules('tgl_maintenance', 'Tgl_maintenance', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
         $this->form_validation->set_rules('status_kompresor', 'Status kompresor', 'required');
 
@@ -72,7 +70,7 @@ class Airco extends CI_Controller {
 			$this->load->view('airco/index', $data);
 			$this->load->view('master/footer' ,$data);
 			$this->load->view('master/js');
-			$this->session->set_flashdata('message_err', 'Add data failed');
+			$this->session->set_flashdata('message_err', 'Tambah data gagal');
 			redirect('airco');
 			
 
@@ -97,7 +95,6 @@ class Airco extends CI_Controller {
                     "refrigerant" => $this->input->post('refrigerant'),
                     "kapasitas" => $this->input->post('kapasitas'),
                     "product" => $this->input->post('product'),
-                    "tgl_maintenance" => $this->input->post('tgl_maintenance'),
                     "arus" => $this->input->post('arus'),
                     "phasa" => $this->input->post('phasa'),
                     "pipa" => $this->input->post('pipa'),
@@ -112,7 +109,7 @@ class Airco extends CI_Controller {
 
              $this->Airco_model->insertAc($data);
                            			
-		$this->session->set_flashdata('message', 'Add data success');
+		$this->session->set_flashdata('message', 'Tambah data berhasil');
         redirect('airco');
 		}
 	}
@@ -124,18 +121,17 @@ class Airco extends CI_Controller {
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
 
 
-        $this->form_validation->set_rules('label', 'Label', 'required');
+        // $this->form_validation->set_rules('label', 'Label', 'required');
         $this->form_validation->set_rules('wing', 'Wing', 'required');
         $this->form_validation->set_rules('lantai', 'Lantai', 'required');
         $this->form_validation->set_rules('ruangan', 'Ruangan', 'required');
         $this->form_validation->set_rules('merk', 'Merk', 'required');
         $this->form_validation->set_rules('model', 'Model', 'required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
-        $this->form_validation->set_rules('tgl_pemasangan', 'Tgl_pemasangan', 'required');
+        // $this->form_validation->set_rules('tgl_pemasangan', 'Tgl_pemasangan', 'required');
         $this->form_validation->set_rules('refrigerant', 'Refrigerant', 'required');
         $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required');
         $this->form_validation->set_rules('product', 'Product', 'required');
-        $this->form_validation->set_rules('tgl_maintenance', 'Tgl_maintenance', 'required');
         $this->form_validation->set_rules('phasa', 'Phasa', 'required');        
         $this->form_validation->set_rules('arus', 'Arus', 'required');
         $this->form_validation->set_rules('tegangan_kerja', 'Tegangan_kerja', 'required');
@@ -152,7 +148,7 @@ class Airco extends CI_Controller {
 			$this->load->view('airco/index', $data);
 			$this->load->view('master/footer' ,$data);
 			$this->load->view('master/js');
-			$this->session->set_flashdata('message_err', 'Update data failed');
+			$this->session->set_flashdata('message_err', 'Update data gagal');
 			redirect('airco');
 			
 
@@ -174,13 +170,14 @@ class Airco extends CI_Controller {
 		       	 "Tgl_pemasangan" => $this->input->post('tgl_pemasangan'),
 		       	 "refrigerant" => $this->input->post('refrigerant'),
 		       	 "kapasitas" => $this->input->post('kapasitas'),
-		       	 "product" => $this->input->post('product'),
-		       	 "tgl_maintenance" => $this->input->post('tgl_maintenance'),
+		       	 "product" => $this->input->post('product'),		       	 
 		       	 "phasa" => $this->input->post('phasa'),
                  "pipa" => $this->input->post('pipa'),
 		       	 "arus" => $this->input->post('arus'),
 		       	 "btu" => $this->input->post('btu'),
 		       	 "tegangan_kerja" => $this->input->post('tegangan_kerja'),
+		       	 "tgl_maintenance" => $this->input->post('tgl_maintenance'),
+		       	 "petugas" => $this->input->post('petugas'),
 		       	 "status" => $this->input->post('status'),
 		       	 "jenis_kerusakan" => $this->input->post('jenis_kerusakan'),
 		       	 "status_kompresor" => $this->input->post('status_kompresor'),
@@ -189,7 +186,7 @@ class Airco extends CI_Controller {
 		       ];
 
         $this->Airco_model->updateData($id,$data);
-        $this->session->set_flashdata('message', 'Update data success');        
+        $this->session->set_flashdata('message', 'Update data berhasil');        
         redirect('airco');
 		
 		}

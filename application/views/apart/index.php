@@ -25,7 +25,7 @@ table.details tr:hover {
                     <?php if ($user['role'] == "admin") : ?>
 
                         <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button"
-                            data-toggle="modal" data-target="#modalApartAdd"><i class="fa fa-plus"></i> Add Data</button>
+                            data-toggle="modal" data-target="#modalApartAdd"><i class="fa fa-plus"></i> Tambah data</button>
 
                    <?php endif; ?>
                     <div class="table-responsive">
@@ -123,8 +123,8 @@ table.details tr:hover {
                 <form action="<?= base_url('apart/store'); ?>" method="post" class="needs-validation" novalidate="">
                 <div class="form-row">
                   <div class="col-md-12 mb-3">
-                            <label for="wing" class="mb-0">Wing <em class="text-danger">*</em></label>
-                            <select class="form-control" id="wing" name="wing" type="text" placeholder="Please fill in" required>
+                            <label for="sayap" class="mb-0">Wing <em class="text-danger">*</em></label>
+                            <select class="form-control" id="sayap" name="wing" type="text" placeholder="Please fill in" required>
                               <option value="">--Select--</option>
                               <option value="W-A">W-A</option>
                               <option value="W-B">W-B</option>
@@ -138,8 +138,7 @@ table.details tr:hover {
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="no_apart" class="mb-0">No Apart <em class="text-danger">*</em></label>
-                            <input class="form-control" id="no_apart" name="no_apart" type="number"
-                                placeholder="Please fill in" required>
+                            <input class="form-control" id="no_apart" name="no_apart" type="text" placeholder="Please fill in" required onkeypress="return event.charCode >= 48 && event.charCode <=57" autocomplete="off">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">

@@ -1,6 +1,6 @@
 
-  $('#wing').on('change', function () {
-    var wing = $('#wing option:selected').val();
+  $('#sayap').on('change', function () {
+    var wing = $('#sayap option:selected').val();
     
     if (wing == "W-A" || wing == "W-B") {
 

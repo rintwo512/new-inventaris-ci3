@@ -30,7 +30,7 @@
               <p class="login-card-description">Sign into your account</p>
               <form data-toggle="validator" action="<?=base_url('auth/postLogin');?>" method="post">
                   <div class="form-group">                    
-                    <input type="number" name="nik" id="nik" class="form-control" placeholder="NIK" required autofocus autocomplete="off">
+                    <input type="text" name="nik" id="nik" class="form-control" placeholder="NIK" required autofocus onkeypress="return event.charCode >= 48 && event.charCode <=57" autocomplete="off">
                     <?= form_error('nik', '<small class="c_alert pl-2 text-danger" id="log_alert_email">', '</small>'); ?>
                   </div>
                   <div class="form-group mb-4">                    

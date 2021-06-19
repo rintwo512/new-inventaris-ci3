@@ -28,7 +28,7 @@
                   <div class="card-body">
                     <?php if($user['role'] == "admin") :?>
 
-                    <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Add Data</button>
+                    <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Tambah data</button>
 
                      <?php endif;?>
 
@@ -50,7 +50,7 @@
                         <tbody>
                         <?php foreach( $airco as $ac ) : ?>
                           <tr>
-                            <td>0<?=$ac['label'];?></td>
+                            <td><?=$ac['label'];?></td>
                             <td><?=$ac['wing'];?></td>
                             <td><?=$ac['lantai'];?></td>
                             <td><?=$ac['ruangan'];?></td>
@@ -80,14 +80,14 @@
                                 data-wing="<?=$ac['wing'];?>"
                                 data-lantai="<?=$ac['lantai'];?>"
                                 data-ruangan="<?=$ac['ruangan'];?>"
-                                data-merk="<?=$ac['merk'];?>"                              
+                                data-merk="<?=$ac['merk'];?>"
                                 data-model="<?=$ac['model'];?>"
-                                data-jenis="<?=$ac['jenis'];?>"
-                                data-tgl_pemasangan="<?=$ac['tgl_pemasangan'];?>"
+                                data-jenis="<?=$ac['jenis'];?>" 
                                 data-refrigerant="<?=$ac['refrigerant'];?>"
                                 data-kapasitas="<?=$ac['kapasitas'];?>"
                                 data-product="<?=$ac['product'];?>"
-                                data-tgl_maintenance="<?=$ac['tgl_maintenance'];?>"
+                                data-tgl_maint="<?= $ac['tgl_maintenance'];?>" data-petugas="<?= $ac['petugas'] ?>"
+                                data-tgl_pemasangan="<?=$ac['tgl_pemasangan'];?>"
                                 data-status="<?=$ac['status'];?>"
                                 data-jenis_kerusakan="<?=$ac['jenis_kerusakan'];?>"
                                 data-arus1="<?= $ac['arus'] ?>" 
@@ -115,9 +115,10 @@
                                 data-product="<?= $ac['product']; ?>"
                                 data-pemasangan="<?= $ac['tgl_pemasangan']; ?>"
                                 data-maintenance="<?= $ac['tgl_maintenance']; ?>"
+                                data-petugass="<?=$ac['petugas'] ?>"
                                 data-kerusakan="<?= $ac['jenis_kerusakan'] ?>" 
                                 data-kompresor="<?= $ac['status_kompresor'] ?>"
-                                data-arus="<?= $ac['arus'] ?> Amper" 
+                                data-arus="<?= $ac['arus'] ?>" 
                                 data-phasa="<?= $ac['phasa'] ?>" 
                                 data-pipa="<?= $ac['pipa'] ?>" 
                                 data-btu="<?=$ac['btu'] ?>"
@@ -161,17 +162,13 @@
                 <div class="modal-body">
                   <form action="<?=base_url('airco/store');?>" method="post" class="needs-validation" novalidate="">
                       <div class="form-row">
-                        <div class="col-md-3 mb-3">
-                           <label for="tgl_maintenance" class="mb-0" style="font-size:13px">Tanggal maintenance <em class="text-danger">*</em></label>
-                          <input class="form-control digits" id="tgl_maintenance" name="tgl_maintenance" type="text" placeholder="Please fill in" required="">
-                         <div class="invalid-feedback">The field is required</div>
-                        </div> 
-                        <div class="col-md-3 mb-3">                          
-                          <label for="label" class="mb-0" style="font-size:13px">No Unit <em class="text-danger">*</em></label>
-                          <input class="form-control" name="label" id="label" type="text" placeholder="Please fill in" required="" onkeypress="return event.charCode >= 48 && event.charCode <=57" autocomplete="off">
+                         
+                        <div class="col-md-4 mb-3">                          
+                          <label for="label" class="mb-0" style="font-size:13px">No Unit</label>
+                          <input class="form-control" name="label" id="label" type="text" placeholder="Please fill in" onkeypress="return event.charCode >= 48 && event.charCode <=57" autocomplete="off">
                           <div class="invalid-feedback">The field is required</div>
                         </div>
-                        <div class="col-md-3 mb-3">                          
+                        <div class="col-md-4 mb-3">                          
                           <label for="wing" class="mb-0" style="font-size:13px" id="labelWing">Wing <em class="text-danger">*</em></label>
                           <select class="form-control" name="wing" id="wing" type="text" placeholder="Please fill in" required="">
                             <option value="" selected>--Select--</option>
@@ -183,7 +180,7 @@
                           </select>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-3">
                           
                           <div id="inputLantai">
 
@@ -238,8 +235,8 @@
                       </div>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <label for="tgl_pemasangan" class="mb-0" style="font-size:13px">Tanggal pemasangan <em class="text-danger">*</em></label>
-                          <input class="form-control digits" name="tgl_pemasangan" id="tgl_pemasangan" type="text" placeholder="Please fill in" required="" value="">
+                          <label for="tgl_pemasangan" class="mb-0" style="font-size:13px">Tanggal pemasangan</label>
+                          <input class="form-control" name="tgl_pemasangan" type="date" placeholder="Please fill in">
                           <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -264,7 +261,7 @@
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
                           <label for="arus" class="mb-0" style="font-size:13px">Amper <em class="text-danger">*</em></label>
-                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" required="" onkeypress="return event.charCode >= 48 && event.charCode <=57" autocomplete="off">
+                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" required=""autocomplete="off">
                           <?= form_error('arus', '<small class="text-danger">', '</small>');?>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -274,23 +271,26 @@
                           <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="pipa"class="mb-0" style="font-size:13px">Pipa liquid dan gas <small>( inch )</small></label>
+                          <label for="pipa"class="mb-0" style="font-size:13px">Pipa liquid dan gas <small>( inch )</small></label>
                             <select class="form-control" name="pipa" id="pipa">
-                              <option value="" selected>--Select--</option>
+                              <option value="">--Select--</option>
                               <option value="1/4 - 3/8">1/4 - 3/8</option>
                               <option value="1/4 - 1/2">1/4 - 1/2</option>
                               <option value="1/4 - 5/8">1/4 - 5/8</option>
-                              <option value="3/8 - 1/2">3/8 - 1/2</option>
                               <option value="3/8 - 5/8">3/8 - 5/8</option>
+                              <option value="3/8 - 3/4">3/8 - 3/4</option>
+                              <option value="1/2 - 3/4">1/2 - 3/4</option>
+                              <option value="1/2 - 7/8">1/2 - 7/8</option>
+                              <option value="1/2 - 1 1/8">1/2 - 1 1/8</option>
                             </select>
-                        </div>
-                                              
+                          <div class="invalid-feedback">The field is required</div>                        
+                        </div>                      
                         <div class="col-md-3 mb-3">
                           <label for="status" class="mb-0" style="font-size:13px">Status <em class="text-danger">*</em></label>
                           <select class="form-control" name="status" id="status" type="text" placeholder="Please fill in" required="">
                             <option value="" selected>--Select--</option>
                             <option value="Normal">Normal</option>
-                            <option value="Rusak">Rusak</option>                            
+                            <option value="Rusak">Rusak</option>
                           </select>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -310,7 +310,7 @@
                             <input class="form-control" name="phasa" id="phasa" required autocomplete="off" placeholder="Please fill in">
                         </div>
                          <div class="form-group col-md-12">
-                            <label for="status_kompresor" class="mb-0" style="font-size:13px" placeholder="Please fill in">Statu Kompresor <em class="text-danger">*</em></label>
+                            <label for="status_kompresor" class="mb-0" style="font-size:13px" placeholder="Please fill in">Status Kompresor <em class="text-danger">*</em></label>
                             <textarea class="form-control" name="status_kompresor" id="status_kompresor" required autocomplete="off" placeholder="Please fill in"></textarea>
                         </div>                           
                       </div>
@@ -360,7 +360,7 @@
                         </tr>                        
                         <tr>
                           <th>Tanggal Pemasangan</th>
-                          <td id="tgl_pemasangan"></td>                          
+                          <td><a id="tgl_pemasangan"></a><hr> Petugas pemasangan : <a id="petugas"></a></td>                 
                         </tr>                      
                         <tr>
                           <th>Product</th>
@@ -368,8 +368,8 @@
                         </tr>
                         <tr>
                           <th>Tanggal maintenance</th>
-                          <td id="tgl_maintenance"></td>                          
-                        </tr>
+                          <td id="tgl_maintenance"></td>
+                        </tr>                        
                         <tr>
                           <th>Type refrigerant</th>
                           <td id="refrigerant"></td>                          
@@ -413,11 +413,11 @@
                 <div class="modal-body" id="modal-update">
                   <form action="<?=base_url('airco/update');?>" method="post" class="needs-validation" novalidate="">
                       <div class="form-row">
-                        <div class="col-md-3 mb-3">
+                      <div class="col-md-3 mb-3">
                            <label for="tgl_maintenance" class="mb-0" style="font-size:13px">Tanggal maintenance</label>
-                          <input class="form-control digits" id="tgl_maintenancee" name="tgl_maintenance" type="text" placeholder="Please fill in" required="">
+                          <input class="form-control digits" id="tgl_maintenancee" name="tgl_maintenance" type="text" placeholder="Please fill in">
                          <div class="invalid-feedback">The field is required</div>
-                        </div>
+                       </div>                        
                         <div class="col-md-3 mb-3">
                           <label for="wing" class="mb-0" style="font-size:13px">Wing</label>
                           <input type="hidden" name="id" id="id">
@@ -433,18 +433,18 @@
                         </div>
                         <div class="col-md-3 mb-3">
                           <label for="lantai" class="mb-0" style="font-size:13px">Lantai</label>
-                          <select class="form-control" name="lantai" id="lantai" type="text" placeholder="Please fill in" required="">
-                            <option value="">--Select--</option>
+                          <input class="form-control" name="lantai" id="lantai" type="text" placeholder="Please fill in" required="">
+                           <!--  <option value="">--Select--</option>
                             <option value="Lt1">Lt1</option>
                             <option value="Lt2">Lt2</option>
                             <option value="Lt3">Lt3</option>                            
                             <option value="Lainnya">Lainnya</option>
-                          </select>
+                          </select> -->
                           <div class="invalid-feedback">The field is required</div>
                         </div>                        
                         <div class="col-md-3 mb-3">                          
                           <label for="label" class="mb-0" style="font-size:13px">No Unit</label>
-                          <input class="form-control" name="label" id="label" type="text" placeholder="Please fill in" required="" onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                          <input class="form-control" name="label" id="label" type="text" placeholder="Please fill in" onkeypress="return event.charCode >= 48 && event.charCode <=57">
                           <div class="invalid-feedback">The field is required</div>
                         </div>                       
                       </div>
@@ -506,7 +506,7 @@
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
                           <label for="tgl_pemasangan" class="mb-0" style="font-size:13px">Tanggal pemasangan</label>
-                          <input class="form-control digits" name="tgl_pemasangan" id="tgl_pemasangann" type="text" placeholder="Please fill in" required="">
+                          <input class="form-control digits" name="tgl_pemasangan" id="tgl_pemasangann" type="text" placeholder="Please fill in">
                           <div class="invalid-feedback">The field is required</div>
                         </div>                        
                         <div class="col-md-3 mb-3">
@@ -543,7 +543,7 @@
                       <div class="form-row"> 
                       <div class="col-md-3 mb-3">
                           <label for="arus" class="mb-0" style="font-size:13px">Amper</label>
-                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" required="" onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" required>
                           <?= form_error('arus', '<small class="text-danger">', '</small>');?>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -558,8 +558,11 @@
                               <option value="1/4 - 3/8">1/4 - 3/8</option>
                               <option value="1/4 - 1/2">1/4 - 1/2</option>
                               <option value="1/4 - 5/8">1/4 - 5/8</option>
-                              <option value="3/8 - 1/2">3/8 - 1/2</option>
                               <option value="3/8 - 5/8">3/8 - 5/8</option>
+                              <option value="3/8 - 3/4">3/8 - 3/4</option>
+                              <option value="1/2 - 3/4">1/2 - 3/4</option>
+                              <option value="1/2 - 7/8">1/2 - 7/8</option>
+                              <option value="1/2 - 1 1/8">1/2 - 1 1/8</option>
                             </select>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -591,6 +594,11 @@
                           </select>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
+                        <div class="col-md-4 mb-3">
+                           <label for="petugase" class="mb-0" style="font-size:13px">Petugas pemasangan</label>
+                          <input class="form-control" id="petugas" name="petugas" type="text" placeholder="Please fill in">
+                         <div class="invalid-feedback">The field is required</div>
+                       </div>
                         <div class="col-md-12 mb-3">
                           <label for="status_kompresor" class="mb-0" style="font-size:13px">Status kompresor</label>
                           <textarea class="form-control" id="status_kompresor" name="status_kompresor" type="text" required></textarea>
@@ -610,6 +618,8 @@
             </div>
           </div>
         <!-- end-modal-update -->
+
+        
 
 <script src="<?=base_url('assets');?>/js/form-validation-custom.js"></script>
 

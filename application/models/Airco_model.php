@@ -38,4 +38,5 @@ class Airco_model extends CI_Model
         $this->db->update('tb_ac', $data);
         
     }
+   
 }

@@ -14,10 +14,11 @@ $(document).on("click", "#btnUpdate", function(event) {
     const tgl_pemasangann = $(this).data('tgl_pemasangan');   
     const refrigerant = $(this).data('refrigerant');   
     const kapasitas = $(this).data('kapasitas');   
-    const product = $(this).data('product');   
-    const tgl_maintenancee = $(this).data('tgl_maintenance');      
+    const product = $(this).data('product');         
     const arus = $(this).data('arus1');   
-    var phasa = $(this).data('phasa');   
+    var phasa = $(this).data('phasa');
+    const tgl_maint = $(this).data('tgl_maint');
+    const petugas = $(this).data('petugas');    
     const pipa = $(this).data('pipa');   
     const btu = $(this).data('btu');   
     const tegangan = $(this).data('tegangan1');   
@@ -36,12 +37,13 @@ $(document).on("click", "#btnUpdate", function(event) {
     $("#modal-update #tgl_pemasangann").val(tgl_pemasangann); 
     $("#modal-update #refrigerant").val(refrigerant); 
     $("#modal-update #kapasitas").val(kapasitas); 
-    $("#modal-update #product").val(product); 
-    $("#modal-update #tgl_maintenancee").val(tgl_maintenancee);
+    $("#modal-update #product").val(product);     
     $("#modal-update #arus").val(arus); 
     $("#modal-update #phasa").val(phasa); 
     $("#modal-update #pipa").val(pipa); 
-    $("#modal-update #btu2").val(btu); 
+    $("#modal-update #btu2").val(btu);
+    $("#modal-update #tgl_maintenancee").val(tgl_maint);
+    $("#modal-update #petugas").val(petugas); 
     $("#modal-update #tegangan_kerja").val(tegangan); 
     $("#modal-update #statuss").val(statuss); 
     $("#modal-update #jenis_kerusakann").val(jenis_kerusakann);
@@ -60,6 +62,7 @@ $(document).on("click", "#btnDetail", function() {
     const tegangan = $(this).data('tegangan');
     const product = $(this).data('product');
     const maintenance = $(this).data('maintenance');    
+    const petugas = $(this).data('petugass');    
     const refrigerant = $(this).data('refrigerant');
     const kapasitas = $(this).data('kapasitas');
     const kerusakan = $(this).data('kerusakan');
@@ -77,6 +80,7 @@ $(document).on("click", "#btnDetail", function() {
     $("#modal-body #tgl_maintenance").text(maintenance);    
     $("#modal-body #refrigerant").text(refrigerant);
     $("#modal-body #kapasitas").text(kapasitas);
+    $("#modal-body #petugas").text(petugas);
     $("#modal-body #jenis_kerusakan").text(kerusakan);
     $("#modal-body #status_kompresor").text(kompresor);
     $("#modal-body #insert_at").text(insert);

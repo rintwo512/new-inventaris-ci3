@@ -89,11 +89,11 @@ $(document).ready(function(){
                           
       }else if(model == "Cassette"){
 
-          document.getElementById('inputKapasitas').innerHTML = '<label for="kapasitas" class="mb-0" style="font-size:13px">Kapasitas <em class="text-danger">*</em></label> <select class="form-control" name="kapasitas" id="kapasitas" type="text" placeholder="Please fill in" required=""><option value="2pk">2pk</option><option value="2,5pk">2,5pk</option><option value="3pk">3pk</option><option value="5pk">5pk</option></select>';
+          document.getElementById('inputKapasitas').innerHTML = '<label for="kapasitas" class="mb-0" style="font-size:13px">Kapasitas <em class="text-danger">*</em></label> <select class="form-control" name="kapasitas" id="kapasitas" type="text" placeholder="Please fill in" required=""><option value="1,5pk">1,5pk</option><option value="2pk">2pk</option><option value="2,5pk">2,5pk</option><option value="3pk">3pk</option><option value="5pk">5pk</option></select>';
 
       }else if(model == "Standing floor"){
 
-          document.getElementById('inputKapasitas').innerHTML = '<label for="kapasitas" class="mb-0" style="font-size:13px">Kapasitas <em class="text-danger">*</em></label> <select class="form-control" name="kapasitas" id="kapasitas" type="text" placeholder="Please fill in" required=""><option value="3pk">3pk</option><option value="5pk">5pk</option></select>';
+          document.getElementById('inputKapasitas').innerHTML = '<label for="kapasitas" class="mb-0" style="font-size:13px">Kapasitas <em class="text-danger">*</em></label> <select class="form-control" name="kapasitas" id="kapasitas" type="text" placeholder="Please fill in" required=""><option value="2,5pk">2,5pk</option><option value="3pk">3pk</option><option value="5pk">5pk</option></select>';
 
       }else if(model == "Sentral"){
 
@@ -123,8 +123,5 @@ $(document).ready(function(){
          document.getElementById('inputRefrigerant').innerHTML ='<label for="refrigerant" class="mb-0" style="font-size:13px">Type refrigerant <em class="text-danger">*</em></label> <select class="form-control" name="refrigerant" id="refrigerant" type="text" placeholder="Please fill in" required=""><option value="">--Select--</option></select>';
       }
 
-    })
-
-
+    })  
  });
-  

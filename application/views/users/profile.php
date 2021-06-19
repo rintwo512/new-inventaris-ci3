@@ -11,7 +11,7 @@
                     <div class="cardheader"></div>
                     <div class="user-image">
                       <div class="avatar"><img alt="" src="<?=base_url('assets/img/' . $user['image']) ?>"></div>
-                      <div class="icon-wrapper"><i class="icofont icofont-pencil-alt-5"></i></div>
+                      <div class="icon-wrapper"><a href="<?=base_url('settings/settings'); ?>"><i class="icofont icofont-pencil-alt-5"></i></a></div>
                     </div>
                     <div class="info">
                       <div class="row">
@@ -32,7 +32,7 @@
                         <div class="col-sm-12 col-lg-4 order-sm-0 order-xl-1">
                           <div class="user-designation">
                             <div class="title"><a target="_blank" href=""><?=$user['name'] ?></a></div>
-                            <div class="desc mt-2">ME</div>
+                            <div class="desc mt-2"><?=$user['role'] ?></div>
                           </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 order-sm-2 order-xl-2">

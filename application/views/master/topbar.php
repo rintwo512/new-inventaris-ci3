@@ -20,7 +20,7 @@ $log = $this->db->get('users')->result_array();
       <div class="page-main-header">
         <div class="main-header-right">
           <div class="main-header-left text-center">
-            <div class="logo-wrapper"><a href="index.html"><img src="<?=base_url('assets');?>/img/logo-dc.png" alt=""></a></div>
+            <div class="logo-wrapper"><a href="<?=base_url('home') ?>"><img src="<?=base_url('assets');?>/img/logo-dc.png" alt=""></a></div>
           </div>
           <div class="mobile-sidebar">
             <div class="media-body text-right switch-sm">
@@ -30,8 +30,8 @@ $log = $this->db->get('users')->result_array();
           <div class="vertical-mobile-sidebar"><i class="fa fa-bars sidebar-bar"></i></div>
           <div class="nav-right col pull-right right-menu">
             <ul class="nav-menus">
-              <li>
-                <form class="form-inline search-form" action="#" method="get">
+              <li>                
+                <form style="display: none" class="form-inline search-form" action="#" method="get">
                   <div class="form-group">
                     <div class="Typeahead Typeahead--twitterUsers">
                       <div class="u-posRelative">
@@ -68,7 +68,7 @@ $log = $this->db->get('users')->result_array();
                         <div class="notification-icons bg-danger mr-3"><i class="mt-0" data-feather="x"></i></div>
                       <div class="media-body">
                         <h6><?=$lo['name'] ?></h6>                       
-                          <p class="mb-0" style="color:red">online</p>
+                          <p class="mb-0" style="color:red">offline</p>
                           <p><?= $lo['login_time'] ?> yang lalu</p>
                            
                       </div>

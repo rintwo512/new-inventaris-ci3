@@ -25,7 +25,7 @@ table.details tr:hover {
                         <?php if ($user['role'] == "admin") : ?>
 
                         <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button"
-                            data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Add Data</button>
+                            data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i>Tambah data</button>
 
                         <?php endif; ?>
 

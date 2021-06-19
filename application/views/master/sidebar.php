@@ -50,6 +50,14 @@
                   <li><a href="<?=base_url('master');?>">Master data</a></li>
                 </ul>
               </li>
+              <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-graph3"></i></a>
+                <ul class="iconbar-mainmenu custom-scrollbar">                  
+                  <li><a href="<?=base_url('chart_ac');?>">Data grafik</a></li>
+                  <?php if($user['role'] == "admin") : ?>
+                  <li><a href="<?=base_url('chart_ac/grafik');?>">Lihat Grafik</a></li>
+                <?php endif; ?>
+                </ul>
+              </li>
               <li>                
                   <a id="logout" class="bar-icons" href="<?=base_url('auth/logout');?>"><i class="pe-7s-power"></i></a>                
               </li>                           

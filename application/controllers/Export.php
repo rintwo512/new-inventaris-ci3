@@ -70,7 +70,7 @@ class Export extends CI_Controller {
 
           $object->setActiveSheetIndex(0)
                       ->setCellValue('A1', 'No')
-                      ->setCellValue('B1', 'No.Ac')
+                      ->setCellValue('B1', 'Label')
                       ->setCellValue('C1', 'Wing')
                       ->setCellValue('D1', 'Lantai')
                       ->setCellValue('E1', 'Ruangan')

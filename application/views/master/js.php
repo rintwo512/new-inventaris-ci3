@@ -25,7 +25,7 @@
  <script src="<?= base_url('assets'); ?>/js/custom-card/custom-card.js"></script>
 
 
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+ <script src="<?= base_url('assets'); ?>/js/sweetalert2.all.min.js"></script>
  <script src="<?= base_url('assets'); ?>/js/datatable/datatables/jquery.dataTables.min.js"></script>
  <script src="<?= base_url('assets'); ?>/js/datatable/datatables/datatable.custom.js"></script>
  <script src="<?= base_url('assets'); ?>/js/chat-menu.js"></script>
@@ -48,6 +48,11 @@
  <script src="<?= base_url('assets'); ?>/myscript/list-barang.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/list-users.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/apart.js"></script>
+ <script type="text/javascript" src="<?= base_url('assets'); ?>/js/loader.js"></script>
+ <script src="<?= base_url('assets'); ?>/myscript/chart_ac.js"></script>
+ 
+ 
+  
  
  <!-- login js-->
  <!-- Plugin used-->
@@ -129,6 +134,325 @@ $(document).ready(function() {
     });
 });
 </script>
+
+
+<script type="text/javascript">
+    google.charts.load('current', {
+        packages: ['corechart', 'bar']
+    });
+    google.charts.setOnLoadCallback();
+
+    function load_montwise_data(tahun, title) {
+        var temp_title = title + ' ' + tahun;
+        $.ajax({
+            url: "<?php echo base_url(); ?>Chart_ac/ambil_data_chart",
+            method: "POST",
+            data: {
+                tahun: tahun
+            },
+            dataType: "JSON",
+            success: function(data) {
+                drawMonthwiseChart(data, temp_title);
+            }
+        })
+    }
+
+    function drawMonthwiseChart(chart_data, chart_main_title) {
+        var jsonData = chart_data;
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'bulan');
+        data.addColumn('number', 'Unit');
+
+        $.each(jsonData, function(i, jsonData) {
+            var bulan = jsonData.bulan;
+            var unit = jsonData.unit;
+            data.addRows([
+                [bulan, unit]
+            ]);
+        });
+
+        var options = {
+            title: chart_main_title,
+            hAxis: {
+                title: "Bulan"
+            },
+            vAxis: {
+                title: 'Rata-rata'
+            }
+        }
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('charts_area'));
+        chart.draw(data, options);
+    }
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#tahun').change(function() {
+            var tahun = $(this).val();
+            if (tahun != '') {
+                load_montwise_data(tahun, 'Grafik Maintenance Ac Tahun');
+            }
+        });
+    });
+    </script>
+
+
+    <!-- Air Conditioner -->
+    <script>
+    $(document).ready(function(){
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url:"<?php echo base_url();?>master/search_Ac",
+                method:"POST",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result').html(data);
+                }
+            })
+        }
+
+        $('#search_ac').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+
+        $('body').on("click",".delete_checkbox", function(){
+        if($(this).is(':checked'))
+        {
+            $(this).closest('tr').addClass('removeRow');
+        }
+        else
+        {
+            $(this).closest('tr').removeClass('removeRow');
+        }
+    });
+
+    $('body').on("click","#delete_all", function(){
+
+        var checkbox = $('.delete_checkbox:checked');
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+            $.ajax({
+                url:"<?php echo base_url(); ?>master/deleteAllDataAc",
+                method:"POST",
+                data:{checkbox_value:checkbox_value},
+                success:function()
+                {
+                    $('.removeRow').fadeOut(1500);
+                }
+            })
+        }
+        else
+        {            
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Pilih setidaknya satu data !'  
+            })
+        }
+
+    });
+
+    });
+</script>
+<!-- End Air Conditioner -->
+
+<!-- Assets ME -->
+<script>
+$(document).ready(function(){
+
+    $('body').on("click",".delete_checkbox_list_barang", function(){
+        if($(this).is(':checked'))
+        {
+            $(this).closest('tr').addClass('removeRow');
+        }
+        else
+        {
+            $(this).closest('tr').removeClass('removeRow');
+        }
+    });
+
+    $('body').on("click","#delete_all_list", function(){
+
+        var checkbox = $('.delete_checkbox_list_barang:checked');
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+            $.ajax({
+                url:"<?php echo base_url(); ?>master/deleteAllDataListBarang",
+                method:"POST",
+                data:{checkbox_value:checkbox_value},
+                success:function()
+                {
+                    $('.removeRow').fadeOut(1500);
+                }
+            })
+        }
+        else
+        {            
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Pilih setidaknya satu data !'  
+            })
+        }
+
+    });    
+
+});
+</script>
+<!-- End Assets ME -->
+
+<!-- Apart -->
+<script>
+$(document).ready(function(){
+
+    $('body').on("click",".delete_checkbox_apar", function(){
+        if($(this).is(':checked'))
+        {
+            $(this).closest('tr').addClass('removeRow');
+        }
+        else
+        {
+            $(this).closest('tr').removeClass('removeRow');
+        }
+    });
+
+    $('body').on("click","#delete_all_apar", function(){
+
+        var checkbox = $('.delete_checkbox_apar:checked');
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+            $.ajax({
+                url:"<?php echo base_url(); ?>master/deleteAllDataApar",
+                method:"POST",
+                data:{checkbox_value:checkbox_value},
+                success:function()
+                {
+                    $('.removeRow').fadeOut(1500);
+                }
+            })
+        }
+        else
+        {            
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Pilih setidaknya satu data !'  
+            })
+        }
+
+    });    
+
+});
+</script>
+<!-- End Apart -->
+
+<!-- Maintenance Ac -->
+    <script>
+    $(document).ready(function(){
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url:"<?php echo base_url();?>master/search_maint",
+                method:"POST",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result2').html(data);
+                }
+            })
+        }
+
+        $('#search_maint').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+
+        $('body').on("click",".delete_checkbox_maint", function(){
+        if($(this).is(':checked'))
+        {
+            $(this).closest('tr').addClass('removeRow');
+        }
+        else
+        {
+            $(this).closest('tr').removeClass('removeRow');
+        }
+    });
+
+    $('body').on("click","#delete_all_maint", function(){
+
+        var checkbox = $('.delete_checkbox_maint:checked');
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+            $.ajax({
+                url:"<?php echo base_url(); ?>master/deleteAllDataMaintAc",
+                method:"POST",
+                data:{checkbox_value:checkbox_value},
+                success:function()
+                {
+                    $('.removeRow').fadeOut(1500);
+                }
+            })
+        }
+        else
+        {            
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Pilih setidaknya satu data !'  
+            })
+        }
+
+    });
+
+    });
+</script>
+<!-- End Maintenance Ac -->
+
+
 
 
 

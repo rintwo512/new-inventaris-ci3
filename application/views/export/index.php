@@ -1,10 +1,17 @@
 <style>
-    .erorrs a:hover{
-        cursor: pointer;
-    }
-    .erorrs a{
-        color:white !important;
-    }
+   .removeRow{
+    background-color: #FD517D !important;
+    color: #FFFFFF;
+   }
+   .bgColor{
+    background-color: #212121;
+   }
+  .bgColor tr th{
+    color:aliceblue !important;
+  }
+  .hover-items:hover{
+    background-color: rgba(100,100,100,0.2);
+  }
 </style>
 <!-- content-here -->
 <div class="page-body">
@@ -16,69 +23,17 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Master data AC</h5>
-                    </div>                   
-                    <div class="card-body">
-                    <a href="<?=base_url('export/data_ac');?>" class="btn btn-primary btn-sm mb-4 pull-right"><i class="fa fa-file-excel-o"></i> Export Excel</a>                         
-                        <div class="table-responsive">
-                            <table class="hover" id="example-style-4">
-                                <thead class="myColor">
-                                    <tr>
-                                        <th>No.Ac</th>
-                                        <th>Wing</th>
-                                        <th>Lantai</th>             
-                                        <th>Ruangan</th>             
-                                        <th>Merk</th>             
-                                        <th>Model</th>             
-                                        <th>Jenis</th>             
-                                        <th>Tgl pemasangan</th>             
-                                        <th>Refrigerant</th>             
-                                        <th>Kapasitas</th>             
-                                        <th>Product</th>             
-                                        <th>Arus</th>             
-                                        <th>Phase</th>             
-                                        <th>Tegangan</th>             
-                                        <th>Btu</th>             
-                                        <th>Status</th>             
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach($airco as $ac) : ?>
-                                    <tr>
-                                        <td><?=$ac->label ?></td>
-                                        <td><?=$ac->wing ?></td>
-                                        <td><?=$ac->lantai ?></td>
-                                        <td><?=$ac->ruangan ?></td>
-                                        <td><?=$ac->merk ?></td>    
-                                        <td><?=$ac->model ?></td>
-                                        <td><?=$ac->jenis ?></td>
-                                        <td><?=$ac->tgl_pemasangan ?></td>
-                                        <td><?=$ac->refrigerant ?></td>
-                                        <td><?=$ac->kapasitas ?></td>
-                                        <td><?=$ac->product ?></td>
-                                        <td><?=$ac->arus ?> A</td>
-                                        <td><?=$ac->phasa ?></td>
-                                        <td><?=$ac->tegangan_kerja ?> V</td>
-                                        <td><?=$ac->btu ?></td>
-                                        <?php if($ac->status == 'Normal') : ?>   
-                                        <td>
-                                            <span class="badge badge-info"><?=$ac->status ?>           
-                                            </span>
-                                        </td> 
-
-                                        <?php else : ?>
-
-                                        <td class="erorrs">
-                                            <a class="badge badge-danger" data-toggle="tooltip" data-placement="top" title="<?=$ac->jenis_kerusakan  ?>"><?=$ac->status ?>           
-                                            </a>
-                                        
-                                        </td>
-
-                                        <?php endif; ?>                
-                                    </tr> 
-                                 <?php endforeach; ?>                      
-                                </tbody>
-                            </table>
+                    </div>
+                    <div class="card-body">                        
+                    <a href="<?=base_url('export/data_ac');?>" class="btn btn-primary btn-sm mb-4 pull-right"><i class="fa fa-file-excel-o"></i> Export Excel</a>
+                    <div class="form-group col-md-3">
+                        <div class="input-group">                            
+                            <input type="text" name="search_ac" id="search_ac" placeholder="Search" class="form-control rounded">
                         </div>
+                    </div> 
+                    <div class="table-responsive">                        
+                        <div id="result"></div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -96,10 +51,12 @@
                     </div>
                     <div class="card-body">
                         <a href="<?=base_url('export/index');?>" class="btn btn-primary btn-sm mb-4 pull-right"><i class="fa fa-file-excel-o"></i> Export excel</a>
+                        <button type="button" class="btn btn-danger btn-sm" id="delete_all_list"><i class="fa fa-trash"></i> Delete</button>
                         <div class="table-responsive">
                             <table class="hover" id="example-style-44">
                                 <thead class="myColor">
                                     <tr>
+                                        <th>#</th>
                                         <th>Nama Barang</th>
                                         <th>Merk</th>
                                         <th>Tanggal pengadaaan</th>             
@@ -109,31 +66,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach($listBarang as $assets) :  ?>
-                                    <tr>
-                                        <td><?=$assets->nama_barang ?></td>
-                                        <td><?=$assets->merk ?></td>
-                                        <td><?=$assets->tgl_pengadaan ?></td>
-                                        <td><?=$assets->daya?></td>
-                                        <td><?=$assets->berat ?></td>
-                                        <?php if($assets->status == 'normal') : ?>
-                                        <td>
-                                            <span class="badge badge-success"><?=$assets->status ?>            
-                                            </span>
-                                        </td>
-                                        <?php elseif($assets->status == 'hilang') : ?>
-                                        <td class="erorrs">
-                                            <a class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="<?=$assets->catatan  ?>"><?=$assets->status ?>
-                                            </a>
-                                        </td>
-                                        <?php else : ?>
-                                        <td class="erorrs">
-                                            <a class="badge badge-danger" data-toggle="tooltip" data-placement="top" title="<?=$assets->catatan  ?>"><?= $assets->status; ?>
-                                            </a>
-                                        </td>
-                                        <?php endif; ?>
-                                    </tr>
-                                <?php endforeach; ?>
+                                <?php
+                                    foreach($listBarang->result() as $list )
+                                    {
+                                        echo '
+                                            <tr class="hover-items">
+                                                <td>
+                                                    <input type="checkbox" class="delete_checkbox_list_barang" value="'.$list->id.'"/>
+                                                </td>
+                                                <td>'.$list->nama_barang.'</td>
+                                                <td>'.$list->merk.'</td>
+                                                <td>'.$list->tgl_pengadaan.'</td>
+                                                <td>'.$list->daya.'</td>
+                                                <td>'.$list->berat.'</td>
+                                                <td>'.$list->status.'</td>
+                                            </tr>
+                                        ';
+                                    }
+
+                                  ?>
                                 </tbody>
                             </table>
                         </div>
@@ -155,10 +106,12 @@
                     </div>
                     <div class="card-body">
                         <a href="<?=base_url('export/dataApart');?>" class="btn btn-primary btn-sm mb-4 pull-right"><i class="fa fa-file-excel-o"></i> Export excel</a>
+                        <button type="button" class="btn btn-danger btn-sm" id="delete_all_apar"><i class="fa fa-trash"></i> Delete</button>
                         <div class="table-responsive">
                             <table class="hover" id="example-style-apart">
                                 <thead class="myColor">             
                                     <tr>
+                                        <th width="8%">#</th>
                                         <th>No.apart</th>
                                         <th>Wing</th>
                                         <th>Lantai</th>
@@ -172,35 +125,58 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach($apart as $apar ) : ?>
-                                    <tr>
-                                        <td><?=$apar->no_apart ?></td>
-                                        <td><?=$apar->wing ?></td>
-                                        <td><?=$apar->lantai ?></td>
-                                        <td><?=$apar->lokasi ?></td>
-                                        <td><?=$apar->merk ?></td>
-                                        <td><?=$apar->jenis ?></td>            
-                                        <td><?=$apar->berat ?></td>            
-                                        <td><?=$apar->tgl_expired ?></td>
-                                        <td><?=$apar->tgl_pengadaan ?></td>
-                                        <?php if($apar->status == 'Normal') : ?>     
-                                        <td class="erorrs">
-                                            <span class="badge badge-success"><?=$apar->status ?>
-                                            </span>
-                                        </td>
+                                <?php 
+                                    foreach($apart->result() as $apr)
+                                    {
+                                        echo 
+                                        '
+                                            <tr class="hover-items">
+                                                <td>
+                                                    <input type="checkbox" class="delete_checkbox_apar" value="'.$apr->id.'"/>
+                                                </td>
+                                                <td>'.$apr->no_apart.'</td>
+                                                <td>'.$apr->wing.'</td>
+                                                <td>'.$apr->lantai.'</td>
+                                                <td>'.$apr->lokasi.'</td>
+                                                <td>'.$apr->merk.'</td>
+                                                <td>'.$apr->jenis.'</td>
+                                                <td>'.$apr->berat.'</td>
+                                                <td>'.$apr->tgl_expired.'</td>
+                                                <td>'.$apr->tgl_pengadaan.'</td>
+                                                <td>'.$apr->status.'</td>
+                                            </tr>
+                                        ';
+                                    }
 
-                                        <?php else : ?>
 
-                                        <td class="erorrs">
-                                            <a class="badge badge-danger" data-toggle="tooltip" data-placement="top" title="<?=$apar->catatan  ?>"><?= $apar->status; ?>
-                                            </a>
-                                        </td>
-                                        
-                                        <?php endif; ?>  
-                                    </tr>
-                                <?php endforeach; ?>             
+                                 ?>           
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end myTable -->
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid Ends-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--myTable-->
+            <div class="col-sm-12 mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Master data maintenance Ac</h5>
+                    </div>
+                    <div class="card-body">                        
+                        <div class="form-group col-md-3">
+                            <div class="input-group">
+                                <input type="text" name="search_maint" id="search_maint" placeholder="Search" class="form-control rounded">
+                            </div>
+                        </div> 
+                        <div class="table-responsive">
+                           <div id="result2"></div>
                         </div>
                     </div>
                 </div>
