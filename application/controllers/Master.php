@@ -8,7 +8,7 @@ class Master extends CI_Controller {
         parent::__construct();      
         $this->load->model('Stockbarang_model'); 
         $this->load->model('Airco_model');
-        $this->load->model('Export_model');  
+        $this->load->model('Master_model');  
         check_session();
         
     }
@@ -19,9 +19,11 @@ class Master extends CI_Controller {
 
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
 
-		$data['listBarang'] = $this->Export_model->exportAssets();
+		$data['listBarang'] = $this->Master_model->exportAssets();
 		
-		$data['apart'] = $this->Export_model->exportDataApart();
+		$data['apart'] = $this->Master_model->exportDataApart();
+
+        $data['cctv'] = $this->Master_model->exportDataCctv();
 		
 
 		$this->load->view('master/header', $data);
@@ -41,7 +43,7 @@ class Master extends CI_Controller {
     	{
     		$query = $this->input->post('query');
     	}
-    	$data = $this->Export_model->liveSearchAc($query);
+    	$data = $this->Master_model->liveSearchAc($query);
     	$output .= '    		
                 <table class="table">
                     <thead class="bgColor">
@@ -115,7 +117,7 @@ class Master extends CI_Controller {
     		$id = $this->input->post('checkbox_value');
     		for($count = 0; $count < count($id); $count++)
     		{
-    			$this->Export_model->deleteMultipleAc($id[$count]);
+    			$this->Master_model->deleteMultipleAc($id[$count]);
     		}
     	}
     }
@@ -127,7 +129,7 @@ class Master extends CI_Controller {
             $id = $this->input->post('checkbox_value');
             for($count = 0; $count < count($id); $count++)
             {
-                $this->Export_model->deleteMultipleListBarang($id[$count]);
+                $this->Master_model->deleteMultipleListBarang($id[$count]);
             }
         }
     }
@@ -140,7 +142,7 @@ class Master extends CI_Controller {
             $id = $this->input->post('checkbox_value');
             for($count = 0; $count < count($id); $count++)
             {
-                $this->Export_model->deleteMultipleApar($id[$count]);
+                $this->Master_model->deleteMultipleApar($id[$count]);
             }
         }
     }
@@ -154,7 +156,7 @@ class Master extends CI_Controller {
         {
             $query = $this->input->post('query');
         }
-        $data = $this->Export_model->liveSearchMaintAc($query);
+        $data = $this->Master_model->liveSearchMaintAc($query);
         $output .= '            
                 <table class="table">
                     <thead class="bgColor">
@@ -207,7 +209,20 @@ class Master extends CI_Controller {
             $id = $this->input->post('checkbox_value');
             for($count = 0; $count < count($id); $count++)
             {
-                $this->Export_model->deleteMultipleMaintAc($id[$count]);
+                $this->Master_model->deleteMultipleMaintAc($id[$count]);
+            }
+        }
+    }
+
+
+    public function deleteAllDataCctv()
+    {
+        if($this->input->post('checkbox_value'))
+        {
+            $id = $this->input->post('checkbox_value');
+            for($count = 0; $count < count($id); $count++)
+            {
+                $this->Master_model->deleteMultipleCctv($id[$count]);
             }
         }
     }

@@ -47,7 +47,7 @@
     </div>
   </main>
   <script src="<?=base_url('assets');?>/js/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+  <script src="<?= base_url('assets'); ?>/js/sweetalert2.all.min.js"></script>
   <script src="<?=base_url('assets');?>/myscript/success.js"></script>
   <script src="<?=base_url('assets');?>/myscript/error.js"></script>
   <script src="<?=base_url('assets');?>/vendors/plugins/Bootstrap-validator/validator.js"></script>
@@ -65,7 +65,7 @@
           Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Silahkan hubungi admin!'         
+          text: 'Silahkan hubungi admin untuk melakukan registrasi!'         
         })
       });
 });

@@ -16,21 +16,32 @@ $(document).on('click', '#btnDeleteDataGrafik', function (e) {
         const href = $(this).attr('href')
         e.preventDefault();
         Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: 'Iya, hapus itu!'
         }).then((result) => {
            if (result.value) {
                 document.location.href = href;
                 Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
+                  'Dihapus!',
+                  'Data berhasil di hapus.',
                   'success'
                 )
             }
         })
-    });
+ });
+
+// $(document).ready(function(){
+//   $("#chart_tahun").on("change", function(){
+//   var tahun = $('#chart_tahun option:selected').val();
+//   if(tahun === "2021"){
+//  $('#chart_bulan option[value="Januari"]').attr("disabled", true);
+//   }else{
+//     $('#chart_bulan option[value="Januari"]').removeAttr("disabled", true);
+//   }
+// });
+// });

@@ -5,6 +5,7 @@ $(document).on("click", "#btnUpdate", function(event) {
     
     const id = $(this).data('id');
     const label = $(this).data('label1');   
+    const aset_ac = $(this).data('aset_ac');   
     const wing = $(this).data('wing');   
     const lantai = $(this).data('lantai');   
     const ruangan = $(this).data('ruangan');   
@@ -28,6 +29,7 @@ $(document).on("click", "#btnUpdate", function(event) {
     
     $("#modal-update #id").val(id);
     $("#modal-update #label").val(label);    
+    $("#modal-update #aset_update").val(aset_ac);    
     $("#modal-update #wing").val(wing);    
     $("#modal-update #lantai").val(lantai);    
     $("#modal-update #ruangan").val(ruangan); 
@@ -55,6 +57,8 @@ $(document).on("click", "#btnUpdate", function(event) {
 $(document).on("click", "#btnDetail", function() {
     
     const pemasangan = $(this).data('pemasangan');
+    const detail_label = $(this).data('detail_label_ac');
+    const detail_aset = $(this).data('detail_aset_ac');
     const btu = $(this).data('btu');
     const pipa = $(this).data('pipa');
     const arus = $(this).data('arus');
@@ -70,6 +74,8 @@ $(document).on("click", "#btnDetail", function() {
     const insert = $(this).data('insert');
     const updated = $(this).data('update');
     
+    $("#modal-body #no_detail_ac").text(detail_label);
+    $("#modal-body #aset_detail").text(detail_aset);
     $("#modal-body #pipa").text(pipa);
     $("#modal-body #btu").text(btu);
     $("#modal-body #arus").text(arus);
@@ -92,19 +98,19 @@ $(document).on('click', '#btnDel', function (e) {
         const href = $(this).attr('href')
         e.preventDefault();
         Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: 'Iya, hapus itu!'
         }).then((result) => {
            if (result.value) {
                 document.location.href = href;
                 Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
+                  'Dihapus!',
+                  'Data berhasil di hapus.',
                   'success'
                 )
             }

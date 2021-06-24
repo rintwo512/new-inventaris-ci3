@@ -85,6 +85,7 @@ class Airco extends CI_Controller {
 			$data = [ 
                 
 	                "label" => $this->input->post('label'),
+	                "aset" => $this->input->post('aset'),
                     "wing" => $this->input->post('wing'),
                     "lantai" => $this->input->post('lantai'),
                     "ruangan" => $this->input->post('ruangan'),
@@ -161,6 +162,7 @@ class Airco extends CI_Controller {
        $data = 
 		       [
 		       	 "label" => $this->input->post('label'),
+		       	 "aset" => $this->input->post('aset_update'),
 		       	 "wing" => $this->input->post('wing'),
 		       	 "lantai" => $this->input->post('lantai'),
 		       	 "ruangan" => $this->input->post('ruangan'),

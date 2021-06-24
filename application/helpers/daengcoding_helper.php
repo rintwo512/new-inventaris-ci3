@@ -1,9 +1,10 @@
 <?php
 
 function check_session()
-{
-    $dc = get_instance();
-    if (!$dc->session->userdata('nik')) {
+{	
+	
+    $dc = get_instance();    
+    if (!$dc->session->userdata('nik')) {	        
         redirect('auth');
     }
 }

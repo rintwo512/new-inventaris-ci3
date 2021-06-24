@@ -84,4 +84,10 @@ html{scroll-behavior:smooth}body{background-color:rgba(246,246,246,0.6);font-siz
    	background: #212121;
    	color:white;
    }
+   .gradient-purple{
+   	background-image:-webkit-gradient(linear, left top, right bottom, from(#6f0000), to(#200122));
+   	background-image:linear-gradient(to bottom right, #6f0000, #200122);
+   	-webkit-box-shadow:2px 12px 26px 3px rgba(6,181,221,0.3);
+   	box-shadow:2px 12px 26px 3px rgba(6,181,221,0.3)
+   }
  

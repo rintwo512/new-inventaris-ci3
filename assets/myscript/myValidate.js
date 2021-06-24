@@ -71,11 +71,12 @@ $(document).ready(function(){
 
             document.getElementById('inputLantai').innerHTML = '<label for="lantai" class="mb-0" style="font-size:13px">Lantai <em class="text-danger">*</em></label> <select class="form-control" name="lantai" id="lantai" type="text" placeholder="Please fill in" required=""><option value="">--Select--</option></select>';
 
-        }else{
-            document.getElementById('inputLantai').innerHTML = '<label for="lantai" class="mb-0" style="font-size:13px">Lokasi <em class="text-danger">*</em></label><input type"text" name="lantai" id="lantai" class="form-control" placeholder="Please fill in" required>';            
-        }
 
-    })
+        }else{
+            document.getElementById('inputLantai').innerHTML = '<label for="lantai" class="mb-0" style="font-size:13px">Lantai <em class="text-danger">*</em></label> <select class="form-control" name="lantai" id="lantai" type="text" placeholder="Please fill in" required=""><option value="Lt1">Lt1</option></select>';            
+        }        
+
+    });
 
 
     // validasi field model dan kapasitas
@@ -125,3 +126,7 @@ $(document).ready(function(){
 
     })  
  });
+
+// $(document).ready(function(){
+//   document.getElementById('label_insert').style.textTransform="capitalize";
+// });

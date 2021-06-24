@@ -47,6 +47,67 @@
             <div class="col-sm-12 mt-5">
                 <div class="card">
                     <div class="card-header">
+                        <h5>Master data CCTV</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="<?= base_url('export/dataCctv') ?>" class="btn btn-primary btn-sm mb-4 pull-right"><i class="fa fa-file-excel-o"></i> Export excel</a>
+                        <button type="button" class="btn btn-danger btn-sm" id="delete_all_cctv"><i class="fa fa-trash"></i> Delete</button>
+                        <div class="table-responsive">
+                            <table class="hover" id="example-style-4">
+                                <thead class="myColor">
+                                    <tr>
+                                        <th width="8%">#</th>
+                                        <th>No camera</th>
+                                        <th>Wing</th>
+                                        <th>Lantai</th>
+                                        <th>Lokasi</th>
+                                        <th>Merk</th>
+                                        <th>Jenis</th>
+                                        <th>Sensor gambar</th>
+                                        <th>Tanggal pengadaaan</th>
+                                        <th>Status</th>             
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                 <?php foreach ($cctv->result() as $cam)
+                                 {
+                                    echo '
+
+                                        <tr class="hover-items">
+                                                <td>
+                                                    <input type="checkbox" class="delete_checkbox_cctv" value="'.$cam->id.'"/>
+                                                </td>
+                                                <td>'.$cam->no_camera.'</td>
+                                                <td>'.$cam->wing.'</td>
+                                                <td>'.$cam->lantai.'</td>
+                                                <td>'.$cam->lokasi.'</td>
+                                                <td>'.$cam->merk.'</td>
+                                                <td>'.$cam->jenis.'</td>
+                                                <td>'.$cam->sensor_gambar.'</td>
+                                                <td>'.$cam->tgl_pengadaan.'</td>
+                                                <td>'.$cam->status.'</td>
+                                            </tr>
+
+                                    ';
+
+                                 } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end myTable -->
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid Ends-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--myTable-->
+            <div class="col-sm-12 mt-5">
+                <div class="card">
+                    <div class="card-header">
                         <h5>Master data assets ME</h5>
                     </div>
                     <div class="card-body">

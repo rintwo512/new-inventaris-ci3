@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Export_model extends CI_Model
+class Master_model extends CI_Model
 {
     function exportAssets()
     {        
@@ -9,7 +9,7 @@ class Export_model extends CI_Model
         $this->db->from("tb_daftar_barang");        
         $this->db->order_by('id', "ASC");
         return $this->db->get();
-    }
+    }   
 
     function liveSearchAc($query)
     {
@@ -75,6 +75,20 @@ class Export_model extends CI_Model
     {
         $this->db->where('id', $id);
         $this->db->delete('tb_charts');
+    }
+
+    function exportDataCctv()
+    {
+        $this->db->select("*");
+        $this->db->from("tb_cctv");        
+        $this->db->order_by('id', "ASC");
+        return $this->db->get();
+    }
+
+    function deleteMultipleCctv($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('tb_cctv');
     }
     
 }

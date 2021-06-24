@@ -10,15 +10,13 @@ class Export extends CI_Controller {
 
 	  public function __construct()
     {
-        parent::__construct(); 
-        $this->load->model('Export_model');              
-        
+        parent::__construct();                            
     }
 
     public function index()
 	{
 
-		$assets = $this->Export_model->exportAssets('tb_daftar_barang')->result();
+    $assets = $this->db->get('tb_daftar_barang')->result();
 
 
 		$spreadsheet = new Spreadsheet;
@@ -64,30 +62,32 @@ class Export extends CI_Controller {
 
     public function data_ac()
 	{
-		$data_ac = $this->Export_model->exportDataAc('tb_ac')->result();
+		$data_ac = $this->db->get('tb_ac')->result();
+    // $data_ac = $this->Export_model->exportDataAc('tb_ac')->result();
 
 		$object = new Spreadsheet;
 
           $object->setActiveSheetIndex(0)
                       ->setCellValue('A1', 'No')
                       ->setCellValue('B1', 'Label')
-                      ->setCellValue('C1', 'Wing')
-                      ->setCellValue('D1', 'Lantai')
-                      ->setCellValue('E1', 'Ruangan')
-                      ->setCellValue('F1', 'Merk')
-                      ->setCellValue('G1', 'Model')
-                      ->setCellValue('H1', 'Jenis')
-                      ->setCellValue('I1', 'Tanggal pemasangan')
-                      ->setCellValue('J1', 'Kapasitas')
-                      ->setCellValue('K1', 'Amper')
-                      ->setCellValue('L1', 'Tegangan')
-                      ->setCellValue('M1', 'Btu')
-                      ->setCellValue('N1', 'Refrigerant')
-                      ->setCellValue('O1', 'Product')
-                      ->setCellValue('P1', 'Status')
-                      ->setCellValue('Q1', 'Status kompresor')
-                      ->setCellValue('R1', 'Jadwal maintenance')
-                      ->setCellValue('S1', 'Keterangan');
+                      ->setCellValue('C1', 'Aset')
+                      ->setCellValue('D1', 'Wing')
+                      ->setCellValue('E1', 'Lantai')
+                      ->setCellValue('F1', 'Ruangan')
+                      ->setCellValue('G1', 'Merk')
+                      ->setCellValue('H1', 'Model')
+                      ->setCellValue('I1', 'Jenis')
+                      ->setCellValue('J1', 'Tanggal pemasangan')
+                      ->setCellValue('K1', 'Kapasitas')
+                      ->setCellValue('L1', 'Amper')
+                      ->setCellValue('M1', 'Tegangan')
+                      ->setCellValue('N1', 'Btu')
+                      ->setCellValue('O1', 'Refrigerant')
+                      ->setCellValue('P1', 'Product')
+                      ->setCellValue('Q1', 'Status')
+                      ->setCellValue('R1', 'Status kompresor')
+                      ->setCellValue('S1', 'Jadwal maintenance')
+                      ->setCellValue('T1', 'Keterangan');
 
           $kolom = 2;
           $nomor = 1;
@@ -96,23 +96,24 @@ class Export extends CI_Controller {
                $object->setActiveSheetIndex(0)
                            ->setCellValue('A' . $kolom, $nomor)
                            ->setCellValue('B' . $kolom, $ac->label)
-                           ->setCellValue('C' . $kolom, $ac->wing)
-                           ->setCellValue('D' . $kolom, $ac->lantai)
-                           ->setCellValue('E' . $kolom, $ac->ruangan)
-                           ->setCellValue('F' . $kolom, $ac->merk)
-                           ->setCellValue('G' . $kolom, $ac->model)
-                           ->setCellValue('H' . $kolom, $ac->jenis)
-                           ->setCellValue('I' . $kolom, $ac->tgl_pemasangan)
-                           ->setCellValue('J' . $kolom, $ac->kapasitas)
-                           ->setCellValue('K' . $kolom, $ac->arus)
-                           ->setCellValue('L' . $kolom, $ac->phasa)
-                           ->setCellValue('M' . $kolom, $ac->btu)
-                           ->setCellValue('N' . $kolom, $ac->refrigerant)
-                           ->setCellValue('O' . $kolom, $ac->product)
-                           ->setCellValue('P' . $kolom, $ac->status)
-                           ->setCellValue('Q' . $kolom, $ac->status_kompresor)
-                           ->setCellValue('R' . $kolom, $ac->tgl_maintenance)
-                           ->setCellValue('S' . $kolom, $ac->jenis_kerusakan);
+                           ->setCellValue('C' . $kolom, $ac->aset)
+                           ->setCellValue('D' . $kolom, $ac->wing)
+                           ->setCellValue('E' . $kolom, $ac->lantai)
+                           ->setCellValue('F' . $kolom, $ac->ruangan)
+                           ->setCellValue('G' . $kolom, $ac->merk)
+                           ->setCellValue('H' . $kolom, $ac->model)
+                           ->setCellValue('I' . $kolom, $ac->jenis)
+                           ->setCellValue('J' . $kolom, $ac->tgl_pemasangan)
+                           ->setCellValue('K' . $kolom, $ac->kapasitas)
+                           ->setCellValue('L' . $kolom, $ac->arus)
+                           ->setCellValue('M' . $kolom, $ac->phasa)
+                           ->setCellValue('N' . $kolom, $ac->btu)
+                           ->setCellValue('O' . $kolom, $ac->refrigerant)
+                           ->setCellValue('P' . $kolom, $ac->product)
+                           ->setCellValue('Q' . $kolom, $ac->status)
+                           ->setCellValue('R' . $kolom, $ac->status_kompresor)
+                           ->setCellValue('S' . $kolom, $ac->tgl_maintenance)
+                           ->setCellValue('T' . $kolom, $ac->jenis_kerusakan);
 
                $kolom++;
                $nomor++;
@@ -131,7 +132,7 @@ class Export extends CI_Controller {
 
   public function dataApart()
   {
-    $apart = $this->Export_model->exportDataApart('tb_apart')->result();
+    $apart = $this->db->get('tb_apart')->result();
 
 
 
@@ -178,6 +179,59 @@ class Export extends CI_Controller {
 
          header('Content-Type: application/vnd.ms-excel');
     header('Content-Disposition: attachment;filename="Data apar.xlsx"');
+    header('Cache-Control: max-age=0');
+
+    $writer->save('php://output');
+    exit;
+  }
+
+  public function dataCctv()
+  {
+    $cctv = $this->db->get('tb_cctv')->result();
+
+
+
+
+    $object = new Spreadsheet;
+
+          $object->setActiveSheetIndex(0)
+                      ->setCellValue('A1', 'No')
+                      ->setCellValue('B1', 'No.Camera')
+                      ->setCellValue('C1', 'Wing')
+                      ->setCellValue('D1', 'Lantai')
+                      ->setCellValue('E1', 'Lokasi')
+                      ->setCellValue('F1', 'Merk')
+                      ->setCellValue('G1', 'Jenis')
+                      ->setCellValue('H1', 'Sensor gambar')
+                      ->setCellValue('I1', 'Tanggal pengadaan')
+                      ->setCellValue('J1', 'Status')
+                      ->setCellValue('K1', 'Keterangan');
+
+          $kolom = 2;
+          $nomor = 1;
+          foreach($cctv as $cam) {
+
+               $object->setActiveSheetIndex(0)
+                           ->setCellValue('A' . $kolom, $nomor)
+                           ->setCellValue('B' . $kolom, $cam->no_camera)
+                           ->setCellValue('C' . $kolom, $cam->wing)
+                           ->setCellValue('D' . $kolom, $cam->lantai)
+                           ->setCellValue('E' . $kolom, $cam->lokasi)
+                           ->setCellValue('F' . $kolom, $cam->merk)
+                           ->setCellValue('G' . $kolom, $cam->jenis)
+                           ->setCellValue('H' . $kolom, $cam->sensor_gambar)
+                           ->setCellValue('I' . $kolom, $cam->tgl_pengadaan)
+                           ->setCellValue('J' . $kolom, $cam->status)
+                           ->setCellValue('K' . $kolom, $cam->catatan);
+               $kolom++;
+               $nomor++;
+
+          }
+
+          $writer = new Xlsx($object);
+
+         header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="Data CCTV.xlsx"');
     header('Cache-Control: max-age=0');
 
     $writer->save('php://output');

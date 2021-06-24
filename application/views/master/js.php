@@ -50,35 +50,8 @@
  <script src="<?= base_url('assets'); ?>/myscript/apart.js"></script>
  <script type="text/javascript" src="<?= base_url('assets'); ?>/js/loader.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/chart_ac.js"></script>
+ <script src="<?= base_url('assets'); ?>/myscript/cctv.js"></script>
  
- 
-  
- 
- <!-- login js-->
- <!-- Plugin used-->
-
-
-
- <!--  <script>
-      $(window).on('load',function(){
-    $('#loadModal').modal('show');
-});
-    </script> -->
-
-
- <script>
-var flerr = $('.flash-err').data('eros');
-
-if (flerr) {
-    Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: flerr,
-        showConfirmButton: false,
-        timer: 3000
-    })
-}
- </script>
  <script>
     $(document).ready(function() {
         var interval = setInterval(function() {
@@ -250,7 +223,17 @@ $(document).ready(function() {
             $(checkbox).each(function(){
                 checkbox_value.push($(this).val());
             });
-            $.ajax({
+             Swal.fire({
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus itu!'
+        }).then((result) => {
+           if (result.value) {
+                $.ajax({
                 url:"<?php echo base_url(); ?>master/deleteAllDataAc",
                 method:"POST",
                 data:{checkbox_value:checkbox_value},
@@ -259,6 +242,14 @@ $(document).ready(function() {
                     $('.removeRow').fadeOut(1500);
                 }
             })
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                )
+            }
+        })
+            
         }
         else
         {            
@@ -300,7 +291,17 @@ $(document).ready(function(){
             $(checkbox).each(function(){
                 checkbox_value.push($(this).val());
             });
-            $.ajax({
+            Swal.fire({
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus itu!'
+        }).then((result) => {
+           if (result.value) {
+                $.ajax({
                 url:"<?php echo base_url(); ?>master/deleteAllDataListBarang",
                 method:"POST",
                 data:{checkbox_value:checkbox_value},
@@ -309,6 +310,14 @@ $(document).ready(function(){
                     $('.removeRow').fadeOut(1500);
                 }
             })
+                Swal.fire(
+                  'Sukses!',
+                  'Data berhasil dihapus',
+                  'success'
+                )
+            }
+        })
+            
         }
         else
         {            
@@ -350,7 +359,17 @@ $(document).ready(function(){
             $(checkbox).each(function(){
                 checkbox_value.push($(this).val());
             });
-            $.ajax({
+            Swal.fire({
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus itu!'
+        }).then((result) => {
+           if (result.value) {
+                $.ajax({
                 url:"<?php echo base_url(); ?>master/deleteAllDataApar",
                 method:"POST",
                 data:{checkbox_value:checkbox_value},
@@ -359,6 +378,14 @@ $(document).ready(function(){
                     $('.removeRow').fadeOut(1500);
                 }
             })
+                Swal.fire(
+                  'Sukses!',
+                  'Data berhasil dihapus',
+                  'success'
+                )
+            }
+        })
+            
         }
         else
         {            
@@ -427,7 +454,17 @@ $(document).ready(function(){
             $(checkbox).each(function(){
                 checkbox_value.push($(this).val());
             });
-            $.ajax({
+            Swal.fire({
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus itu!'
+        }).then((result) => {
+           if (result.value) {
+               $.ajax({
                 url:"<?php echo base_url(); ?>master/deleteAllDataMaintAc",
                 method:"POST",
                 data:{checkbox_value:checkbox_value},
@@ -436,6 +473,14 @@ $(document).ready(function(){
                     $('.removeRow').fadeOut(1500);
                 }
             })
+                Swal.fire(
+                  'Sukses!',
+                  'Data berhasil dihapus',
+                  'success'
+                )
+            }
+        })
+            
         }
         else
         {            
@@ -451,6 +496,115 @@ $(document).ready(function(){
     });
 </script>
 <!-- End Maintenance Ac -->
+
+<!-- CCTV -->
+<script>
+$(document).ready(function(){
+
+    $('body').on("click",".delete_checkbox_cctv", function(){
+        if($(this).is(':checked'))
+        {
+            $(this).closest('tr').addClass('removeRow');
+        }
+        else
+        {
+            $(this).closest('tr').removeClass('removeRow');
+        }
+    });
+
+    $('body').on("click","#delete_all_cctv", function(){
+
+        var checkbox = $('.delete_checkbox_cctv:checked');
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+            Swal.fire({
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus itu!'
+        }).then((result) => {
+           if (result.value) {
+                $.ajax({
+                url:"<?php echo base_url(); ?>master/deleteAllDataCctv",
+                method:"POST",
+                data:{checkbox_value:checkbox_value},
+                success:function()
+                {
+                    $('.removeRow').fadeOut(1500);
+                }
+            })
+                Swal.fire(
+                  'Sukses!',
+                  'Data berhasil dihapus',
+                  'success'
+                )
+            }
+        })
+            
+        }
+        else
+        {            
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Pilih setidaknya satu data !'  
+            })
+        }
+
+    });    
+
+});
+</script>
+<!-- End CCTV -->
+
+
+<script>
+
+ var flerr = $('.flash-err').data('eros');
+
+if (flerr) {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: flerr,
+        showConfirmButton: false,
+        timer: 3000
+    })
+}
+  
+  const flasherror = $('.flash-error').data('error');
+
+if (flasherror) {
+Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: flasherror  
+})
+
+}
+
+
+ const flashdata = $('.flash-success').data('flashdata');
+
+if (flashdata) {
+  Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: flashdata,
+  showConfirmButton: false,
+  timer: 3000
+})
+}
+ 
+</script>
 
 
 

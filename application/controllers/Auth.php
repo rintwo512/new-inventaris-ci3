@@ -16,9 +16,11 @@ class Auth extends CI_Controller {
 	{
         if ($this->session->userdata('nik')) {
             redirect('home');
-        }
-       
-		$this->load->view('auth/login');
+        }                  
+        $this->load->view('auth/login');
+        
+      
+        
 	}
 
 	public function postLogin()
@@ -38,6 +40,7 @@ class Auth extends CI_Controller {
             $nik = $this->input->post('nik');
             $password = $this->input->post('password');  
             $user_login = 'online';
+            
              $login_time = date('d/M/Y \| G:i',time());
             $user = $this->db->get_where('users', ['nik' => $nik])->row_array();
 
@@ -57,6 +60,7 @@ class Auth extends CI_Controller {
                         ];
                         $this->session->set_userdata($data);
                         if ($user['role'] == "admin") {
+                            
                             $this->db->set('user_login', $user_login);
                             $this->db->set('login_time', $login_time);
                             $this->db->where('nik', $this->session->userdata('nik'));
@@ -70,16 +74,16 @@ class Auth extends CI_Controller {
                             redirect('airco');
                         }
                     } else {
-                        $this->session->set_flashdata('error_message', 'Your password is wrong');
+                        $this->session->set_flashdata('error_message', 'Password anda salah!');
                         redirect('auth');
                     }
                 } else {
 
-                    $this->session->set_flashdata('error_message', 'Please contact the admin to activate your account');
+                    $this->session->set_flashdata('error_message', 'Silahkan hubungi admin untuk mengaktifkan akun anda!');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('error_message', 'Your nik has not been registered');
+                $this->session->set_flashdata('error_message', 'NIK anda belum terdaftar!');
                 redirect('auth');
             }
         }
@@ -87,12 +91,14 @@ class Auth extends CI_Controller {
 
 	 public function logout()
     {
+        
         $user_login = "offline";
        
         $this->db->set('user_login', $user_login);
 
         $this->db->where('nik', $this->session->userdata('nik'));
         $this->db->update('users');
+        
         $this->session->unset_userdata('nik');
         $this->session->unset_userdata('role');
         redirect('/');

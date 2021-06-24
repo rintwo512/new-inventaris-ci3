@@ -40,7 +40,7 @@ table.details tr:hover {
                             <th>Jenis</th>
                             <th>Berat</th>                            
                             <th>Status</th>
-                            <th>Opsi</th>
+                            <th style="text-align: center">Opsi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -64,7 +64,7 @@ table.details tr:hover {
                               </span>
                             </td>
                             <?php endif; ?>
-                            <td>
+                            <td style="text-align: center">
                               <a  href="javascript:;" id="updateApart" data-toggle="modal" data-target="#modalUpdateApart" class="btn btn-info btn-xs" 
                               data-id="<?=$apart['id'] ?>"
                               data-no_apart="<?=$apart['no_apart'] ?>"

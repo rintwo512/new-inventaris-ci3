@@ -155,7 +155,7 @@ class Settings extends CI_Controller {
 
             $this->updatePassword_model->setProfile($name, $nik, $email);
             $this->session->set_flashdata('message', 'Update profile berhasil');
-            redirect('settings/updateImg');
+            redirect('settings/settings');
     }
 
   }

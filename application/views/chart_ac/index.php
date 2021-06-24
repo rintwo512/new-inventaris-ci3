@@ -19,7 +19,7 @@ table.details tr:hover {
             <div class="col-sm-12 mt-5">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data maintenance AC</h5>                       
+                        <h5>Data Perawatan AC</h5>                       
                     </div>
                     <div class="card-body">
                         <?php if ($user['role'] == "admin") : ?>
@@ -94,7 +94,7 @@ table.details tr:hover {
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="tahun" class="mb-0">Tahun</label>
-                            <select class="form-control" id="tahun" name="tahun" type="text" required="">
+                            <select class="form-control" id="chart_tahun" name="tahun" type="text" required="">
                                 <option value="">--Select--</option>
                                 <option value="2021">2021</option>
                                 <option value="2022">2022</option>
@@ -104,7 +104,7 @@ table.details tr:hover {
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="bulan" class="mb-0">Bulan</label>
-                            <select class="form-control" id="bulan" name="bulan" type="text" required="">
+                            <select class="form-control" id="chart_bulan" name="bulan" type="text" required="">
                                 <option value="">--Select--</option>
                                 <option value="Januari">Januari</option>
                                 <option value="Februari">Februari</option>

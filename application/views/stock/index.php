@@ -19,13 +19,13 @@ table.details tr:hover {
             <div class="col-sm-12 mt-5">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data Stock Barang</h5>                       
+                        <h5>Data Peralatan Kerja ME</h5>                       
                     </div>
                     <div class="card-body">
                         <?php if ($user['role'] == "admin") : ?>
 
                         <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button"
-                            data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i>Tambah data</button>
+                            data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Tambah data</button>
 
                         <?php endif; ?>
 
@@ -37,7 +37,7 @@ table.details tr:hover {
                                         <th>Merk</th>
                                         <th>Tanggal pengadaaan</th>
                                         <th>Status</th>
-                                        <th>Opsi</th>
+                                        <th style="text-align: center">Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,7 +53,7 @@ table.details tr:hover {
                                         <?php else : ?>
                                         <td><span class="badge badge-danger"><?= $list['status']; ?></span></td>
                                         <?php endif; ?>
-                                        <td>
+                                        <td style="text-align: center">
                                             <a href="javascript:;" id="updateBarang" data-toggle="modal"
                                                 data-target="#modalUpdateBarang" class="btn btn-info btn-xs"
                                                 data-id="<?= $list['id']; ?>" data-nama="<?= $list['nama_barang']; ?>"

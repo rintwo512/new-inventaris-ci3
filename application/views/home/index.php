@@ -72,7 +72,7 @@
                     <div class="clock-details">
                       <div class="date f-44 mb-2" id="date"><span id="monthDay"></span><span id="year">, </span></div>
                       <div>
-                        <p class="m-0 f-18 text-light">Makassar, Indonesia</p>
+                        <p class="m-0 f-18 text-light">Makassar</p>
                       </div>
                     </div>
                   </div>
@@ -118,14 +118,14 @@
                 </div>
               </div>
               <div class="col-sm-6 col-xl-3 col-lg-6 box-col-6">
-                <div class="card gradient-info o-hidden">
+                <div class="card gradient-purple o-hidden">
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget">
                       <div class="align-self-center text-center">
-                        <div class="text-white i" data-feather="users"></div>
+                        <div class="text-white i" data-feather="video"></div>
                       </div>
-                      <div class="media-body"><span class="m-0 text-white">Users registration</span>
-                        <h4 class="mb-0 counter text-white"><?=$count_users;?></h4><i class="icon-bg" data-feather="users"></i>
+                      <div class="media-body"><span class="m-0 text-white">CCTV</span>
+                        <h4 class="mb-0 counter text-white"><?=$count_cctv;?></h4><i class="icon-bg" data-feather="video"></i>
                       </div>
                     </div>
                   </div>
@@ -139,12 +139,26 @@
                         <div class="text-white i" data-feather="database"></div>
                       </div>
                       <div class="media-body"><span class="m-0 text-white">Menu</span>
-                        <h4 class="mb-0 counter text-white">7</h4><i class="icon-bg" data-feather="database"></i>
+                        <h4 class="mb-0 counter text-white">12</h4><i class="icon-bg" data-feather="database"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>                                         
+              </div>
+              <div class="col-sm-6 col-xl-3 col-lg-6 box-col-6">
+                <div class="card gradient-info o-hidden">
+                  <div class="b-r-4 card-body">
+                    <div class="media static-top-widget">
+                      <div class="align-self-center text-center">
+                        <div class="text-white i" data-feather="users"></div>
+                      </div>
+                      <div class="media-body"><span class="m-0 text-white">Users registration</span>
+                        <h4 class="mb-0 counter text-white"><?=$count_users;?></h4><i class="icon-bg" data-feather="users"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>                                          
             </div>
           </div>
           <!-- Container-fluid Ends-->

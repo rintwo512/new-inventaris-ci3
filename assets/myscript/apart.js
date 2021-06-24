@@ -15,7 +15,7 @@
             document.getElementById('flor').innerHTML = '<label for="lantai" class="mb-0" style="font-size:13px">Lantai <em class="text-danger">*</em></label> <select class="form-control" name="lantai" id="lantai" type="text" placeholder="Please fill in" required=""><option value="">--Select--</option></select>';
      }else {
 
-        document.getElementById('flor').innerHTML= '<label for="lantai" class="mb-0">Lantai <em class="text-danger">*</em></label><input class="form-control" id="lantai" name="lantai" type="text" placeholder="Please fill in"required=""><div class="invalid-feedback">The field is required</div>';
+        document.getElementById('flor').innerHTML= '<label for="lantai" class="mb-0">Lantai <em class="text-danger">*</em></label><select class="form-control" id="lantai" name="lantai" type="text" placeholder="Please fill in" required=""><option value="Lt1">Lt1</option></select>';
 
     }
   });
@@ -60,19 +60,19 @@ $(document).on('click', '#deleteDataApart', function (e) {
         const href = $(this).attr('href')
         e.preventDefault();
         Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: 'Iya, Hapus itu!'
         }).then((result) => {
            if (result.value) {
                 document.location.href = href;
                 Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
+                  'Dihapus!',
+                  'Data berhasil dihapus.',
                   'success'
                 )
             }
