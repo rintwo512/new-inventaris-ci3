@@ -13,7 +13,7 @@
   
 </head>
 <body>
-  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0 mt-3">
     <div class="container">
       <div class="flash-success" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
       <div class="flash-error" data-error="<?= $this->session->flashdata('error_message'); ?>"></div>

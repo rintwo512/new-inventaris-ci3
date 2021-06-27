@@ -22,7 +22,7 @@ table.details tr:hover {
                         <h5>Data Perawatan AC</h5>                       
                     </div>
                     <div class="card-body">
-                        <?php if ($user['role'] == "admin") : ?>
+                        <?php if ($user['role'] == "admin" || $user['role'] == "super admin") : ?>
 
                         <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button"
                             data-toggle="modal" data-target="#modalTambahDataGrafik"><i class="fa fa-plus"></i>    Tambah data</button>
@@ -55,7 +55,7 @@ table.details tr:hover {
                                             <i class="fa fa-pencil"></i>
                                             </a>
 
-                                            <?php if($user['role'] == "admin") : ?>
+                                            <?php if ($user['role'] == "admin" || $user['role'] == "super admin") : ?>
 
                                               <a id="btnDeleteDataGrafik" href="<?= base_url('chart_ac/destroy/') . $graf['id']; ?>" class="btn btn-danger btn-xs">
                                             <i class="fa fa-trash"></i>

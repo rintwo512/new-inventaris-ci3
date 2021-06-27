@@ -66,7 +66,15 @@ class Auth extends CI_Controller {
                             $this->db->where('nik', $this->session->userdata('nik'));
                             $this->db->update('users');                         
                             redirect('home');
-                        } else {
+                        }else if( $user['role'] == "super admin"){
+                            
+                            $this->db->set('user_login', $user_login);
+                            $this->db->set('login_time', $login_time);
+                            $this->db->where('nik', $this->session->userdata('nik'));
+                            $this->db->update('users');                         
+                            redirect('home');
+                        }
+                         else {
                             $this->db->set('user_login', $user_login);
                             $this->db->set('login_time', $login_time);
                             $this->db->where('nik', $this->session->userdata('nik'));

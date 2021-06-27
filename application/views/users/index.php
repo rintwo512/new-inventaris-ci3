@@ -27,9 +27,10 @@
                         </thead>
                         <tbody>
                           <?php foreach ($allUsers as $usr) :?>
+                            <?php if($usr['role'] != "super admin") : ?>
                           <tr>
                             <td><img src="<?=base_url('assets/img/' . $usr['image']);?>" class="img-fluid img-thumbnail" width="60"></td>
-                            <td><?=$usr['name'];?></td>
+                            <td style="text-transform: capitalize;"><?=$usr['name'];?></td>
                             <td><?=$usr['email'];?></td>
                             <td><?=$usr['nik'];?></td>
                             <td><?=$usr['role'];?></td>
@@ -38,16 +39,17 @@
                             <?php else : ?>
                             <td><span class="badge badge-info">Active</span></td>
                             <?php endif; ?>
-                            <td>
-                              <?php if($usr['role'] != "admin") :?>
+                            <td>                              
                               <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr['id'];?>" data-role="<?=$usr['role'];?>" data-active="<?=$usr['is_active'];?>"><i class="fa fa-pencil"></i></a>
-                              <?php endif;?>
-
-                              <?php if($usr['role'] != "admin") :?>
+                            
+                            
+                             <?php if($user['role'] == "super admin") : ?>
                               <a id="delUsers" href="<?=base_url('users/destroy/' . $usr['id']);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                            <?php endif;?>
+                            <?php endif; ?>
+                            
                             </td>
                           </tr>
+                            <?php endif; ?>
                           <?php endforeach; ?>                       
                         </tbody>                       
                       </table>
@@ -74,16 +76,24 @@
                 <div class="modal-body" id="formUpdateUser">
                     <form action="<?=base_url('users/update');?>" method="post" class="needs-validation" novalidate="">
                       <input type="hidden" name="id" id="id">
-                        <div class="col-md-12 mb-3">
+                      <div class="form-row">
+                        <div class="col-md-6 mb-3">
                           <label for="is_active" class="mb-0">Status</label>
                           <select class="form-control" name="is_active" id="is_active" type="text" required="">
-                            <option value="" selected>--Select--</option>
                             <option value="1">Active</option>
                             <option value="0">Non-active</option>             
                           </select>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
-                                     
+                        <div class="col-md-6 mb-3">
+                          <label for="is_role" class="mb-0">Role</label>
+                          <select class="form-control" name="is_role" id="is_role" type="text" required="">
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>             
+                          </select>
+                          <div class="invalid-feedback">The field is required</div>
+                        </div>
+                        </div>             
                         <button type="submit" class="btn btn-primary">Update</button>
                       </form>
                   </div>

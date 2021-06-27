@@ -22,7 +22,7 @@ table.details tr:hover {
                         <h5>Data CCTV</h5>                       
                     </div>
                     <div class="card-body">
-                    <?php if($user['role'] == "admin") : ?>
+                    <?php if($user['role'] == "admin" || $user['role'] == 'super admin') : ?>
                         <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button"
                             data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Tambah data</button>
                         <?php endif; ?>
@@ -46,7 +46,8 @@ table.details tr:hover {
                                         <td><?= $cctv['no_camera'] ?></td>
                                         <td><?= $cctv['wing'] ?></td>
                                         <td><?= $cctv['lantai'] ?></td>
-                                        <td><?= $cctv['lokasi'] ?></td>
+                                        <td style="text-transform: capitalize;">
+                                        <?= $cctv['lokasi'] ?></td>
                                         <td><?= $cctv['merk'] ?></td>
                                         <td><?= $cctv['jenis'] ?></td>
                                         <?php if($cctv['status'] == "Normal") : ?>
@@ -81,7 +82,7 @@ table.details tr:hover {
                                             data-updated_cctv="<?=$cctv['updated_by'] ?>">    
                                             <i class="fa fa-info"></i>
                                             </a>
-                                            <?php if($user['role'] == "admin") : ?>
+                                            <?php if($user['role'] == "admin" || $user['role'] == "super admin") : ?>
                                             <a id="btnDeleteCctv" href="<?=base_url('cctv/destroy/') . $cctv['id'] ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                             <?php endif; ?>
 
@@ -145,7 +146,7 @@ table.details tr:hover {
                         <div class="col-md-4 mb-3">
                             <label for="lokasi" class="mb-0">Lokasi <em class="text-danger">*</em></label>
                             <input class="form-control" name="lokasi" id="lokasi" type="text" placeholder="Please fill in"
-                                required autocomplete="off">
+                                required autocomplete="off" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -155,6 +156,7 @@ table.details tr:hover {
                                 <option value="Hikvision">Hikvision</option>
                                 <option value="Dahua">Dahua</option>
                                 <option value="Edge">Edge</option>
+                                <option value="Space">Space</option>
                             </select>
                             <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -305,8 +307,7 @@ table.details tr:hover {
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="lokasi_update" class="mb-0">Lokasi <em class="text-danger">*</em></label>
-                            <input class="form-control" name="lokasi" id="lokasi_update" type="text" placeholder="Please fill in"
-                                required autocomplete="off">
+                            <input class="form-control" name="lokasi" id="lokasi_update" type="text" placeholder="Please fill in" required autocomplete="off" style="text-transform: capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">

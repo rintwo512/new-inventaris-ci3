@@ -207,6 +207,7 @@ $(document).ready(function() {
     $('#example-style-4').DataTable();
     $('#example-style-44').DataTable();
     $('#example-style-apart').DataTable();
+    $('#example-style-error-code-daikin').DataTable();
     $('#example-style-5').DataTable();
     $('#example-style-6').DataTable();
     $('#example-style-7').DataTable();

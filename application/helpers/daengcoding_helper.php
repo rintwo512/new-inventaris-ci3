@@ -11,7 +11,7 @@ function check_session()
 function user_access()
 {
     $dc = get_instance();
-    if ($dc->session->userdata('role') != "admin") {
+    if ($dc->session->userdata('role') != "admin" && $dc->session->userdata('role') != "super admin") {
         redirect('blocked');
     }
 }

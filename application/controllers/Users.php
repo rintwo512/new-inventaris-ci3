@@ -80,6 +80,7 @@ class Users extends CI_Controller {
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
 		 
         $this->form_validation->set_rules('is_active', 'Is_active', 'required');
+        $this->form_validation->set_rules('is_role', 'Is_role', 'required');
         if($this->form_validation->run() == false){
 
         	$this->load->view('master/header', $data);
@@ -93,8 +94,8 @@ class Users extends CI_Controller {
 
         	$id = $this->input->post('id');
         	$data = [
-
-        		'is_active' => $this->input->post('is_active')
+        		'is_active' => $this->input->post('is_active'),
+        		'role' => $this->input->post('is_role')
         	];
         $this->Allusers_model->updateDataUser($id,$data);
         $this->session->set_flashdata('message', 'Success');        

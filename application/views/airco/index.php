@@ -21,13 +21,12 @@
                   <div class="card-header">
                     <h5>Data AC</h5>
                   </div>
-                  <div class="card-body">
-                    <?php if($user['role'] == "admin") :?>
+                  <div class="card-body">                   
 
+                    <?php if($user['role'] == 'admin' || $user['role'] == 'super admin') : ?>
                     <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Tambah data</button>
-
-                     <?php endif;?>
-
+                    <?php endif; ?>
+                     
                     <div class="table-responsive">
                       <table class="hover" id="example-style-4">
                         <thead class="myColor">
@@ -128,8 +127,7 @@
                               </a>
 
 
-                              <?php if($user['role'] == "admin") : ?>
-
+                              <?php if($user['role'] == "super admin" || $user['role'] == 'admin') : ?>
                               <a id="btnDel" href="<?= base_url('airco/destroy/') . $ac['id']; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>
                               </a>
 
@@ -207,8 +205,8 @@
                           <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-3 mb-3">
-                          <label for="product" class="mb-0" style="font-size:13px">Product <em class="text-danger">*</em></label>
-                          <select class="form-control" name="product" id="product" type="text" placeholder="Please fill in" required="">
+                          <label for="product" class="mb-0" style="font-size:13px">Product</label>
+                          <select class="form-control" name="product" id="product" type="text" placeholder="Please fill in">
                             <option value="" selected>--Select--</option>
                             <option value="Indonesia">Indonesia</option>
                             <option value="Jepang">Jepang</option>
@@ -263,8 +261,8 @@
                       </div>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <label for="arus" class="mb-0" style="font-size:13px">Amper <em class="text-danger">*</em></label>
-                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" required=""autocomplete="off" style="text-transform:capitalize">
+                          <label for="arus" class="mb-0" style="font-size:13px">Amper</label>
+                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" autocomplete="off" style="text-transform:capitalize">
                           <?= form_error('arus', '<small class="text-danger">', '</small>');?>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -313,8 +311,8 @@
                             <input class="form-control" name="phasa" id="phasa" required autocomplete="off" placeholder="Please fill in">
                         </div>
                          <div class="form-group col-md-12">
-                            <label for="status_kompresor" class="mb-0" style="font-size:13px" placeholder="Please fill in">Status Kompresor <em class="text-danger">*</em></label>
-                            <textarea class="form-control" name="status_kompresor" id="status_kompresor" required autocomplete="off" placeholder="Please fill in"></textarea>
+                            <label for="status_kompresor" class="mb-0" style="font-size:13px" placeholder="Please fill in">Status Kompresor</label>
+                            <textarea class="form-control" name="status_kompresor" id="status_kompresor" autocomplete="off" placeholder="Please fill in"></textarea>
                         </div>                           
                       </div>
                       <div class="form-row">                        
@@ -392,11 +390,11 @@
                         <tr>
                           <th>Status kompresor</th>       
                           <td style="text-transform: capitalize;" id="status_kompresor"></td>     
-                        </tr>
+                        </tr>                       
                         <tr>
-                          <th>Catatan</th>                                      
-                          <td id="jenis_kerusakan"></td>                        
-                        </tr>
+                          <th>Catatan/Kerusakan</th>                          
+                          <td><a style="text-transform: capitalize;" id="jenis_kerusakan"></a><a href="<?= base_url('kodeeror'); ?>" class="btn btn-info btn-xs pull-right">Lihat kode error</a></td>
+                        </tr>                      
                         <tr>
                           <th>Tanggal Update</th>
                           <td id="updated_at"></td>
@@ -538,7 +536,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                           <label for="product" class="mb-0" style="font-size:13px">Product</label>
-                          <select class="form-control" name="product" id="product" type="text" placeholder="Please fill in" required="">
+                          <select class="form-control" name="product" id="product" type="text" placeholder="Please fill in">
                             <option value="">--Select--</option>
                             <option value="Indonesia">Indonesia</option>
                             <option value="Jepang">Jepang</option>
@@ -554,7 +552,7 @@
                       <div class="form-row"> 
                       <div class="col-md-3 mb-3">
                           <label for="arus" class="mb-0" style="font-size:13px">Amper</label>
-                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" required autocomplete="off" style="text-transform: capitalize;">
+                          <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" autocomplete="off" style="text-transform: capitalize;">
                           <?= form_error('arus', '<small class="text-danger">', '</small>');?>
                           <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -617,7 +615,7 @@
                        </div>
                         <div class="col-md-12 mb-3">
                           <label for="status_kompresor" class="mb-0" style="font-size:13px">Status kompresor</label>
-                          <textarea class="form-control" id="status_kompresor" name="status_kompresor" type="text" required autocomplete="off"></textarea>
+                          <textarea class="form-control" id="status_kompresor" name="status_kompresor" type="text" autocomplete="off"></textarea>
                           <div class="invalid-feedback">The field is required</div>
                         </div>   
                       </div>

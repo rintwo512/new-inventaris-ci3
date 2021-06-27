@@ -60,14 +60,14 @@ $log = $this->db->get('users')->result_array();
                     <?php if($lo['user_login'] == 'online') : ?>
                       <div class="notification-icons bg-success mr-3"><i class="mt-0" data-feather="check"></i></div>
                       <div class="media-body">
-                        <h6><?=$lo['name'] ?></h6>                       
+                        <h6 style="text-transform: capitalize;"><?=$lo['name'] ?></h6>                       
                           <p class="mb-0" style="color:green">Sedang <?= $lo['user_login']; ?>...</p>        
 
                       </div>
                       <?php else : ?>
                         <div class="notification-icons bg-danger mr-3"><i class="mt-0" data-feather="x"></i></div>
                       <div class="media-body">
-                        <h6><?=$lo['name'] ?></h6>                       
+                        <h6 style="text-transform: capitalize;"><?=$lo['name'] ?></h6>                       
                           <p class="mb-0" style="color:red">offline</p>
                           <p><?= $lo['login_time'] ?> yang lalu</p>
                            
@@ -83,7 +83,7 @@ $log = $this->db->get('users')->result_array();
               <li class="onhover-dropdown"> <span class="media user-header"><img class="img-fluid" src="<?=base_url('assets/img/'). $user['image'];?>" alt=""></span>
                 <ul class="onhover-show-div profile-dropdown">
                   <li class="g-info">
-                    <h5 class="f-w-600 mb-0"><?=$user['name'];?></h5><span><?=$user['role'];?></span>
+                    <h5 class="f-w-600 mb-0" style="text-transform: capitalize;"><?=$user['name'];?></h5>
                   </li>
                   <li><a href="<?=base_url('settings/userProfile');?>" class="text-info"><i class="fa fa-user mr-2"></i>Profile</a></li>                  
                   <li><a href="<?=base_url('auth/logout');?>" class="text-info"><i class="fa fa-sign-out mr-2"></i>Log Out</a></li>                  

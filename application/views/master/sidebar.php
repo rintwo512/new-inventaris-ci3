@@ -15,7 +15,7 @@
         <div class="iconsidebar-menu">
           <div class="sidebar">
             <ul class="iconMenu-bar custom-scrollbar">
-              <?php if($user['role'] == 'admin') :?>
+              <?php if($user['role'] == 'admin' || $user['role'] == "super admin") :?>
               <li><a class="bar-icons" href="javascript:void(0)">
                   <i class="pe-7s-home"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
@@ -43,10 +43,10 @@
               </li>  
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-settings"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
-                  <li><a href="<?=base_url('settings/settings');?>">Pengaturan</a></li>
+                  <li><a style="font-size: 13px" href="<?=base_url('settings/settings');?>">Pengaturan profile</a></li>                 
                 </ul>
               </li>
-              <?php if($user['role'] == "admin") : ?>
+              <?php if($user['role'] == "admin" || $user['role'] == "super admin") : ?>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-pendrive"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
                   <li><a href="<?=base_url('master');?>">Master data</a></li>
@@ -55,9 +55,9 @@
               <?php endif; ?>
               <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-graph3"></i></a>
                 <ul class="iconbar-mainmenu custom-scrollbar">                  
-                  <li><a href="<?=base_url('chart_ac');?>">Data Perawatan AC</a></li>
-                  <?php if($user['role'] == "admin") : ?>
-                  <li><a href="<?=base_url('chart_ac/grafik');?>">Grafik Tahunan</a></li>
+                  <li><a style="font-size: 12px" href="<?=base_url('chart_ac');?>">Data Perawatan AC</a></li>
+                  <?php if($user['role'] == "admin" || $user['role'] == "super admin") : ?>
+                  <li><a style="font-size: 13px" href="<?=base_url('chart_ac/grafik');?>">Grafik Tahunan</a></li>
                 <?php endif; ?>
                 </ul>
               </li>

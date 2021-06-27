@@ -27,7 +27,7 @@ $(document).on('click', '#delUsers', function (e) {
     const role = $(this).data('role');     
     const active = $(this).data('active');
     $("#formUpdateUser #id").val(id);
-    $("#formUpdateUser #role").val(role);    
+    $("#formUpdateUser #is_role").val(role);    
     $("#formUpdateUser #is_active").val(active); 
     
     

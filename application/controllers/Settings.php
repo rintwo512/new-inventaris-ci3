@@ -137,9 +137,9 @@ class Settings extends CI_Controller {
                 $old_image = $data['user']['image'];
                 
 
-                if($old_image != 'deafult.png'){
+                if($old_image != 'default.png'){
 
-                    unlink(FCPATH . 'assets/img' . $old_image);
+                    unlink(FCPATH . 'assets/img/' . $old_image);
 
                 }
 

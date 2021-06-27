@@ -35,9 +35,9 @@ class Stock extends CI_Controller {
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
 
 		$this->form_validation->set_rules('nama_barang', 'Nama_barang','required');
-		$this->form_validation->set_rules('merk', 'Merk','required');				
+		// $this->form_validation->set_rules('merk', 'Merk','required');				
 		$this->form_validation->set_rules('status', 'Status','required');
-		$this->form_validation->set_rules('daya', 'Daya','required');
+		// $this->form_validation->set_rules('daya', 'Daya','required');
 
 		if($this->form_validation->run() == false)
 		{
@@ -82,9 +82,9 @@ class Stock extends CI_Controller {
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
 
 		$this->form_validation->set_rules('nama_barang', 'Nama_barang','required');
-		$this->form_validation->set_rules('merk', 'Merk','required');				
+		// $this->form_validation->set_rules('merk', 'Merk','required');				
 		$this->form_validation->set_rules('status', 'Status','required');
-		$this->form_validation->set_rules('daya', 'Daya','required');
+		// $this->form_validation->set_rules('daya', 'Daya','required');
 
 		if($this->form_validation->run() == false)
 		{

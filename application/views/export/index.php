@@ -80,7 +80,7 @@
                                                 <td>'.$cam->no_camera.'</td>
                                                 <td>'.$cam->wing.'</td>
                                                 <td>'.$cam->lantai.'</td>
-                                                <td>'.$cam->lokasi.'</td>
+                                                <td style="text-transform: capitalize;">'.$cam->lokasi.'</td>
                                                 <td>'.$cam->merk.'</td>
                                                 <td>'.$cam->jenis.'</td>
                                                 <td>'.$cam->sensor_gambar.'</td>
@@ -135,12 +135,12 @@
                                                 <td>
                                                     <input type="checkbox" class="delete_checkbox_list_barang" value="'.$list->id.'"/>
                                                 </td>
-                                                <td>'.$list->nama_barang.'</td>
-                                                <td>'.$list->merk.'</td>
+                                                <td style="text-transform: capitalize;">'.$list->nama_barang.'</td>
+                                                <td style="text-transform: capitalize;">'.$list->merk.'</td>
                                                 <td>'.$list->tgl_pengadaan.'</td>
                                                 <td>'.$list->daya.'</td>
                                                 <td>'.$list->berat.'</td>
-                                                <td>'.$list->status.'</td>
+                                                <td style="text-transform: capitalize;">'.$list->status.'</td>
                                             </tr>
                                         ';
                                     }
@@ -198,7 +198,7 @@
                                                 <td>'.$apr->no_apart.'</td>
                                                 <td>'.$apr->wing.'</td>
                                                 <td>'.$apr->lantai.'</td>
-                                                <td>'.$apr->lokasi.'</td>
+                                                <td style="text-transform: capitalize;">'.$apr->lokasi.'</td>
                                                 <td>'.$apr->merk.'</td>
                                                 <td>'.$apr->jenis.'</td>
                                                 <td>'.$apr->berat.'</td>

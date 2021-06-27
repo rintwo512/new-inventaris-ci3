@@ -24,7 +24,7 @@
                         <div class="row mb-5">
                           <div class="col-auto"><img class="img-70 rounded-circle" alt="" src="<?=base_url('assets/img/'). $user['image'];?>"></div>
                           <div class="col">
-                            <h3 class="mb-1"><?=$user['name'] ?></h3>
+                            <h3 class="mb-1" style="text-transform: capitalize;"><?=$user['name'] ?></h3>
                             
                           </div>
                         </div>
@@ -66,7 +66,7 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <label class="form-label" for="name">Nama</label>
-                            <input class="form-control" type="text" placeholder="Nama" name="name" id="name" value="<?=$user['name'] ?>">
+                            <input class="form-control" type="text" placeholder="Nama" name="name" id="name" value="<?=$user['name'] ?>" style="text-transform: capitalize;">
                           </div>
                         </div>
                         <div class="col-md-5">

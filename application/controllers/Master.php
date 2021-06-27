@@ -80,7 +80,7 @@ class Master extends CI_Controller {
                         <td>'. $ac->label .'</td>
                         <td>'. $ac->wing .'</td>
                         <td>'. $ac->lantai .'</td>
-                        <td>'. $ac->ruangan .'</td>
+                        <td style="text-transform: capitalize;">'. $ac->ruangan .'</td>
                         <td>'. $ac->merk .'</td>
                         <td>'. $ac->model .'</td>
                         <td>'. $ac->jenis .'</td>

@@ -22,7 +22,7 @@ table.details tr:hover {
                         <h5>Data Peralatan Kerja ME</h5>                       
                     </div>
                     <div class="card-body">
-                        <?php if ($user['role'] == "admin") : ?>
+                        <?php if ($user['role'] == "admin" || $user['role'] == 'super admin') : ?>
 
                         <button class="btn btn-primary btn-sm mb-4 pull-right rounded-pill" type="button"
                             data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Tambah data</button>
@@ -43,8 +43,8 @@ table.details tr:hover {
                                 <tbody>
                                     <?php foreach ($listBarang as $list) : ?>
                                     <tr>
-                                        <td><?= $list['nama_barang']; ?></td>
-                                        <td><?= $list['merk']; ?></td>
+                                        <td style="text-transform: capitalize;"><?= $list['nama_barang']; ?></td>
+                                        <td style="text-transform: capitalize;"><?= $list['merk']; ?></td>
                                         <td><?= $list['tgl_pengadaan']; ?></td>
                                         <?php if ($list['status'] == 'normal') : ?>
                                         <td><span class="badge badge-success"><?= $list['status']; ?></span></td>
@@ -71,7 +71,7 @@ table.details tr:hover {
                                                 data-updated="<?=$list['update_by'];?>">
                                                 <i class="fa fa-info text-white"></i>
                                             </a>
-                                            <?php if ($user['role'] == "admin") : ?>
+                                            <?php if ($user['role'] == "admin" || $user['role'] == 'super admin') : ?>
                                             <a id="delBarang" href="<?= base_url('stock/destroy/') . $list['id']; ?>"
                                                 class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                             <?php endif; ?>
@@ -107,14 +107,12 @@ table.details tr:hover {
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="nama_barang" class="mb-0">Nama barang <em class="text-danger">*</em></label>
-                            <input class="form-control" id="nama_barang" name="nama_barang" type="text"
-                                placeholder="Please fill in" required>
+                            <input class="form-control" id="nama_barang" name="nama_barang" type="text" placeholder="Please fill in" required style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="merk" class="mb-0">Merk <em class="text-danger">*</em></label>
-                            <input class="form-control" id="merk" name="merk" type="text" placeholder="Please fill in"
-                                required="">
+                            <label for="merk" class="mb-0">Merk</label>
+                            <input class="form-control" id="merk" name="merk" type="text" placeholder="Please fill in" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -125,16 +123,15 @@ table.details tr:hover {
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
-                            <label for="daya" class="mb-0">Daya <small>( watt/VA )</small><em
-                                    class="text-danger">*</em></label>
+                            <label for="daya" class="mb-0">Daya <small>( watt/VA )</small></label>
                             <input class="form-control" name="daya" id="daya" type="text" placeholder="Please fill in"
-                                required autocomplete="off">
+                                autocomplete="off" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="berat" class="mb-0">Berat</label>
                             <input class="form-control" name="berat" id="berat" type="text" placeholder="Please fill in"
-                                autocomplete="off">
+                                autocomplete="off" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -176,11 +173,11 @@ table.details tr:hover {
                 <table class="table details colorTable">
                     <tr>
                         <th>Daya</th>
-                        <td id="daya"></td>
+                        <td id="daya" style="text-transform:capitalize;"></td>
                     </tr>
                     <tr>
                         <th>Berat</th>
-                        <td id="berat"></td>
+                        <td id="berat" style="text-transform:capitalize;"></td>
                     </tr>
                     <tr>
                         <th>Catatan</th>
@@ -218,13 +215,12 @@ table.details tr:hover {
                             <label for="nama_barang" class="mb-0">Nama barang</label>
                             <input type="hidden" name="id" id="id">
                             <input class="form-control" id="nama_barang" name="nama_barang" type="text"
-                                placeholder="Please fill in" required="">
+                                placeholder="Please fill in" required="" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="merk" class="mb-0">Merk</label>
-                            <input class="form-control" id="merk" name="merk" type="text" placeholder="Please fill in"
-                                required="">
+                            <input class="form-control" id="merk" name="merk" type="text" placeholder="Please fill in" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -236,14 +232,13 @@ table.details tr:hover {
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="daya" class="mb-0">Daya <small>( watt/VA )</small></label>
-                            <input class="form-control" name="daya" id="daya" type="text" placeholder="Please fill in"
-                                required autocomplete="off">
+                            <input class="form-control" name="daya" id="daya" type="text" placeholder="Please fill in" autocomplete="off" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="berat" class="mb-0">Berat</label>
                             <input class="form-control" name="berat" id="berat" type="text" placeholder="Please fill in"
-                                autocomplete="off">
+                                autocomplete="off" style="text-transform:capitalize;">
                             <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-4 mb-3">

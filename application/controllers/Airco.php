@@ -53,13 +53,13 @@ class Airco extends CI_Controller {
         // $this->form_validation->set_rules('tgl_pemasangan', 'Tgl_pemasangan', 'required');
         $this->form_validation->set_rules('refrigerant', 'Refrigerant', 'required');
         $this->form_validation->set_rules('phasa', 'Phasa', 'required');        
-        $this->form_validation->set_rules('arus', 'Arus', 'required'
-    	);
+     //    $this->form_validation->set_rules('arus', 'Arus', 'required'
+    	// );
         $this->form_validation->set_rules('tegangan_kerja', 'Tegangan_kerja', 'required');
         $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required');
-        $this->form_validation->set_rules('product', 'Product', 'required');
+        // $this->form_validation->set_rules('product', 'Product', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('status_kompresor', 'Status kompresor', 'required');
+        // $this->form_validation->set_rules('status_kompresor', 'Status kompresor', 'required');
 
 
 		if($this->form_validation->run() == false)
@@ -132,12 +132,12 @@ class Airco extends CI_Controller {
         // $this->form_validation->set_rules('tgl_pemasangan', 'Tgl_pemasangan', 'required');
         $this->form_validation->set_rules('refrigerant', 'Refrigerant', 'required');
         $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required');
-        $this->form_validation->set_rules('product', 'Product', 'required');
+        // $this->form_validation->set_rules('product', 'Product', 'required');
         $this->form_validation->set_rules('phasa', 'Phasa', 'required');        
-        $this->form_validation->set_rules('arus', 'Arus', 'required');
+        // $this->form_validation->set_rules('arus', 'Arus', 'required');
         $this->form_validation->set_rules('tegangan_kerja', 'Tegangan_kerja', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('status_kompresor', 'Status kompresor', 'required');
+        // $this->form_validation->set_rules('status_kompresor', 'Status kompresor', 'required');
           
 
 

@@ -22,7 +22,7 @@
             <h5 class="card-title text-center">Register</h5>
             <form class="form-signin" data-toggle="validator" action="<?=base_url('users/postRegister');?>" method="post">
               <div class="form-label-group form-group">
-                <input type="text" id="name" name="name" value="<?=set_value('name');?>" class="form-control" placeholder="Fullname" required autofocus>
+                <input type="text" id="name" name="name" value="<?=set_value('name');?>" class="form-control" placeholder="Fullname" required autofocus style="text-transform: capitalize;">
                 <label for="name">Fullname</label>
                  <?= form_error('name', '<small class="d-alert pl-2 text-danger">', '</small>'); ?>
               </div>
