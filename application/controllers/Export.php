@@ -237,5 +237,56 @@ class Export extends CI_Controller {
     $writer->save('php://output');
     exit;
   }
+
+  public function dataElektronik()
+  {
+     $elektronik = $this->db->get('tb_elektronik')->result();
+
+
+
+
+    $object = new Spreadsheet;
+
+          $object->setActiveSheetIndex(0)
+                      ->setCellValue('A1', 'No')
+                      ->setCellValue('B1', 'Aset')
+                      ->setCellValue('C1', 'Nama Perangkat')
+                      ->setCellValue('D1', 'Merk')
+                      ->setCellValue('E1', 'Wing')
+                      ->setCellValue('F1', 'Lantai')
+                      ->setCellValue('G1', 'Lokasi')
+                      ->setCellValue('H1', 'Tegangan')
+                      ->setCellValue('I1', 'Watt/Amper')
+                      ->setCellValue('J1', 'Keterangan');
+
+          $kolom = 2;
+          $nomor = 1;
+          foreach($elektronik as $el) {
+
+               $object->setActiveSheetIndex(0)
+                           ->setCellValue('A' . $kolom, $nomor)
+                           ->setCellValue('B' . $kolom, $el->aset)
+                           ->setCellValue('C' . $kolom, $el->nama)
+                           ->setCellValue('D' . $kolom, $el->merk)
+                           ->setCellValue('E' . $kolom, $el->wing)
+                           ->setCellValue('F' . $kolom, $el->lantai)
+                           ->setCellValue('G' . $kolom, $el->lokasi)
+                           ->setCellValue('H' . $kolom, $el->tegangan)
+                           ->setCellValue('I' . $kolom, $el->watt)
+                           ->setCellValue('J' . $kolom, $el->catatan);
+               $kolom++;
+               $nomor++;
+
+          }
+
+          $writer = new Xlsx($object);
+
+         header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="Data Perangkat Elektronik.xlsx"');
+    header('Cache-Control: max-age=0');
+
+    $writer->save('php://output');
+    exit;
+  }
 	
 }

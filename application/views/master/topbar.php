@@ -20,7 +20,7 @@ $log = $this->db->get('users')->result_array();
       <div class="page-main-header">
         <div class="main-header-right">
           <div class="main-header-left text-center">
-            <div class="logo-wrapper"><a href="<?=base_url('home') ?>"><img src="<?=base_url('assets');?>/img/logo-dc.png" alt=""></a></div>
+            <div class="logo-wrapper"><a href="<?=base_url('home') ?>"><img src="<?=base_url('assets');?>/img/logo-dc.png" alt="brand"></a></div>
           </div>
           <div class="mobile-sidebar">
             <div class="media-body text-right switch-sm">
@@ -43,7 +43,7 @@ $log = $this->db->get('users')->result_array();
                   </div>
                 </form>
               </li>
-              <li><a class="text-white" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>                          
+              <li><a href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>                          
               <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?=base_url('assets');?>/img/notification.png" alt="">
                 
                 <span class="notify" id="notif"></span>

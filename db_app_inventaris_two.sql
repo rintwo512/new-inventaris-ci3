@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2021 at 03:54 PM
+-- Generation Time: Jul 03, 2021 at 11:48 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -61,7 +61,7 @@ CREATE TABLE `tb_ac` (
 --
 
 INSERT INTO `tb_ac` (`id`, `label`, `aset`, `wing`, `lantai`, `ruangan`, `merk`, `model`, `jenis`, `tgl_pemasangan`, `refrigerant`, `kapasitas`, `product`, `tgl_maintenance`, `status`, `arus`, `phasa`, `pipa`, `btu`, `tegangan_kerja`, `jenis_kerusakan`, `status_kompresor`, `insert_by`, `update_by`, `petugas`, `updated`) VALUES
-(101, 'A1.01', 'TELKOM', 'W-A', 'Lt1', 'osm', 'Daikin', 'Splite', 'Inverter', '06/01/2021', 'R410', '1pk', 'Malaysia', '', 'Normal', '3 amper', '1 phasa', '1/4 - 1/2', '3,333', '220', NULL, 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:10', 'Di ubah tanggal, 27/Jun/2021  oleh Rinto Harahap pukul 17:23', 'rinto', '1624785839'),
+(101, 'A1.01', 'TELKOM', 'W-A', 'Lt1', 'osm', 'Daikin', 'Splite', 'Inverter', '06/01/2021', 'R410', '1pk', 'Malaysia', '06/29/2021 - 09/01/2021', 'Rusak', '3 amper', '1 phasa', '1/4 - 1/2', '3,333', '220', 'e3', 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:10', 'Di ubah tanggal, 30/Jun/2021  oleh rinto harahap pukul 1:19', 'rinto', '1624987189'),
 (102, 'B1.02', 'GSD', 'W-B', 'Lt1', 'baruga', 'Daikin', 'Cassette', 'Inverter', '', 'R410', '2,5pk', 'Thailand', '', 'Normal', '12 amper', '1 phasa', '1/4 - 5/8', '', '220', NULL, 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:16', '', '', '1624547794'),
 (103, 'A2.01', 'CC', 'W-A', 'Lt2', 'staff', 'Panasonic', 'Splite', 'Inverter', '06/01/2021', 'R410', '1pk', 'Jepang', '', 'Normal', '2 amper', '1 phasa', '1/4 - 1/2', '', '220', NULL, 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:26', 'Di ubah tanggal, 24/Jun/2021  oleh Rinto Harahap pukul 23:34', 'rinto,rahmat,andre', '1624548859'),
 (104, 'D1.01', 'T.A', 'W-D', 'Lt1', 'ruang staff', 'Daikin', 'Splite', 'Standar', '', 'R410', '2pk', 'Thailand', '', 'Normal', '1 amper', '1 phasa', '1/4 - 5/8', '', '220', NULL, 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:36', '', '', '1624548998'),
@@ -150,8 +150,9 @@ CREATE TABLE `tb_charts` (
 --
 
 INSERT INTO `tb_charts` (`id`, `tahun`, `bulan`, `unit`) VALUES
-(166, '2021', 'Januari', '6'),
-(167, '2021', 'Februari', '2');
+(168, '2021', 'Januari', '7'),
+(169, '2021', 'Februari', '16'),
+(170, '2022', 'Januari', '3');
 
 -- --------------------------------------------------------
 
@@ -222,7 +223,120 @@ INSERT INTO `tb_daikin_kode` (`id`, `code`, `fault`, `cause`) VALUES
 (40, 'CJ', 'Kerusakan sensor termostat di remote kontrol', 'Rusak termistor pengendali jarak jauh,kerusakan akibat kebisingan,rusak PCB pengendali jarak jauh'),
 (41, 'E0', 'Perlindungan perangkat diaktifkan', 'Perangkat perlindungan terhubung ke PCB luar ruangan yang digerakkan,rusak kontak konektor perangkat perlindungan'),
 (42, 'E1', 'PCB unit luar rusak', 'Kerusakan karena kebisingan,cacat unit luar PCB'),
-(43, 'E3', 'Aktuasi sakelar tekanan tinggi', 'Penukar panas unit luar yang kotor dan filter hisap,rusak HPS(High Pressure Switch),Pipa pendingin tersumbat,rusak kontak konektor');
+(44, 'E3', 'Aktuasi High Pressure Switch(HPS)', 'Penukar panas unit outdoor yang kotor dan filter hisap,cacat High Pressure Switch (HPS),pipa pendingin tersumbat,cacat konektor kontak'),
+(45, 'E4', 'Aktuasi Low Pressure Switch(LPS)', 'Pipa refrigeran tersumbat,kekurangan gas,cacat konektor penghubung,cacat PCB unit outdoor'),
+(46, 'E5', 'Kompresor inventer terlalu panas', 'Kekurangan jumlah refrigeran,cacat konektor kontak,kobocoran katup 4 arah'),
+(47, 'E5', 'Motor kompresor inventer terkunci', 'Kabel kompresor inventer salah'),
+(48, 'E6', 'Motor kompresor STD arus lebih/terkunci', 'Motor kompresor STD katup berhenti tertutup'),
+(49, 'E6', 'Motor kompresor kelebihan arus', 'Cacat katup ekspansi,cacat motor kompresor,kekurangan jumlah refrigeran'),
+(50, 'E7', 'Kerusakan motor kipas unit outdoor', 'Kontak yang salah dari konektor motor kipas,cacat motor kipas,cacat driver motor kipas'),
+(51, 'E8', 'Arus lebih dari motor kompresor inventer', 'Cacat kompresor,cacat PCB pada unit outdoor,cacat kapasitor sirkuit utama inventer,cacat transistor daya'),
+(52, 'E9', 'Kerusakan koil katup ekspansi elektronik', 'Cacat katup ekspansi elektronik,cacat kontak konektor,cacat PCB pada unit outdoor'),
+(53, 'EA', 'Kerusakan katup 4 arah', 'Cacat katup 4 arah,cacat PCB unit outdoor,kekurangan gas,cacat termistor'),
+(54, 'EC', 'Kerusakan memasuki suhu air', 'Kerusakan suhu air pendingin,cacat termistor,cacat PCB pada unit outdoor'),
+(55, 'EF', 'Kerusakan unit penyimpanan termal', 'Cacat katup ekspansi elektronik unit penyimpanan termal,cacat PCB penyimpanan termal'),
+(56, 'F3', 'Kerusakan suhu pipa pembuangan', 'Kekurangan gas,cacat kontak konektor,pipa refrigeran tersumbat,cacat termistor pipa pembuangan'),
+(57, 'F6', 'Tekanan tinggi yang tidak normal dalam pendinginan\r\n\r\n', 'Cacat motor kipas unit outdoor,cacat katup ekspansi elektronik,cacat termistor penukar panas,cacat PCB unit outdoor'),
+(58, 'F6', ' Kelebihan refrigeran', 'Kelebihan refrigeran,pemutusan termsitor penukar panas,pemutusan termsitor udara luar,pemutusan termistor pipa cair'),
+(59, 'H0', 'Kerusakan system sensor kompresor', 'Harness terputus atau koneksi rusak,cacat PCB'),
+(60, 'H1', 'Kerusakan peredam unit pelembab udara', 'Cacat saklar batas,cacat peredam'),
+(61, 'H3', 'Kerusakan High Pressure Switch(HPS)', 'Cacat High Pressure Switch(HPS),kabel putus,cacat kontak konektor,cacat PCB unit outdoor'),
+(62, 'H4', ' Kerusakan Low Pressure Switch(LPS)', 'Cacat  Low Pressure Switch(LPS),kabel putus,cacat kontak konektor,cacat PCB unit outdoor'),
+(63, 'H5', 'Kerusakan termistor kelebihan beban motor kompresor', 'Cacat konektor kontak,cacat termistor kelebiahan beban pada motor kompresor'),
+(64, 'H6', 'Kerusakan sensor deteksi posisi', 'Kontak kompresor atau kabel yang salah,cacat kompresor,cacat PCB unit outdoor'),
+(65, 'H7', 'Kerusakan sinyal motor kipas luar ruangan', 'Kontak yang salah dari kabel kipas,cacat driver motor kipas,cacat motor kipas'),
+(66, 'H8', 'Kerusakan sistem input kompresor (CT)', 'Cacat transistor daya,cacat reaktor,kabel sistem inverter rusak,cacat PCB unit outdoor'),
+(67, 'H9', 'Kerusakan termistor udara luar ruangan', 'Cacat kontak konektor,cacat termistor untuk udara luar'),
+(68, 'HC', 'Kerusakan termistor suhu air (panas)', 'Cacat kontak konektor,cacat PCB unit outdoor,cacat termistor untuk suhu air'),
+(69, 'HF', 'Alarm di unit penyimpanan termal dengan es', 'Grup penyimpanan termal kabel rusak,cacat pengaturan,kelebihan nomor tangki penyimpanan termal'),
+(70, 'HJ', 'Kerusakan level air tangki penyimpanan termal', 'Ketinggian air rendah,cacat pengaturan sakelar,kegagalan sensor pendeteksi ketinggian air,cacat kontak konektor'),
+(71, 'J1', 'Kerusakan sensor tekanan', 'Cacat kontak konektor sensor tekanan,cacat sensor tekanan,cacat PCB unit outdoor'),
+(72, 'J2', 'Kerusakan sensor arus kompresor', 'Cacat sensor arus,cacat PCB unit outdoor,cacat kompresor'),
+(73, 'J3', 'Kerusakan termistor pipa pembuangan', 'Cacat kontak konektor,cacat PCB unit outdoor,cacat termistor pipa pembuangan'),
+(74, 'J4', 'Kerusakan sistem sensor suhu jenuh setara tekanan rendah', 'Cacat kontak konektor,cacat termistor,cacat  PCB unit outdoor (Multi-split, Super-multi)'),
+(75, 'J5', 'Kerusakan termistor pipa hisap', 'Cacat kontak konektor,cacat PCB unit outdoor,cacat termistor pipa hisap'),
+(76, 'J6', 'Kerusakan termistor penukar panas', 'Cacat kontak konektor,cacat PCB unit outdoor,cacat termistor penukar panas'),
+(77, 'J7', 'Kerusakan termistor pipa cair (sirkuit pendingin dan lain-lain)', 'Cacat kontak konektor,cacat PCB unit outdoor,cacat termistor pipa cair'),
+(78, 'J8', 'Kerusakan termistor pipa cair (sirkuit pendingin dan lain-lain)', 'Cacat kontak konektor,cacat PCB unit outdoor,cacat termistor pipa cair'),
+(79, 'J9', 'Kerusakan termistor pipa gas (sirkuit Refrigeran dan lain-lain)', 'Cacat kontak konektor,cacat PCB unit outdoor,cacat termistor pipa gas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_elektronik`
+--
+
+CREATE TABLE `tb_elektronik` (
+  `id` int(11) NOT NULL,
+  `aset` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `merk` varchar(255) NOT NULL,
+  `wing` varchar(255) NOT NULL,
+  `lantai` varchar(255) NOT NULL,
+  `lokasi` varchar(255) NOT NULL,
+  `tegangan` varchar(255) NOT NULL,
+  `watt` varchar(255) NOT NULL,
+  `catatan` varchar(300) NOT NULL,
+  `created_by` varchar(300) NOT NULL,
+  `updated_by` varchar(300) NOT NULL,
+  `created_at` int(11) NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_elektronik`
+--
+
+INSERT INTO `tb_elektronik` (`id`, `aset`, `nama`, `merk`, `wing`, `lantai`, `lokasi`, `tegangan`, `watt`, `catatan`, `created_by`, `updated_by`, `created_at`) VALUES
+(6, 'TELKOM', 'kompor listrik', 'miyako', 'W-C', 'Lt2', 'pantry', '220 Volt', '450 watt', 'sudah tidak di gunakan', 'Di tambahkan tanggal, 29/Jun/2021 oleh super admin pukul 23:53', 'Di ubah tanggal, 30/Jun/2021  oleh rinto harahap pukul 1:20', 1624982016);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_panasonic_kode`
+--
+
+CREATE TABLE `tb_panasonic_kode` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(10) NOT NULL,
+  `kerusakan` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_panasonic_kode`
+--
+
+INSERT INTO `tb_panasonic_kode` (`id`, `kode`, `kerusakan`) VALUES
+(12, 'F11', 'kegagalan katup pembalik (katup pembalik rusak, koil atau PCB unit outdoor)'),
+(13, 'F17', 'Kebocoran katup ekspansi'),
+(14, 'F90', 'kegagalan pfc (masalah dengan inverter atau kompresor)'),
+(15, 'F91', 'masalah siklus refrigeran (gas rendah atau penyumbatan)'),
+(16, 'F93', 'kompresor revolusi abnormal (kompresor berjalan salah)'),
+(17, 'F95', 'koil luar lebih panas [mode dingin] (koil kondensor kotor, gas rendah atau penyumbatan)'),
+(18, 'F96', 'ipm atau kompresor terlalu panas (biaya gas berlebih atau rendah atau penukar panas kotor)'),
+(19, 'F97', 'debit tinggi / suhu kompresor (biaya gas rendah atau kompresor gagal)'),
+(20, 'F98', 'lebih dari perlindungan saat ini (masalah penukar panas luar ruangan. kelebihan gas)'),
+(21, 'F99', 'Perlindungan arus lebih DC (pcb unit outdoor, transistor daya atau kegagalan kompresor)'),
+(22, 'H11', 'Kegagalan komunikasi (kabel rusak atau masalah lain dengan komunikasi Id/OD)'),
+(23, 'H12', 'Masalah kompatibilitas ID/OD (di atas atau di bawah multi sistem yang diindeks)'),
+(24, 'H14', 'sensor udara dalam ruangan rusak (sensor terputus, rusak atau kontak kotor)'),
+(25, 'H15', 'Sensor kompresor rusak (sensor terputus, rusak atau kontak kotor)'),
+(26, 'H16', 'masalah transformator saat ini (modul transisitor daya atau PCB unit outdoor rusak, atau gas rendah)'),
+(27, 'H19', 'motor kipas dalam ruangan terkunci (motor kipas dalam kegagalan PCB unit indoor)'),
+(28, 'H21', 'float switch dioperasikan (cek drainase)'),
+(29, 'H23', 'sensor pipa dalam ruangan rusak (sensor terputus, rusak atau kontak kotor)'),
+(30, 'H27', 'sensor udara luar rusak (sensor terputus, rusak atau kontak kotor)'),
+(31, 'H28', 'sensor pipa luar rusak (sensor terputus, rusak atau kontak kotor)'),
+(32, 'H30', 'sensor pelepasan luar 1 rusak (sensor terputus, rusak atau kontak kotor)'),
+(33, 'H32', 'sensor pelepasan luar ruangan 2 rusak (sensor terputus, rusak atau kontak kotor)'),
+(34, 'H33', 'tegangan koneksi yang salah (kabel indoor atau outdoor ruangan yang salah atau rusak)'),
+(35, 'H34', 'sensor heatsink luar rusak (sensor terputus, rusak atau kontak kotor)'),
+(36, 'H36', 'sensor gas outdor rusak (sensor terputus, rusak atau kontak kotor)'),
+(37, 'H37', 'sensor cairan outdoor rusak (sensor terputus, rusak atau kontak kotor)'),
+(38, 'H39', 'operasi abnormal indoor (perpipaan salah atau masalah katup ekspansi)'),
+(39, 'H41', 'perkabelan atau perpipaan abnormal (pengkabelan atau perpipaan bersilangan pada sistem kembar)'),
+(40, 'H97', 'kegagalan kipas outdoor (motor kipas outdoor atau kegagalan PCB)'),
+(41, 'H98', 'koil indoor terlalu panas [mode panas] (filter kotor koil indoor suhu kamar sangat tinggi)'),
+(42, 'H99', 'de-es koil indoor [mode dingin] (filter kotor koil indoor. muatan gas rendah atau suhu lingkungan rendah)');
 
 -- --------------------------------------------------------
 
@@ -249,9 +363,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `nik`, `image`, `password`, `role`, `is_active`, `user_login`, `login_time`, `created_at`) VALUES
-(32, 'rinto harahap', 'engineering@gmail.com', 15920011, 'default.png', '$2y$10$hbnEhSQmMaTXjkQPMp2aT.bjze8bbPCR3vAdgtu3TTJVGhZ5zlhvy', 'super admin', 1, 'online', '27/Jun/2021 | 21:46', 1624793799),
-(33, 'john doe', 'engineering@gmail.com', 15920001, 'avatar41.png', '$2y$10$be3jsnIrmkPFIGQdjOJrc.C05YbybjX6UVs190Q7A5B1CP73SuRSW', 'admin', 1, 'offline', '27/Jun/2021 | 21:22', 1624795623),
-(35, 'coding', 'engineering@gmail.com', 15920002, 'avatar61.png', '$2y$10$XkFj7UVyUq.akMzPEad6u...7STjQIJLlkAS6/9d9ulYlcgYF7xn.', 'user', 1, 'offline', '27/Jun/2021 | 21:29', 1624797495);
+(32, 'rinto Harahap', 'ryntooh@gmail.com', 15920011, 'decor-img-02-474x463.png', '$2y$10$llNAff.FH3V.VtaObZf4A.ljl5uUnwrXd7GawWoybVpX95KvPX7Wq', 'super admin', 1, 'online', '04/Jul/2021 | 4:54', 1624793799),
+(33, 'john doe', 'engineering@gmail.com', 15920001, 'avatar41.png', '$2y$10$be3jsnIrmkPFIGQdjOJrc.C05YbybjX6UVs190Q7A5B1CP73SuRSW', 'admin', 1, 'offline', '30/Jun/2021 | 1:34', 1624795623),
+(35, 'coding', 'engineering@gmail.com', 15920002, 'avatar61.png', '$2y$10$XkFj7UVyUq.akMzPEad6u...7STjQIJLlkAS6/9d9ulYlcgYF7xn.', 'user', 1, 'offline', '30/Jun/2021 | 1:45', 1624797495);
 
 --
 -- Indexes for dumped tables
@@ -294,6 +408,18 @@ ALTER TABLE `tb_daikin_kode`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_elektronik`
+--
+ALTER TABLE `tb_elektronik`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_panasonic_kode`
+--
+ALTER TABLE `tb_panasonic_kode`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -307,7 +433,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tb_ac`
 --
 ALTER TABLE `tb_ac`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `tb_apart`
@@ -325,7 +451,7 @@ ALTER TABLE `tb_cctv`
 -- AUTO_INCREMENT for table `tb_charts`
 --
 ALTER TABLE `tb_charts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT for table `tb_daftar_barang`
@@ -337,7 +463,19 @@ ALTER TABLE `tb_daftar_barang`
 -- AUTO_INCREMENT for table `tb_daikin_kode`
 --
 ALTER TABLE `tb_daikin_kode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT for table `tb_elektronik`
+--
+ALTER TABLE `tb_elektronik`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tb_panasonic_kode`
+--
+ALTER TABLE `tb_panasonic_kode`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `users`

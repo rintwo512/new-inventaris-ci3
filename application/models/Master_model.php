@@ -90,5 +90,18 @@ class Master_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete('tb_cctv');
     }
+    function exportDataElektronik()
+    {
+        $this->db->select("*");
+        $this->db->from("tb_elektronik");        
+        $this->db->order_by('id', "ASC");
+        return $this->db->get();
+    }
+
+    function deleteMultipleElektronik($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('tb_elektronik');
+    }
     
 }

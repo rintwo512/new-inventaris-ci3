@@ -8,6 +8,7 @@ class Settings extends CI_Controller {
         parent::__construct();    
         $this->load->model('updatePassword_model');   
         check_session();
+        $this->load->library('image_lib');
         
     }
 
@@ -49,7 +50,8 @@ class Settings extends CI_Controller {
         $this->form_validation->set_rules('new_password_conf', 'New password conf', 'required|trim|min_length[3]|matches[new_password]',[
 
                 'required' => 'Tidak boleh kosong',                
-                'matches' => 'Password tidak sesuai'
+                'matches' => 'Password tidak sesuai',
+                'min_length' => 'Minimal 3 karakter'
 
             ]);
 
@@ -71,14 +73,14 @@ class Settings extends CI_Controller {
             if(!password_verify($password, $data['user']['password'])){
 
                 $this->session->set_flashdata('alert', 'Password anda salah !');
-                redirect('settings/updatePassword', 'refresh');
+                redirect('settings/settings', 'refresh');
 
             }else{
 
                  if ($new_password == $password) {
 
                     $this->session->set_flashdata('alert', 'Password baru tidak boleh sama dengan password lama !');
-                   redirect('settings/updatePassword', 'refresh');
+                   redirect('settings/settings', 'refresh');
 
                 } else {
 
@@ -88,7 +90,7 @@ class Settings extends CI_Controller {
 
                     $this->session->set_flashdata('message', 'Password berhasil diubah');
 
-                    redirect('settings/updatePassword', 'refresh');
+                    redirect('settings/settings', 'refresh');
                 }
 
             }
@@ -127,10 +129,10 @@ class Settings extends CI_Controller {
 
         if($upload_img){
 
-            $config['allowed_types'] = 'gif|jpeg|jpg|png';
-            $config['max_size'] = '5240';
+            $config['allowed_types'] = 'gif|jpeg|jpg|png';           
+            $config['max_size'] = '5240';            
             $config['upload_path'] = './assets/img/';
-            $this->load->library('upload', $config);
+            $this->load->library('upload', $config);          
 
             if($this->upload->do_upload('image')){
 
@@ -142,9 +144,22 @@ class Settings extends CI_Controller {
                     unlink(FCPATH . 'assets/img/' . $old_image);
 
                 }
+                $img = $this->upload->data();
 
-                $new_image = $this->upload->data('file_name');
-                $this->db->set('image', $new_image);
+                $config['image_library']='gd2';
+                $config['source_image']='./assets/img/'.$img['file_name'];
+                $config['create_thumb']= FALSE;
+                $config['maintain_ratio']= FALSE;
+                $config['quality']= '60%';
+                $config['width']= 215;
+                $config['height']= 215;
+                $config['new_image']= './assets/img/'.$img['file_name'];
+                $this->image_lib->clear();
+                $this->image_lib->initialize($config);
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+                $new_img = $img['file_name'];       
+                $this->db->set('image', $new_img);
 
             }else{
 

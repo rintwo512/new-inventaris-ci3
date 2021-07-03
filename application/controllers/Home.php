@@ -25,6 +25,7 @@ class Home extends CI_Controller {
 		$data['count_users'] = $this->db->count_all('users');
 		$data['count_apar'] = $this->db->count_all('tb_apart');
 		$data['count_cctv'] = $this->db->count_all('tb_cctv');
+		$data['count_elektronik'] = $this->db->count_all('tb_elektronik');
 		
 		$this->load->view('master/header', $data);
 		$this->load->view('master/topbar', $data);

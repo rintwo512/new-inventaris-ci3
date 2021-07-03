@@ -228,6 +228,69 @@
             <div class="col-sm-12 mt-5">
                 <div class="card">
                     <div class="card-header">
+                        <h5>Master data Perangkat elektronik</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="<?=base_url('export/dataElektronik');?>" class="btn btn-primary btn-sm mb-4 pull-right"><i class="fa fa-file-excel-o"></i> Export excel</a>
+                        <button type="button" class="btn btn-danger btn-sm" id="delete_all_elektronik"><i class="fa fa-trash"></i> Delete</button>
+                        <div class="table-responsive">
+                            <table class="hover" id="example-style-elektronik">
+                                <thead class="myColor">             
+                                    <tr>
+                                        <th width="8%">#</th>
+                                        <th>Aset</th>
+                                        <th>Nama</th>
+                                        <th>Merk</th>
+                                        <th>Wing</th>             
+                                        <th>Lantai</th>             
+                                        <th>Lokasi</th>             
+                                        <th>Tegangan</th>             
+                                        <th>Watt/Amper</th>             
+                                        <th>Catatan</th>       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                    foreach($elektronik->result() as $el)
+                                    {
+                                        echo 
+                                        '
+                                            <tr class="hover-items">
+                                                <td>
+                                                    <input type="checkbox" class="delete_checkbox_elektronik" value="'.$el->id.'"/>
+                                                </td>
+                                                <td>'.$el->aset.'</td>
+                                                <td style="text-transform: capitalize;">'.$el->nama.'</td>
+                                                <td style="text-transform: capitalize;">'.$el->merk.'</td>
+                                                <td>'.$el->wing.'</td>
+                                                <td>'.$el->lantai.'</td>
+                                                <td style="text-transform: capitalize;">'.$el->lokasi.'</td>
+                                                <td>'.$el->tegangan.'</td>
+                                                <td style="text-transform: capitalize;">'.$el->watt.'</td>
+                                                <td>'.$el->catatan.'</td>
+                                            </tr>
+                                        ';
+                                    }
+
+
+                                 ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end myTable -->
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid Ends-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--myTable-->
+            <div class="col-sm-12 mt-5">
+                <div class="card">
+                    <div class="card-header">
                         <h5>Master data maintenance Ac</h5>
                     </div>
                     <div class="card-body">                        

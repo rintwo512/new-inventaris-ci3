@@ -130,6 +130,20 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 col-lg-6 box-col-6">
+                <div class="card gradient-yellow o-hidden">
+                  <div class="b-r-4 card-body">
+                    <div class="media static-top-widget">
+                      <div class="align-self-center text-center">
+                        <div class="text-white i" data-feather="cast"></div>
+                      </div>
+                      <div class="media-body"><span class="m-0 text-white">Perangkat Elektronik</span>
+                        <h4 class="mb-0 counter text-white"><?=$count_elektronik ?></h4><i class="icon-bg" data-feather="cast"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div> 
               <div class="col-sm-6 col-xl-3 col-lg-6 box-col-6">
                 <div class="card gradient-success o-hidden">
@@ -139,7 +153,7 @@
                         <div class="text-white i" data-feather="database"></div>
                       </div>
                       <div class="media-body"><span class="m-0 text-white">Menu</span>
-                        <h4 class="mb-0 counter text-white">12</h4><i class="icon-bg" data-feather="database"></i>
+                        <h4 class="mb-0 counter text-white">13</h4><i class="icon-bg" data-feather="database"></i>
                       </div>
                     </div>
                   </div>

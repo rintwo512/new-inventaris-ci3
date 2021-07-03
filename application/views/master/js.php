@@ -51,6 +51,8 @@
  <script type="text/javascript" src="<?= base_url('assets'); ?>/js/loader.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/chart_ac.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/cctv.js"></script>
+ <script src="<?= base_url('assets'); ?>/myscript/elektronik.js"></script>
+ 
  
  <script>
     $(document).ready(function() {
@@ -72,7 +74,7 @@
 <script>
     $(document).ready(function() {
         $('#alertPassword').on('click', function() {
-            $('#alertPassword').hide(2000);
+            $('#alertPassword').hide(700);
         });
     });
 </script>
@@ -402,6 +404,74 @@ $(document).ready(function(){
 </script>
 <!-- End Apart -->
 
+<!-- perangkat elektronik -->
+<script>
+$(document).ready(function(){
+
+    $('body').on("click",".delete_checkbox_elektronik", function(){
+        if($(this).is(':checked'))
+        {
+            $(this).closest('tr').addClass('removeRow');
+        }
+        else
+        {
+            $(this).closest('tr').removeClass('removeRow');
+        }
+    });
+
+    $('body').on("click","#delete_all_elektronik", function(){
+
+        var checkbox = $('.delete_checkbox_elektronik:checked');
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+            Swal.fire({
+          title: 'Yakin ingin melanjutkan?',
+          text: "Data ini tidak dapat di kembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus itu!'
+        }).then((result) => {
+           if (result.value) {
+                $.ajax({
+                url:"<?php echo base_url(); ?>master/deleteAllDataElektronik",
+                method:"POST",
+                data:{checkbox_value:checkbox_value},
+                success:function()
+                {
+                    $('.removeRow').fadeOut(1500);
+                }
+            })
+                Swal.fire(
+                  'Sukses!',
+                  'Data berhasil dihapus',
+                  'success'
+                )
+            }
+        })
+            
+        }
+        else
+        {            
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Pilih setidaknya satu data !'  
+            })
+        }
+
+    });    
+
+});
+</script>
+<!-- End perangkat elektronik -->
+
 <!-- Maintenance Ac -->
     <script>
     $(document).ready(function(){
@@ -565,10 +635,8 @@ $(document).ready(function(){
 </script>
 <!-- End CCTV -->
 
-
 <script>
-
- var flerr = $('.flash-err').data('eros');
+    var flerr = $('.flash-err').data('eros');
 
 if (flerr) {
     Swal.fire({
@@ -579,33 +647,7 @@ if (flerr) {
         timer: 3000
     })
 }
-  
-  const flasherror = $('.flash-error').data('error');
-
-if (flasherror) {
-Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: flasherror  
-})
-
-}
-
-
- const flashdata = $('.flash-success').data('flashdata');
-
-if (flashdata) {
-  Swal.fire({
-  position: 'top-end',
-  icon: 'success',
-  title: flashdata,
-  showConfirmButton: false,
-  timer: 3000
-})
-}
- 
 </script>
-
 
  </body>
 

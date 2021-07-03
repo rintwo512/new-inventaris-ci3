@@ -59,28 +59,21 @@ class Auth extends CI_Controller {
                             'name' => $user['name']
                         ];
                         $this->session->set_userdata($data);
-                        if ($user['role'] == "admin") {
+                        if ($user['role'] == "admin" || $user['role'] == "super admin") {
                             
                             $this->db->set('user_login', $user_login);
                             $this->db->set('login_time', $login_time);
                             $this->db->where('nik', $this->session->userdata('nik'));
                             $this->db->update('users');                         
                             redirect('home');
-                        }else if( $user['role'] == "super admin"){
-                            
-                            $this->db->set('user_login', $user_login);
-                            $this->db->set('login_time', $login_time);
-                            $this->db->where('nik', $this->session->userdata('nik'));
-                            $this->db->update('users');                         
-                            redirect('home');
-                        }
-                         else {
+                        }else {
                             $this->db->set('user_login', $user_login);
                             $this->db->set('login_time', $login_time);
                             $this->db->where('nik', $this->session->userdata('nik'));
                             $this->db->update('users');                            
                             redirect('airco');
                         }
+                        
                     } else {
                         $this->session->set_flashdata('error_message', 'Password anda salah!');
                         redirect('auth');

@@ -20,6 +20,7 @@ class KodeEror extends CI_Controller {
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
 
 		$data['daikin'] = $this->db->get('tb_daikin_kode')->result_array();
+		$data['panasonic'] = $this->db->get('tb_panasonic_kode')->result_array();
 
 		$this->load->view('master/header', $data);
 		$this->load->view('master/topbar', $data);		
@@ -34,12 +35,11 @@ class KodeEror extends CI_Controller {
 	public function store()
 	{
 		$data = [
-			"code" => $this->input->post('kode'),
-			"fault" => $this->input->post('kerusakan'),
-			"cause" => $this->input->post('sebab')
+			"kode" => $this->input->post('kode'),
+			"kerusakan" => $this->input->post('kerusakan')
 		];
 
-		$this->db->insert('tb_daikin_kode', $data);
+		$this->db->insert('tb_panasonic_kode', $data);
 		redirect('kodeeror');
 	}
 

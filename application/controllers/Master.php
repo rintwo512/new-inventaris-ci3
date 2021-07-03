@@ -24,6 +24,8 @@ class Master extends CI_Controller {
 		$data['apart'] = $this->Master_model->exportDataApart();
 
         $data['cctv'] = $this->Master_model->exportDataCctv();
+
+        $data['elektronik'] = $this->Master_model->exportDataElektronik();
 		
 
 		$this->load->view('master/header', $data);
@@ -223,6 +225,18 @@ class Master extends CI_Controller {
             for($count = 0; $count < count($id); $count++)
             {
                 $this->Master_model->deleteMultipleCctv($id[$count]);
+            }
+        }
+    }
+
+    public function deleteAllDataElektronik()
+    {
+        if($this->input->post('checkbox_value'))
+        {
+            $id = $this->input->post('checkbox_value');
+            for($count = 0; $count < count($id); $count++)
+            {
+                $this->Master_model->deleteMultipleElektronik($id[$count]);
             }
         }
     }
