@@ -393,7 +393,7 @@
                         </tr>                       
                         <tr>
                           <th>Catatan/Kerusakan</th>                          
-                          <td><a style="text-transform: capitalize;" id="jenis_kerusakan"></a><a href="<?= base_url('kodeeror'); ?>" class="btn btn-info btn-xs pull-right">Lihat kode error</a></td>
+                          <td><a style="text-transform: capitalize;" id="jenis_kerusakan"></a><a href="<?= base_url('kodeeror'); ?>" class="btn btn-danger btn-xs pull-right">Lihat kode error</a></td>
                         </tr>                      
                         <tr>
                           <th>Tanggal Update</th>

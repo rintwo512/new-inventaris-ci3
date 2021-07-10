@@ -34,17 +34,27 @@
                             <td><?=$usr['email'];?></td>
                             <td><?=$usr['nik'];?></td>
                             <td><?=$usr['role'];?></td>
+                            
                             <?php if($usr['is_active'] < 1 ) : ?>
                             <td><span class="badge badge-danger">Non-active</span></td>
                             <?php else : ?>
                             <td><span class="badge badge-info">Active</span></td>
                             <?php endif; ?>
-                            <td>                              
+                            <td>
+                            <?php if($usr['role'] != "admin") : ?>                            
                               <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr['id'];?>" data-role="<?=$usr['role'];?>" data-active="<?=$usr['is_active'];?>"><i class="fa fa-pencil"></i></a>
+
+                            <?php elseif($user['role'] == "super admin") : ?>
+
+                              <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr['id'];?>" data-role="<?=$usr['role'];?>" data-active="<?=$usr['is_active'];?>"><i class="fa fa-pencil"></i></a>
+
+                            <?php endif; ?>                              
                             
                             
                              <?php if($user['role'] == "super admin") : ?>
+
                               <a id="delUsers" href="<?=base_url('users/destroy/' . $usr['id']);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+
                             <?php endif; ?>
                             
                             </td>
