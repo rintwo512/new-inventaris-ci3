@@ -6,7 +6,7 @@ class Allusers_model extends CI_Model
 
 	function getUsers()
 	{
-		$get = $this->db->get('users')->result_array();
+		$get = $this->db->get('users')->result();
 
 		return $get;
 	}

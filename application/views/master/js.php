@@ -54,7 +54,8 @@
  <script src="<?= base_url('assets'); ?>/myscript/elektronik.js"></script>
  
  
- <script>
+ 
+ <!-- <script>
     $(document).ready(function() {
         var interval = setInterval(function() {
             $.ajax({
@@ -67,8 +68,8 @@
                 }
             });
         }, 2000);
-    })
-</script>
+    });   
+</script> -->
 
 
 <script>
@@ -648,6 +649,7 @@ if (flerr) {
     })
 }
 </script>
+
 
  </body>
 

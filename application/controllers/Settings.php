@@ -9,6 +9,7 @@ class Settings extends CI_Controller {
         $this->load->model('updatePassword_model');   
         check_session();
         $this->load->library('image_lib');
+        myTime();
         
     }
 

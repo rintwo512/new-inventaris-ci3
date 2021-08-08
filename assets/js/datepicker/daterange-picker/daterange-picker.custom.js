@@ -1,10 +1,10 @@
 
 //DateRange Picker
-(function($) {
-    "use strict";
-    $(function() {
-        $('#tgl_maintenance').daterangepicker();
-    });
+// (function($) {
+//     "use strict";
+//     $(function() {
+//         $('#tgl_maintenance').daterangepicker();
+//     });
    
 //Date and Time
     $(function() {
@@ -17,15 +17,15 @@
         });
     });
 // Single Date Picker
-    $(function() {
-        $('#tgl_pemasangan').daterangepicker({
-                singleDatePicker: true,
-                showDropdowns: true
-            },
-            function(start, end, label) {
-                var years = moment().diff(start, 'years');               
-            });
-    });    
+    // $(function() {
+    //     $('#tgl_pemasangan').daterangepicker({
+    //             singleDatePicker: true,
+    //             showDropdowns: true
+    //         },
+    //         function(start, end, label) {
+    //             var years = moment().diff(start, 'years');               
+    //         });
+    // });    
 
 
 //Predefined Ranges

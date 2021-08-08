@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2021 at 11:48 PM
+-- Generation Time: Aug 08, 2021 at 07:17 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -61,14 +61,9 @@ CREATE TABLE `tb_ac` (
 --
 
 INSERT INTO `tb_ac` (`id`, `label`, `aset`, `wing`, `lantai`, `ruangan`, `merk`, `model`, `jenis`, `tgl_pemasangan`, `refrigerant`, `kapasitas`, `product`, `tgl_maintenance`, `status`, `arus`, `phasa`, `pipa`, `btu`, `tegangan_kerja`, `jenis_kerusakan`, `status_kompresor`, `insert_by`, `update_by`, `petugas`, `updated`) VALUES
-(101, 'A1.01', 'TELKOM', 'W-A', 'Lt1', 'osm', 'Daikin', 'Splite', 'Inverter', '06/01/2021', 'R410', '1pk', 'Malaysia', '06/29/2021 - 09/01/2021', 'Rusak', '3 amper', '1 phasa', '1/4 - 1/2', '3,333', '220', 'e3', 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:10', 'Di ubah tanggal, 30/Jun/2021  oleh rinto harahap pukul 1:19', 'rinto', '1624987189'),
-(102, 'B1.02', 'GSD', 'W-B', 'Lt1', 'baruga', 'Daikin', 'Cassette', 'Inverter', '', 'R410', '2,5pk', 'Thailand', '', 'Normal', '12 amper', '1 phasa', '1/4 - 5/8', '', '220', NULL, 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:16', '', '', '1624547794'),
-(103, 'A2.01', 'CC', 'W-A', 'Lt2', 'staff', 'Panasonic', 'Splite', 'Inverter', '06/01/2021', 'R410', '1pk', 'Jepang', '', 'Normal', '2 amper', '1 phasa', '1/4 - 1/2', '', '220', NULL, 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:26', 'Di ubah tanggal, 24/Jun/2021  oleh Rinto Harahap pukul 23:34', 'rinto,rahmat,andre', '1624548859'),
-(104, 'D1.01', 'T.A', 'W-D', 'Lt1', 'ruang staff', 'Daikin', 'Splite', 'Standar', '', 'R410', '2pk', 'Thailand', '', 'Normal', '1 amper', '1 phasa', '1/4 - 5/8', '', '220', NULL, 'original', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:36', '', '', '1624548998'),
-(105, 'A1.02', 'TELKOM', 'W-A', 'Lt1', 'ruang staff', 'Daikin', 'Cassette', 'Inverter', '01/01/2020', 'R410', '2,5pk', 'Indonesia', '01/01/2021 - 04/01/2021', 'Normal', '10 amper', '3 phasa', '1/4 - 5/8', '9,000', '380', NULL, 'sudah di ganti dengan compresor 1pk r32', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:39', 'Di ubah tanggal, 27/Jun/2021  oleh Rinto Harahap pukul 17:14', 'vendor', '1624785255'),
-(106, 'C1.01', 'TELKOM', 'W-C', 'Lt1', 'ruang staff', 'Daikin', 'Cassette', 'Inverter', '', 'R410', '3pk', 'Thailand', '', 'Normal', '10 amper', '3 phasa', '3/8 - 5/8', '9,900', '380', NULL, 'sudah di ganti dengan kompresor 1,5 pk merk panasonic r22', 'Di tambahkan tanggal, 24/Jun/2021 oleh admin pukul 23:52', '', '', '1624549924'),
-(107, 'A1.03', 'TELKOM', 'W-A', 'Lt1', 'staff', 'Daikin', 'Cassette', 'Inverter', '', 'R410', '2,5pk', 'Thailand', '', 'Rusak', '3 amper', '1 phasa', '1/4 - 5/8', '', '220', 'A3 dan kompresor over heat', 'original', 'Di tambahkan tanggal, 25/Jun/2021 oleh admin pukul 21:16', '', '', '1624626983'),
-(108, 'A1.04', '', 'W-A', 'Lt1', 'staff', 'Panasonic', 'Cassette', 'Inverter', '', 'R410', '1,5pk', '', '', 'Normal', '', '1 phasa', '', '', '220', NULL, '', 'Di tambahkan tanggal, 25/Jun/2021 oleh admin pukul 22:31', 'Di ubah tanggal, 26/Jun/2021  oleh Rinto Harahap pukul 0:21', '', '1624638094');
+(113, 'A1.01', 'GSD', 'W-A', 'Lt1', 'staff', 'Daikin', 'Splite', 'Inverter', '01/01/2015', 'R410', '1pk', 'Jepang', '04/01/2021', 'Normal', '3,2', '1 phasa', '1/4 - 3/8', '', '220', NULL, 'ori', 'Di tambahkan tanggal, 08/Aug/2021 oleh super admin pukul 5:22', 'Di ubah tanggal, 09/Aug/2021  oleh rinto pukul 1:08', 'vendor', '1628442528'),
+(114, 'FDS', 'DSD', 'W-B', 'Lt1', 'staff', 'Daikin', 'Sentral', 'Inverter', '08/03/2020', 'R410', '8pk', 'Jepang', '', 'Rusak', '432', '1 phasa', '1/4 - 3/8', '', '220', 'A4', 'ori', 'Di tambahkan tanggal, 08/Aug/2021 oleh super admin pukul 5:30', 'Di ubah tanggal, 09/Aug/2021  oleh john doe pukul 0:52', '', '1628441532'),
+(117, 'SFF', 'TA', 'W-B', 'Lt1', 'staff', 'Panasonic', 'Sentral', 'Standar', '08/01/2010', 'R22', '8pk', 'Jepang', '08/01/2021', 'Normal', 'sa', '1 phasa', '', '', '220', NULL, '', 'Di tambahkan tanggal, 08/Aug/2021 oleh super admin pukul 22:47', 'Di ubah tanggal, 08/Aug/2021  oleh rinto pukul 22:53', '', '1628434429');
 
 -- --------------------------------------------------------
 
@@ -150,9 +145,8 @@ CREATE TABLE `tb_charts` (
 --
 
 INSERT INTO `tb_charts` (`id`, `tahun`, `bulan`, `unit`) VALUES
-(168, '2021', 'Januari', '7'),
-(169, '2021', 'Februari', '16'),
-(170, '2022', 'Januari', '3');
+(183, '2021', 'Januari', '5'),
+(184, '2021', 'Februari', '4');
 
 -- --------------------------------------------------------
 
@@ -179,7 +173,7 @@ CREATE TABLE `tb_daftar_barang` (
 --
 
 INSERT INTO `tb_daftar_barang` (`id`, `nama_barang`, `catatan`, `merk`, `tgl_pengadaan`, `status`, `daya`, `berat`, `update_by`, `insert_by`, `updated`) VALUES
-(41, 'bor', NULL, 'bosch', '2021-05-31', 'normal', '900 watt', '4kg', 'Di ubah tanggal, 25/Jun/2021  oleh Rinto Harahap pukul 21:02', 'Di tambahkan tanggal, 25/Jun/2021 oleh admin pukul 20:48', '1624626166');
+(41, 'bor', 'hilang', 'bosch', '2021-05-31', 'hilang', '900 watt', '4kg', 'Di ubah tanggal, 11/Jul/2021  oleh rinto pukul 1:37', 'Di tambahkan tanggal, 25/Jun/2021 oleh admin pukul 20:48', '1625938626');
 
 -- --------------------------------------------------------
 
@@ -363,9 +357,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `nik`, `image`, `password`, `role`, `is_active`, `user_login`, `login_time`, `created_at`) VALUES
-(32, 'rinto Harahap', 'ryntooh@gmail.com', 15920011, 'decor-img-02-474x463.png', '$2y$10$llNAff.FH3V.VtaObZf4A.ljl5uUnwrXd7GawWoybVpX95KvPX7Wq', 'super admin', 1, 'online', '04/Jul/2021 | 4:54', 1624793799),
-(33, 'john doe', 'engineering@gmail.com', 15920001, 'avatar41.png', '$2y$10$be3jsnIrmkPFIGQdjOJrc.C05YbybjX6UVs190Q7A5B1CP73SuRSW', 'admin', 1, 'offline', '30/Jun/2021 | 1:34', 1624795623),
-(35, 'coding', 'engineering@gmail.com', 15920002, 'avatar61.png', '$2y$10$XkFj7UVyUq.akMzPEad6u...7STjQIJLlkAS6/9d9ulYlcgYF7xn.', 'user', 1, 'offline', '30/Jun/2021 | 1:45', 1624797495);
+(32, 'rinto', 'ryntooh@example.com', 15920011, 'rinto3.jpg', '$2y$10$/wcHjFcHESqkpQnfWy.iSOKZ1FkHcvA/qdzJqxnEcqarKme0B99hO', 'super admin', 1, 'offline', '2021-08-09 01:16:54', 1624793799),
+(33, 'john doe', 'engineering@gmail.com', 15920001, 'avatar41.png', '$2y$10$be3jsnIrmkPFIGQdjOJrc.C05YbybjX6UVs190Q7A5B1CP73SuRSW', 'admin', 1, 'offline', '2021-08-09 00:57:11', 1624795623),
+(35, 'coding', 'engineering@gmail.com', 15920002, 'avatar61.png', '$2y$10$XkFj7UVyUq.akMzPEad6u...7STjQIJLlkAS6/9d9ulYlcgYF7xn.', 'user', 1, 'offline', '2021-08-07 05:30:51', 1624797495),
+(38, 'jhen doe', 'engineering@gmail.com', 15920003, 'default.png', '$2y$10$MNHrIjMK/x94wB./cCPQ/OWqF1advlN9orkS66fjL2jAWNgdw1wL.', 'user', 1, 'offline', '2021-08-09 00:47:41', 1628437704);
 
 --
 -- Indexes for dumped tables
@@ -433,7 +428,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tb_ac`
 --
 ALTER TABLE `tb_ac`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `tb_apart`
@@ -451,7 +446,7 @@ ALTER TABLE `tb_cctv`
 -- AUTO_INCREMENT for table `tb_charts`
 --
 ALTER TABLE `tb_charts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `tb_daftar_barang`
@@ -481,7 +476,7 @@ ALTER TABLE `tb_panasonic_kode`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

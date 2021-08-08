@@ -1,8 +1,9 @@
 <?php 
+require 'vendor/autoload.php';
+use Carbon\Carbon;
+$log = $this->db->get('users')->result();
 
-$log = $this->db->get('users')->result_array();
-
-
+$users_notif = $this->db->get_where('users', ['user_login' => 'online'])->num_rows();
 
  ?>
 
@@ -46,7 +47,7 @@ $log = $this->db->get('users')->result_array();
               <li><a href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>                          
               <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?=base_url('assets');?>/img/notification.png" alt="">
                 
-                <span class="notify" id="notif"></span>
+                <span class="notify"><?= $users_notif ?></span>
               
                 
                 <ul class="onhover-show-div notification-dropdown">
@@ -57,19 +58,25 @@ $log = $this->db->get('users')->result_array();
                   
                   <li>
                     <div class="media">
-                    <?php if($lo['user_login'] == 'online') : ?>
+                    <?php if($lo->user_login == 'online') : ?>
                       <div class="notification-icons bg-success mr-3"><i class="mt-0" data-feather="check"></i></div>
                       <div class="media-body">
-                        <h6 style="text-transform: capitalize;"><?=$lo['name'] ?></h6>                       
-                          <p class="mb-0" style="color:green">Sedang <?= $lo['user_login']; ?>...</p>        
+                        <h6 style="text-transform: capitalize;"><?=$lo->name ?></h6>                       
+                          <p class="mb-0" style="color:green">Sedang <?= $lo->user_login; ?>...</p>        
 
                       </div>
                       <?php else : ?>
                         <div class="notification-icons bg-danger mr-3"><i class="mt-0" data-feather="x"></i></div>
                       <div class="media-body">
-                        <h6 style="text-transform: capitalize;"><?=$lo['name'] ?></h6>                       
-                          <p class="mb-0" style="color:red">offline</p>
-                          <p><?= $lo['login_time'] ?> yang lalu</p>
+                        <h6 style="text-transform: capitalize;"><?=$lo->name ?></h6>                       
+                          <?php if($lo->login_time == NULL) : ?>
+                          <p class="mb-0" style="color:#000">User belum pernah login</p>
+                             
+                          <?php else : ?>
+                            <p class="mb-0" style="color:red">online</p>
+                              <p><?= Carbon::create($lo->login_time)->locale('id')->diffforHumans() ?></p>
+                          <?php endif; ?>
+                          
                            
                       </div>
                       <?php endif;?>

@@ -124,10 +124,21 @@ $(document).on('click', '#btnDel', function (e) {
 
 //DateRange Picker
 (function($) {
-    "use strict";
-    $(function() {
-        $('#tgl_maintenancee').daterangepicker();
+    // "use strict";
+    // $(function() {
+    //     $('#tgl_maintenancee').daterangepicker();
+    // });
+
+     $(function() {
+        $('#tgl_maintenancee').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true
+            },
+            function(start, end, label) {
+                var years = moment().diff(start, 'years');               
+            });
     });
+
    
 // Single Date Picker
     $(function() {

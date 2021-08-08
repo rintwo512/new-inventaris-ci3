@@ -10,6 +10,7 @@ class Master extends CI_Controller {
         $this->load->model('Airco_model');
         $this->load->model('Master_model');  
         check_session();
+        myTime();
         
     }
 

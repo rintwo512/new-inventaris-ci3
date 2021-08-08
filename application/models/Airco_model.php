@@ -15,7 +15,7 @@ class Airco_model extends CI_Model
 
 	function getAc()
 	{
-		$query = $this->db->get('tb_ac')->result_array();
+		$query = $this->db->get('tb_ac')->result();
 
 		return $query;
 	}

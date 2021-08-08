@@ -1,3 +1,10 @@
+ <?php 
+
+  require 'vendor/autoload.php';
+  use Carbon\Carbon;
+
+ ?>
+
  <!-- content-here -->
  <div class="flash-success" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
          <div class="page-body">         
@@ -21,39 +28,40 @@
                             <th>Email</th>
                             <th>NIK</th>
                             <th>Akses</th>                            
+                            <th>Tgl bergabung</th>           
                             <th>Status</th>
                             <th>Opsi</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php foreach ($allUsers as $usr) :?>
-                            <?php if($usr['role'] != "super admin") : ?>
+                            <?php if($usr->role != "super admin") : ?>
                           <tr>
-                            <td><img src="<?=base_url('assets/img/' . $usr['image']);?>" class="img-fluid img-thumbnail" width="60"></td>
-                            <td style="text-transform: capitalize;"><?=$usr['name'];?></td>
-                            <td><?=$usr['email'];?></td>
-                            <td><?=$usr['nik'];?></td>
-                            <td><?=$usr['role'];?></td>
-                            
-                            <?php if($usr['is_active'] < 1 ) : ?>
+                            <td><img src="<?=base_url('assets/img/' . $usr->image);?>" class="img-fluid img-thumbnail" width="60"></td>
+                            <td style="text-transform: capitalize;"><?=$usr->name;?></td>
+                            <td><?=$usr->email;?></td>
+                            <td><?=$usr->nik;?></td>
+                            <td><?=$usr->role;?></td>
+                            <td><?= date('Y/M/d',$usr->created_at) ?></td>
+                            <?php if($usr->is_active < 1 ) : ?>
                             <td><span class="badge badge-danger">Non-active</span></td>
                             <?php else : ?>
                             <td><span class="badge badge-info">Active</span></td>
                             <?php endif; ?>
                             <td>
-                            <?php if($usr['role'] != "admin") : ?>                            
-                              <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr['id'];?>" data-role="<?=$usr['role'];?>" data-active="<?=$usr['is_active'];?>"><i class="fa fa-pencil"></i></a>
+                            <?php if($usr->role != "admin") : ?>                            
+                              <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr->id;?>" data-role="<?=$usr->role;?>" data-active="<?=$usr->is_active;?>"><i class="fa fa-pencil"></i></a>
 
                             <?php elseif($user['role'] == "super admin") : ?>
 
-                              <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr['id'];?>" data-role="<?=$usr['role'];?>" data-active="<?=$usr['is_active'];?>"><i class="fa fa-pencil"></i></a>
+                              <a href="javascript:;" id="userUpdate" data-toggle="modal" data-target="#modalUserUpdate" class="btn btn-info btn-xs" data-id="<?=$usr->id;?>" data-role="<?=$usr->role;?>" data-active="<?=$usr->is_active;?>"><i class="fa fa-pencil"></i></a>
 
                             <?php endif; ?>                              
                             
                             
                              <?php if($user['role'] == "super admin") : ?>
 
-                              <a id="delUsers" href="<?=base_url('users/destroy/' . $usr['id']);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                              <a id="delUsers" href="<?=base_url('users/destroy/' . $usr->id);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
 
                             <?php endif; ?>
                             

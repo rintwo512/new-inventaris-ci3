@@ -9,6 +9,7 @@ class Users extends CI_Controller {
 		$this->load->model('Allusers_model');
 		check_session();
         user_access();
+        myTime();
 	}
 
 	public function index()

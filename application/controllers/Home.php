@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require 'vendor/autoload.php';
+ 
+
+use Carbon\Carbon;
 
 class Home extends CI_Controller {
 
@@ -8,6 +12,7 @@ class Home extends CI_Controller {
         parent::__construct();       
         check_session();
         user_access(); 
+        myTime();
         
     }
 
@@ -18,6 +23,7 @@ class Home extends CI_Controller {
 		$data['title'] = 'Dashboard';
 
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
+		
 		
 
 		$data['count'] = $this->db->count_all('tb_ac');
@@ -35,11 +41,4 @@ class Home extends CI_Controller {
 		$this->load->view('master/js');
 	}
 
-	public function get_ajax()
-    {
-        $tot = $this->db->get_where('users', ['user_login' => 'online'])->num_rows();
-        $result['tot'] = $tot;
-
-        echo json_encode($result);
-    }
 }

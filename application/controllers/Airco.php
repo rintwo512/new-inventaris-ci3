@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require 'vendor/autoload.php';
+
+use Carbon\Carbon;
+
 class Airco extends CI_Controller {
 	
 
@@ -8,17 +12,16 @@ class Airco extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Airco_model');
-		check_session();
+		check_session();		
 		myTime();
 		
 	}
 
 	public function index()
-	{	
-		
+	{			
 
 		$data['title'] = 'Air Conditioner';
-
+		
 		$data['airco'] = $this->Airco_model->getAc();
 				
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
@@ -92,7 +95,7 @@ class Airco extends CI_Controller {
                     "merk" => $this->input->post('merk'),
                     "model" => $this->input->post('model'),
                     "jenis" => $this->input->post('jenis'),
-                    "tgl_pemasangan" => $this->input->post('tgl_pemasangan'),
+                    "tgl_pemasangan" => $this->input->post('tgl_pemasangan'),                    
                     "refrigerant" => $this->input->post('refrigerant'),
                     "kapasitas" => $this->input->post('kapasitas'),
                     "product" => $this->input->post('product'),
@@ -104,7 +107,7 @@ class Airco extends CI_Controller {
                     "status" => $this->input->post('status'),
                     "jenis_kerusakan" => $this->input->post('jenis_kerusakan'),
                     "status_kompresor" => $this->input->post('status_kompresor'),
-                    "insert_by" => $inserts .' ' . $this->session->userdata('role') . ' ' . 'pukul' .' ' .$pukul,
+                    "insert_by" => $inserts .' ' . $this->session->userdata('name') . ' ' . 'pukul' .' ' .$pukul,
                     "updated" => time()
              ];
 

@@ -1,3 +1,10 @@
+<?php 
+
+require 'vendor/autoload.php'; 
+use Carbon\Carbon;
+myTime();
+
+ ?>
 <style>
   table.details tr:hover{
     background-color: rgba(100,100,100,0.2);
@@ -45,24 +52,24 @@
                         <tbody>
                         <?php foreach( $airco as $ac ) : ?>
                           <tr>                            
-                            <td><?=$ac['label'];?></td>
-                            <td><?=$ac['wing'];?></td>
-                            <td><?=$ac['lantai'];?></td>
-                            <td style="text-transform: capitalize;"><?=$ac['ruangan'];?></td>
-                            <td><?=$ac['merk'];?></td>
-                            <td><?=$ac['model'];?></td>
-                            <td><?=$ac['jenis'];?></td>
+                            <td><?=$ac->label;?></td>
+                            <td><?=$ac->wing;?></td>
+                            <td><?=$ac->lantai;?></td>
+                            <td style="text-transform: capitalize;"><?=$ac->ruangan;?></td>
+                            <td><?=$ac->merk;?></td>
+                            <td><?=$ac->model;?></td>
+                            <td><?=$ac->jenis;?></td>
 
-                            <?php if($ac['status'] == "Normal") : ?>
+                            <?php if($ac->status == "Normal") : ?>
 
                               <td>
-                                <span class="badge badge-success"><?=$ac['status'];?></span>
+                                <span class="badge badge-success"><?=$ac->status;?></span>
                               </td>
 
                             <?php else : ?>
 
                               <td>
-                                <span class="badge badge-danger"><?=$ac['status'];?></span>
+                                <span class="badge badge-danger"><?=$ac->status;?></span>
                               </td>
 
                             <?php endif;?>
@@ -71,29 +78,29 @@
 
                               <a href="javascript:;" 
                                 id="btnUpdate"
-                                data-id="<?=$ac['id'];?>"
-                                data-label1="<?=$ac['label'];?>"
-                                data-aset_ac="<?=$ac['aset'];?>"
-                                data-wing="<?=$ac['wing'];?>"
-                                data-lantai="<?=$ac['lantai'];?>"
-                                data-ruangan="<?=$ac['ruangan'];?>"
-                                data-merk="<?=$ac['merk'];?>"
-                                data-model="<?=$ac['model'];?>"
-                                data-jenis="<?=$ac['jenis'];?>" 
-                                data-refrigerant="<?=$ac['refrigerant'];?>"
-                                data-kapasitas="<?=$ac['kapasitas'];?>"
-                                data-product="<?=$ac['product'];?>"
-                                data-tgl_maint="<?= $ac['tgl_maintenance'];?>" data-petugas="<?= $ac['petugas'] ?>"
-                                data-tgl_pemasangan="<?=$ac['tgl_pemasangan'];?>"
-                                data-status="<?=$ac['status'];?>"
-                                data-jenis_kerusakan="<?=$ac['jenis_kerusakan'];?>"
-                                data-arus1="<?= $ac['arus'] ?>" 
-                                data-status_kompresor="<?= $ac['status_kompresor'] ?>"
-                                data-phasa="<?= $ac['phasa'] ?>"
-                                data-pipa="<?= $ac['pipa'] ?>"
-                                data-btu="<?= $ac['btu'] ?>"
-                                data-label1="<?= $ac['label'] ?>"
-                                data-tegangan1="<?= $ac['tegangan_kerja'] ?>"
+                                data-id="<?=$ac->id;?>"
+                                data-label1="<?=$ac->label;?>"
+                                data-aset_ac="<?=$ac->aset;?>"
+                                data-wing="<?=$ac->wing;?>"
+                                data-lantai="<?=$ac->lantai;?>"
+                                data-ruangan="<?=$ac->ruangan;?>"
+                                data-merk="<?=$ac->merk;?>"
+                                data-model="<?=$ac->model;?>"
+                                data-jenis="<?=$ac->jenis;?>" 
+                                data-refrigerant="<?=$ac->refrigerant;?>"
+                                data-kapasitas="<?=$ac->kapasitas;?>"
+                                data-product="<?=$ac->product;?>"
+                                data-tgl_maint="<?= $ac->tgl_maintenance;?>" data-petugas="<?= $ac->petugas ?>"
+                                data-tgl_pemasangan="<?=$ac->tgl_pemasangan;?>"
+                                data-status="<?=$ac->status;?>"
+                                data-jenis_kerusakan="<?=$ac->jenis_kerusakan;?>"
+                                data-arus1="<?= $ac->arus ?>" 
+                                data-status_kompresor="<?= $ac->status_kompresor ?>"
+                                data-phasa="<?= $ac->phasa ?>"
+                                data-pipa="<?= $ac->pipa ?>"
+                                data-btu="<?= $ac->btu ?>"
+                                data-label1="<?= $ac->label ?>"
+                                data-tegangan1="<?= $ac->tegangan_kerja ?>"
                                 class="btn btn-info btn-xs"
                                 data-toggle="modal"
                                 data-target="#modalUpdate">
@@ -107,28 +114,37 @@
                                 data-toggle="modal"
                                 data-target="#modalDetail"
                                 class="btn btn-warning btn-sm but"
-                                data-detail_label_ac="<?= $ac['label']; ?>"
-                                data-detail_aset_ac="<?= $ac['aset']; ?>"
-                                data-kapasitas="<?= $ac['kapasitas']; ?>"
-                                data-refrigerant="<?= $ac['refrigerant']; ?>"
-                                data-product="<?= $ac['product']; ?>"
-                                data-pemasangan="<?= $ac['tgl_pemasangan']; ?>"
-                                data-maintenance="<?= $ac['tgl_maintenance']; ?>"
-                                data-petugass="<?=$ac['petugas'] ?>"
-                                data-kerusakan="<?= $ac['jenis_kerusakan'] ?>" 
-                                data-kompresor="<?= $ac['status_kompresor'] ?>"
-                                data-arus="<?= $ac['arus'] ?>" 
-                                data-phasa="<?= $ac['phasa'] ?>" 
-                                data-pipa="<?= $ac['pipa'] ?>" 
-                                data-btu="<?=$ac['btu'] ?>"
-                                data-tegangan="<?= $ac['tegangan_kerja'] ?> Volt" data-insert="<?=$ac['insert_by'] ?>"
-                                data-update="<?=$ac['update_by']; ?>">
+                                data-detail_label_ac="<?= $ac->label; ?>"
+                                data-detail_aset_ac="<?= $ac->aset; ?>"
+                                data-kapasitas="<?= $ac->kapasitas; ?>"
+                                data-refrigerant="<?= $ac->refrigerant; ?>"
+                                data-product="<?= $ac->product; ?>"
+                                <?php if($ac->tgl_pemasangan == NULL) : ?>
+                                  data-pemasangan=""
+                                <?php else : ?>
+                                  data-pemasangan="<?= Carbon::now('Asia/Makassar')->locale('id')->diffforHumans($ac->tgl_pemasangan); ?>"
+                                <?php endif; ?>
+                                
+                                <?php if($ac->tgl_maintenance == NULL) : ?>
+                                data-maintenance=""
+                                <?php else : ?>
+                                  data-maintenance="<?= Carbon::create($ac->tgl_maintenance)->locale('id')->diffforHumans(); ?>"
+                                <?php endif; ?>
+                                data-petugass="<?=$ac->petugas ?>"
+                                data-kerusakan="<?= $ac->jenis_kerusakan ?>" 
+                                data-kompresor="<?= $ac->status_kompresor ?>"
+                                data-arus="<?= $ac->arus ?>" 
+                                data-phasa="<?= $ac->phasa ?>" 
+                                data-pipa="<?= $ac->pipa ?>" 
+                                data-btu="<?=$ac->btu ?>"
+                                data-tegangan="<?= $ac->tegangan_kerja ?> Volt" data-insert="<?=$ac->insert_by ?>"
+                                data-update="<?=$ac->update_by; ?>">
                                 <i class="fa fa-info" style="color:#fff"></i>
                               </a>
 
 
                               <?php if($user['role'] == "super admin" || $user['role'] == 'admin') : ?>
-                              <a id="btnDel" href="<?= base_url('airco/destroy/') . $ac['id']; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>
+                              <a id="btnDel" href="<?= base_url('airco/destroy/') . $ac->id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>
                               </a>
 
                               <?php endif; ?>
@@ -171,7 +187,7 @@
                         </div>
                         <div class="col-md-3 mb-3">                          
                           <label for="wing" class="mb-0" style="font-size:13px" id="labelWing">Wing <em class="text-danger">*</em></label>
-                          <select class="form-control" name="wing" id="wing" type="text" placeholder="Please fill in" required="">
+                          <select class="form-control" name="wing" id="wing" type="text" placeholder="Please fill in" required>
                             <option value="" selected>--Select--</option>
                             <option value="W-A">W-A</option>
                             <option value="W-B">W-B</option>
@@ -223,7 +239,7 @@
                           <select class="form-control" name="model" id="model" type="text" placeholder="Please fill in" required="">
                             <option value="" selected>--Select--</option>
                             <option value="Splite">Splite</option>
-                            <option value="Cassette">Cassette</option>
+                            <option value="Cassette">Casette</option>
                             <option value="Standing floor">Standing floor</option>
                             <option value="Sentral">Sentral</option>                            
                           </select>
@@ -377,7 +393,7 @@
                         </tr>
                         <tr>
                           <th>Tanggal maintenance</th>
-                          <td id="tgl_maintenance"></td>
+                            <td id="tgl_maintenance"></td>
                         </tr>                        
                         <tr>
                           <th>Jenis refrigerant</th>
@@ -392,8 +408,10 @@
                           <td style="text-transform: capitalize;" id="status_kompresor"></td>     
                         </tr>                       
                         <tr>
-                          <th>Catatan/Kerusakan</th>                          
-                          <td><a style="text-transform: capitalize;" id="jenis_kerusakan"></a><a href="<?= base_url('kodeeror'); ?>" class="btn btn-danger btn-xs pull-right">Lihat kode error</a></td>
+                          <th>Catatan/Kerusakan</th>
+                            <td>
+                            <a style="text-transform: capitalize;" id="jenis_kerusakan"></a><a href="<?= base_url('kodeeror'); ?>" class="btn btn-danger btn-xs pull-right">Lihat kode error</a>
+                          </td>
                         </tr>                      
                         <tr>
                           <th>Tanggal Update</th>
@@ -476,7 +494,7 @@
                           <label for="model" class="mb-0" style="font-size:13px">Model</label>
                           <select class="form-control" name="model" id="model" type="text" placeholder="Please fill in" required="">
                             <option value="">--Select--</option>
-                            <option value="Cassette">Cassette</option>
+                            <option value="Casette">Casette</option>
                             <option value="Splite">Splite</option>
                             <option value="Standing floor">Standing floor</option>
                             <option value="Sentral">Sentral</option>

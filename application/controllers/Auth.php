@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+require 'vendor/autoload.php';
+use Carbon\Carbon;
 class Auth extends CI_Controller {
 
 	 public function __construct()
@@ -41,7 +42,10 @@ class Auth extends CI_Controller {
             $password = $this->input->post('password');  
             $user_login = 'online';
             
-             $login_time = date('d/M/Y \| G:i',time());
+             // $login_time = date('d/M/Y \| G:i',time());
+
+            // $now = new DateTime();            
+            // $login_time =$now->format('Y-m-d H:i:s');
             $user = $this->db->get_where('users', ['nik' => $nik])->row_array();
 
 
@@ -62,13 +66,11 @@ class Auth extends CI_Controller {
                         if ($user['role'] == "admin" || $user['role'] == "super admin") {
                             
                             $this->db->set('user_login', $user_login);
-                            $this->db->set('login_time', $login_time);
                             $this->db->where('nik', $this->session->userdata('nik'));
                             $this->db->update('users');                         
                             redirect('home');
                         }else {
                             $this->db->set('user_login', $user_login);
-                            $this->db->set('login_time', $login_time);
                             $this->db->where('nik', $this->session->userdata('nik'));
                             $this->db->update('users');                            
                             redirect('airco');
@@ -94,8 +96,10 @@ class Auth extends CI_Controller {
     {
         
         $user_login = "offline";
+        $login_time = date('Y-m-d H:i:s', time());
        
         $this->db->set('user_login', $user_login);
+        $this->db->set('login_time', $login_time);
 
         $this->db->where('nik', $this->session->userdata('nik'));
         $this->db->update('users');

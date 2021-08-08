@@ -9,8 +9,7 @@ class Chart_ac extends CI_Controller {
         parent::__construct();
         $this->load->model('Chartac_model');
         check_session();
-                     
-       
+        myTime();
     }
 
     public function index()
