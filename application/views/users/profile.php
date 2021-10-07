@@ -53,9 +53,9 @@
                       <hr>
                       <div class="social-media">
                         <ul class="list-inline">
-                          <li class="list-inline-item"><a href="https://whatsapp.com" target="_blank" ><i style="color:#4FCE5D" class="fa fa-whatsapp"></i></a></li>                          
+                          <li class="list-inline-item"><a href="https://web.whatsapp.com/" target="_blank" ><i style="color:#4FCE5D" class="fa fa-whatsapp"></i></a></li>                          
                          
-                          <li class="list-inline-item"><a href="https://telegram.com" target="_blank"><i style="color:#0088cc" class="fa fa-telegram"></i></a></li>
+                          <li class="list-inline-item"><a href="https://web.telegram.org/k/" target="_blank"><i style="color:#0088cc" class="fa fa-telegram"></i></a></li>
                           <li class="list-inline-item"><a href="https://youtube.com" target="_blank"><i style="color:#cd201f" class="fa fa-youtube-play"></i></a></li>
                         </ul>
                       </div>

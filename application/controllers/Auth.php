@@ -106,6 +106,6 @@ class Auth extends CI_Controller {
         
         $this->session->unset_userdata('nik');
         $this->session->unset_userdata('role');
-        redirect('/');
+        redirect('/auth');
     }
 }

@@ -47,7 +47,7 @@ $users_notif = $this->db->get_where('users', ['user_login' => 'online'])->num_ro
               <li><a href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>                          
               <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?=base_url('assets');?>/img/notification.png" alt="">
                 
-                <span class="notify"><?= $users_notif ?></span>
+                <span class="notify" id="not"><?= $users_notif; ?></span>
               
                 
                 <ul class="onhover-show-div notification-dropdown">

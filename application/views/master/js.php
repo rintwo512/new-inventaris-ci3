@@ -52,6 +52,24 @@
  <script src="<?= base_url('assets'); ?>/myscript/chart_ac.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/cctv.js"></script>
  <script src="<?= base_url('assets'); ?>/myscript/elektronik.js"></script>
+
+ <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    
+    // Pusher.logToConsole = true;
+
+    // var pusher = new Pusher('6f05f9b8c9309811888c', {
+    //   cluster: 'ap1'
+    // });
+
+    // var channel = pusher.subscribe('my-channel');
+    // channel.bind('my-event', function(data) {
+    //   alert(JSON.stringify(data));
+      
+      
+    // });
+  </script>
  
  
  
@@ -649,6 +667,34 @@ if (flerr) {
     })
 }
 </script>
+
+<!-- fungsi logout otomatis -->
+<script>    
+    let log_off = new Date();
+    log_off.setMinutes(log_off.getMinutes() + 20)
+    log_off = new Date(log_off)
+
+    let int_logoff = setInterval(function(){
+        let now = new Date();
+        if(now > log_off){
+            window.location.assign("<?=base_url()?>Auth/logout");
+            clearInterval(int_logoff);
+        }
+    }, 2000);
+
+    $('body').on('click', function(){
+       log_off = new Date();
+       log_off.setMinutes(log_off.getMinutes() + 20)
+       log_off = new Date(log_off)
+    })
+
+
+</script>
+
+<!-- Crips Live Chat -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="26974eff-46fb-4c48-8d88-82ce423bfffb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+</script>
+
 
 
  </body>

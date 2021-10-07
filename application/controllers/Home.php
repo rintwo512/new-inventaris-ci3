@@ -18,7 +18,19 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		// $options = array(
+		//     'cluster' => 'ap1',
+		//     'useTLS' => true
+		//   );
+		//   $pusher = new Pusher\Pusher(
+		//     '6f05f9b8c9309811888c',
+		//     '20bcccf52c6fc0257053',
+		//     '1246828',
+		//     $options
+		//   );
 
+		//   $notif = $this->db->get_where('users', ['user_login'=> 'offline'])->num_rows();
+		//   $pusher->trigger('my-channel', 'my-event', $notif);
 		
 		$data['title'] = 'Dashboard';
 
