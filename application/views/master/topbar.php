@@ -51,37 +51,37 @@ $users_notif = $this->db->get_where('users', ['user_login' => 'online'])->num_ro
               
                 
                 <ul class="onhover-show-div notification-dropdown">
-                  <li class="g-info">
+                  <li class="g-info mb-2">
                     <h5 class="f-w-700" >Users Notification</h5>  
                   </li>
                   <?php foreach($log as $lo) : ?>
                   
-                  <li>
+                  <!-- <li> -->
                     <div class="media">
-                    <?php if($lo->user_login == 'online') : ?>
-                      <div class="notification-icons bg-success mr-3"><i class="mt-0" data-feather="check"></i></div>
-                      <div class="media-body">
-                        <h6 style="text-transform: capitalize;"><?=$lo->name ?></h6>                       
-                          <p class="mb-0" style="color:green">Sedang <?= $lo->user_login; ?>...</p>        
-
+                    
+                   <?php if($lo->user_login == 'online') : ?>
+                      <div style="padding:1px 5px;margin:3px 3px;border-radius:100%" class="notification-icons bg-success mr-3"><i class="mt-1 text-white" data-feather="check"></i></div>
+                      <div class="media-body mb-0">
+                        <h6 style="text-transform: capitalize;margin:0;padding:0"><?=$lo->name ?></h6>                       
+                          <h6 style="color:green;margin-bottom:10px">Sedang <?= $lo->user_login; ?>...</h6>
                       </div>
+                                        
                       <?php else : ?>
-                        <div class="notification-icons bg-danger mr-3"><i class="mt-0" data-feather="x"></i></div>
+                        
+                        <div style="padding:1px 5px;margin:3px 3px;border-radius:100%" class="notification-icons bg-danger mr-3"><i class="mt-1 text-white" data-feather="x"></i></div>
                       <div class="media-body">
-                        <h6 style="text-transform: capitalize;"><?=$lo->name ?></h6>                       
+                        <h6 style="text-transform: capitalize;margin:0;padding:0"><?=$lo->name ?></h6>                       
                           <?php if($lo->login_time == NULL) : ?>
-                          <p class="mb-0" style="color:#000">User belum pernah login</p>
+                          <h6 class="mb-2" style="color:#000">Belum login</h6>
                              
                           <?php else : ?>
-                            <p class="mb-0" style="color:red">online</p>
-                              <p><?= Carbon::create($lo->login_time)->locale('id')->diffforHumans() ?></p>
+                            <!-- <h6 class="mb-0" style="color:red">offline</h6> -->
+                              <h6 style="color:#FD517D; margin-bottom:10px">online <?= Carbon::create($lo->login_time)->locale('id')->diffforHumans() ?></h6>
                           <?php endif; ?>
-                          
-                           
-                      </div>
+                      </div>          
                       <?php endif;?>
                     </div>
-                  </li>
+                  <!-- </li> -->
                   
               <?php endforeach;?> 
               </ul>

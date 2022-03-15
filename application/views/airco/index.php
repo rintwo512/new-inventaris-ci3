@@ -43,7 +43,7 @@ myTime();
                             <th>Lantai</th>
                             <th>Ruangan</th>
                             <th>Merk</th>
-                            <th>Model</th>
+                            <th>Type</th>
                             <th>Jenis</th>
                             <th>Status</th>
                             <th style="text-align: center">Opsi</th>
@@ -52,7 +52,11 @@ myTime();
                         <tbody>
                         <?php foreach( $airco as $ac ) : ?>
                           <tr>                            
+                            <?php if($ac->label == NULL ) :?>
+                            <td style="font-style: italic;">Null</td>
+                            <?php else : ?>
                             <td><?=$ac->label;?></td>
+                            <?php endif ;?>
                             <td><?=$ac->wing;?></td>
                             <td><?=$ac->lantai;?></td>
                             <td style="text-transform: capitalize;"><?=$ac->ruangan;?></td>
@@ -96,6 +100,7 @@ myTime();
                                 data-jenis_kerusakan="<?=$ac->jenis_kerusakan;?>"
                                 data-arus1="<?= $ac->arus ?>" 
                                 data-status_kompresor="<?= $ac->status_kompresor ?>"
+                                data-petugas_maintenance="<?= $ac->petugas_maintenance ?>"
                                 data-phasa="<?= $ac->phasa ?>"
                                 data-pipa="<?= $ac->pipa ?>"
                                 data-btu="<?= $ac->btu ?>"
@@ -110,7 +115,7 @@ myTime();
 
                               <a href="javascript:;"
                                 id="btnDetail"
-                                class="btn btn-warning btn-xs"
+                                class="btn btn-warning btn-xs btnDetail"
                                 data-toggle="modal"
                                 data-target="#modalDetail"
                                 class="btn btn-warning btn-sm but"
@@ -122,15 +127,16 @@ myTime();
                                 <?php if($ac->tgl_pemasangan == NULL) : ?>
                                   data-pemasangan=""
                                 <?php else : ?>
-                                  data-pemasangan="<?= Carbon::now('Asia/Makassar')->locale('id')->diffforHumans($ac->tgl_pemasangan); ?>"
+                                  data-pemasangan="<?= $ac->tgl_pemasangan ?> - <?= Carbon::now('Asia/Makassar')->locale('id')->diffforHumans($ac->tgl_pemasangan); ?>"
                                 <?php endif; ?>
                                 
                                 <?php if($ac->tgl_maintenance == NULL) : ?>
                                 data-maintenance=""
                                 <?php else : ?>
-                                  data-maintenance="<?= Carbon::create($ac->tgl_maintenance)->locale('id')->diffforHumans(); ?>"
+                                  data-maintenance="<?= Carbon::now(new DateTimeZone('Asia/Makassar'))->locale('id')->diffforHumans($ac->tgl_maintenance); ?>"
                                 <?php endif; ?>
                                 data-petugass="<?=$ac->petugas ?>"
+                                data-ptg_maintenance="<?=$ac->petugas_maintenance ?>"
                                 data-kerusakan="<?= $ac->jenis_kerusakan ?>" 
                                 data-kompresor="<?= $ac->status_kompresor ?>"
                                 data-arus="<?= $ac->arus ?>" 
@@ -170,14 +176,14 @@ myTime();
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title" id="myLargeModalLabel">Form tambah data</h4>
+                  <h4 class="modal-title" id="myLargeModalLabel">Form Tambah Data AC</h4>
                   <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
                   <form action="<?=base_url('airco/store');?>" method="post" class="needs-validation" novalidate="">
                       <div class="form-row">                        
                         <div class="col-md-3 mb-3">                          
-                          <label for="aset" class="mb-0" style="font-size:13px">Aset</label>
+                          <label for="aset" class="mb-0" style="font-size:13px">Asset</label>
                           <input class="form-control" name="aset" id="aset" type="text" placeholder="Please fill in" onkeyup="this.value=this.value.toUpperCase()" autocomplete="off">
                           <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -235,7 +241,7 @@ myTime();
                           <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-3 mb-3">
-                          <label for="model" class="mb-0" style="font-size:13px">Model <em class="text-danger">*</em></label>
+                          <label for="model" class="mb-0" style="font-size:13px">Type <em class="text-danger">*</em></label>
                           <select class="form-control" name="model" id="model" type="text" placeholder="Please fill in" required="">
                             <option value="" selected>--Select--</option>
                             <option value="Splite">Splite</option>
@@ -252,7 +258,7 @@ myTime();
                       </div>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <label for="tgl_pemasangan" class="mb-0" style="font-size:13px">Tanggal pemasangan</label>
+                          <label for="tgl_pemasangan" class="mb-0" style="font-size:13px">Tanggal Pemasangan</label>
                           <input class="form-control" name="tgl_pemasangan" type="date" placeholder="Please fill in">
                           <div class="invalid-feedback">The field is required</div>
                         </div>
@@ -277,7 +283,7 @@ myTime();
                       </div>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <label for="arus" class="mb-0" style="font-size:13px">Amper</label>
+                          <label for="arus" class="mb-0" style="font-size:13px">Rated Current <small>(Amper)</small></label>
                           <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" autocomplete="off" style="text-transform:capitalize">
                           <?= form_error('arus', '<small class="text-danger">', '</small>');?>
                           <div class="invalid-feedback">The field is required</div>
@@ -288,7 +294,7 @@ myTime();
                           <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="pipa"class="mb-0" style="font-size:13px">Pipa liquid dan gas <small>( inch )</small></label>
+                          <label for="pipa"class="mb-0" style="font-size:13px">Pipa Liquid Dan Gas</label>
                             <select class="form-control" name="pipa" id="pipa">
                               <option value="">--Select--</option>
                               <option value="1/4 - 3/8">1/4 - 3/8</option>
@@ -323,7 +329,7 @@ myTime();
                           <div class="invalid-feedback">The field is required</div>
                         </div> 
                          <div class="form-group col-md-6">
-                            <label for="phasa" class="mb-0" style="font-size:13px">Arus kerja <small>( phasa )</small> <em class="text-danger">*</em></label>
+                            <label for="phasa" class="mb-0" style="font-size:13px">Phase <em class="text-danger">*</em></label>
                             <input class="form-control" name="phasa" id="phasa" required autocomplete="off" placeholder="Please fill in">
                         </div>
                          <div class="form-group col-md-12">
@@ -360,7 +366,7 @@ myTime();
                           <td id="no_detail_ac"></td>                          
                         </tr>
                         <tr>
-                          <th>Aset</th>
+                          <th>Asset</th>
                           <td id="aset_detail"></td>                          
                         </tr>
                         <tr>
@@ -368,35 +374,39 @@ myTime();
                           <td id="btu"></td>                          
                         </tr>                        
                         <tr>
-                          <th>Ukuran pipa liquid/gas <small>(inch)</small></th>
+                          <th>Ukuran Pipa Liquid/Gas</th>
                           <td id="pipa"></td>                          
                         </tr>
                         <tr>
-                          <th>Arus kerja ( phasa )</th>
+                          <th>Phase</th>
                           <td id="phasa"></td>                          
                         </tr>
                         <tr>
-                          <th>Tegangan kerja ( volt )</th>
+                          <th>Tegangan Kerja ( volt )</th>
                           <td id="tegangan_kerja"></td>                          
                         </tr>
                         <tr>
-                          <th>Amper</th>
+                          <th>Rated Current <small>Amper</small></th>
                           <td style="text-transform: capitalize;" id="arus"></td>                          
                         </tr>                        
                         <tr>
                           <th>Tanggal Pemasangan</th>
-                          <td><a id="tgl_pemasangan"></a><hr> Petugas pemasangan : <a style="text-transform: capitalize;" id="petugas"></a></td>                 
+                          <td><a id="tgl_pemasangan"></a><hr> Petugas Pemasangan : <a style="text-transform: capitalize;" id="petugas"></a></td>                 
                         </tr>                      
                         <tr>
                           <th>Product</th>
                           <td id="product"></td>                          
                         </tr>
                         <tr>
-                          <th>Tanggal maintenance</th>
-                            <td id="tgl_maintenance"></td>
-                        </tr>                        
+                          <th>Tanggal Maintenance</th>
+                            <td id="tgl_maintenance" class="tgl_maintenance"></td>
+                        </tr>  
                         <tr>
-                          <th>Jenis refrigerant</th>
+                          <th>Petugas Maintenance</th>
+                            <td id="petugas_maintenance"></td>
+                        </tr>                      
+                        <tr>
+                          <th>Refrigerant</th>
                           <td id="refrigerant"></td>                          
                         </tr>
                         <tr>
@@ -418,8 +428,8 @@ myTime();
                           <td id="updated_at"></td>
                         </tr>
                         <tr>
-                          <th style="font-weight: 900">Di tambah</th>
-                          <td id="insert_at" style="font-weight: 900"></td>
+                          <th></th>
+                          <td id="insert_at" style="font-weight: 300"></td>
                         </tr>                    
                     </table>
                   </div>
@@ -434,14 +444,14 @@ myTime();
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title" id="myLargeModalLabel">Form update data</h4>
+                  <h4 class="modal-title" id="myLargeModalLabel">Form Update Data AC</h4>
                   <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body" id="modal-update">
                   <form action="<?=base_url('airco/update');?>" method="post" class="needs-validation" novalidate="">
                       <div class="form-row">
                       <div class="col-md-3 mb-3">
-                           <label for="tgl_maintenance" class="mb-0" style="font-size:13px">Tanggal maintenance</label>
+                           <label for="tgl_maintenance" class="mb-0" style="font-size:13px">Tanggal Maintenance</label>
                           <input class="form-control digits" id="tgl_maintenancee" name="tgl_maintenance" type="text" placeholder="Please fill in">
                          <div class="invalid-feedback">The field is required</div>
                        </div>                        
@@ -491,7 +501,7 @@ myTime();
                           <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-3 mb-3">
-                          <label for="model" class="mb-0" style="font-size:13px">Model</label>
+                          <label for="model" class="mb-0" style="font-size:13px">Type</label>
                           <select class="form-control" name="model" id="model" type="text" placeholder="Please fill in" required="">
                             <option value="">--Select--</option>
                             <option value="Casette">Casette</option>
@@ -532,12 +542,12 @@ myTime();
                       </div>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <label for="tgl_pemasangan" class="mb-0" style="font-size:13px">Tanggal pemasangan</label>
+                          <label for="tgl_pemasangan" class="mb-0" style="font-size:13px">Tanggal Pemasangan</label>
                           <input class="form-control digits" name="tgl_pemasangan" id="tgl_pemasangann" type="text" placeholder="Please fill in">
                           <div class="invalid-feedback">The field is required</div>
                         </div>                        
                         <div class="col-md-3 mb-3">
-                          <label for="refigerant" class="mb-0" style="font-size:13px">Type refigerant</label>
+                          <label for="refigerant" class="mb-0" style="font-size:13px">Refrigerant</label>
                           <select class="form-control" name="refrigerant" id="refrigerant" type="text" placeholder="Please fill in" required="">
                             <option value="">--Select--</option>
                             <option value="R410">R410</option>
@@ -569,7 +579,7 @@ myTime();
                       </div>
                       <div class="form-row"> 
                       <div class="col-md-3 mb-3">
-                          <label for="arus" class="mb-0" style="font-size:13px">Amper</label>
+                          <label for="arus" class="mb-0" style="font-size:13px">Rated Current <small>Amper</small></label>
                           <input class="form-control" id="arus" name="arus" type="text" placeholder="Please fill in" autocomplete="off" style="text-transform: capitalize;">
                           <?= form_error('arus', '<small class="text-danger">', '</small>');?>
                           <div class="invalid-feedback">The field is required</div>
@@ -579,7 +589,7 @@ myTime();
                           <input class="form-control" id="btu2" name="btu" type="text" placeholder="Please fill in">                         
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="pipa"class="mb-0" style="font-size:13px">Pipa liquid dan gas <small>( inch )</small></label>
+                            <label for="pipa"class="mb-0" style="font-size:13px">Pipa Liquid Dan Gas</label>
                             <select class="form-control" name="pipa" id="pipa">
                               <option value="">--Select--</option>
                               <option value="1/4 - 3/8">1/4 - 3/8</option>
@@ -605,7 +615,7 @@ myTime();
                       </div>
                        <div class="form-row">                        
                          <div class="form-group col-md-3">
-                            <label for="phasa" class="mb-0" style="font-size:13px">Arus kerja <small>( Phasa )</small></label>
+                            <label for="phasa" class="mb-0" style="font-size:13px">Phase</label>
                             <select class="form-control" name="phasa" id="phasa" required value="">
                               <option value="">--Select--</option>
                               <option value="1 phasa">1 Phasa</option>
@@ -613,7 +623,7 @@ myTime();
                             </select>                              
                         </div>
                         <div class="col-md-3 mb-3">
-                          <label for="tegangan_kerja" class="mb-0" style="font-size:13px">Tegangan kerja <small>( volt )</small></label>
+                          <label for="tegangan_kerja" class="mb-0" style="font-size:13px">Tegangan Kerja <small>( volt )</small></label>
                           <select class="form-control" id="tegangan_kerja" name="tegangan_kerja" type="text" required>
                             <option value="" selected>--Select--</option>
                             <option value="220">220 Volt</option>
@@ -622,17 +632,22 @@ myTime();
                           <div class="invalid-feedback">The field is required</div>
                         </div>
                         <div class="col-md-3 mb-3">
-                           <label for="petugas" class="mb-0" style="font-size:13px">Petugas pemasangan</label>
+                           <label for="petugas" class="mb-0" style="font-size:13px">Petugas Pemasangan</label>
                           <input class="form-control" id="petugas" name="petugas" type="text" placeholder="Please fill in" style="text-transform: capitalize;">
                          <div class="invalid-feedback">The field is required</div>
                        </div>
                        <div class="col-md-3 mb-3">
-                           <label for="aset_update" class="mb-0" style="font-size:13px">Aset</label>
+                           <label for="aset_update" class="mb-0" style="font-size:13px">Asset</label>
                           <input class="form-control" id="aset_update" name="aset_update" type="text" placeholder="Please fill in" onkeyup="this.value=this.value.toUpperCase()" autocomplete="off">
                          <div class="invalid-feedback">The field is required</div>
                        </div>
+                       <div class="col-md-12 mb-3">
+                          <label for="petugas_maintenance" class="mb-0" style="font-size:13px">Petugas Maintenance</label>
+                          <input class="form-control petugas_maintenance" id="petugas_maintenance" name="petugas_maintenance" type="text" autocomplete="off"></input>
+                          <div class="invalid-feedback">The field is required</div>
+                        </div>
                         <div class="col-md-12 mb-3">
-                          <label for="status_kompresor" class="mb-0" style="font-size:13px">Status kompresor</label>
+                          <label for="status_kompresor" class="mb-0" style="font-size:13px">Status Kompresor</label>
                           <textarea class="form-control" id="status_kompresor" name="status_kompresor" type="text" autocomplete="off"></textarea>
                           <div class="invalid-feedback">The field is required</div>
                         </div>   
@@ -654,6 +669,8 @@ myTime();
         
 
 <script src="<?=base_url('assets');?>/js/form-validation-custom.js"></script>
+
+
 
 
 

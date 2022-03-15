@@ -172,7 +172,7 @@ table.details tr:hover {
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
-                           <label for="sensor" class="mb-0">Sensor Gambar <em class="text-danger">*</em></label>
+                           <label for="sensor" class="mb-0">Resolusi <em class="text-danger">*</em></label>
                             <select class="form-control" name="sensor" id="sensor" type="text" required>
                                 <option value="">--Select--</option>
                                 <option value="1,5MP">1,5MP</option>
@@ -230,7 +230,7 @@ table.details tr:hover {
                         <td id="power_detail"></td>
                     </tr>
                     <tr>
-                        <th>Sensor Gambar</th>
+                        <th>Resolusi</th>
                         <td id="sensor_detail"></td>
                     </tr>
                     <tr>
@@ -332,7 +332,7 @@ table.details tr:hover {
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
-                           <label for="sensor_update" class="mb-0">Sensor Gambar <em class="text-danger">*</em></label>
+                           <label for="sensor_update" class="mb-0">Resolusi <em class="text-danger">*</em></label>
                             <select class="form-control" name="sensor" id="sensor_update" type="text" required>
                                 <option value="">--Select--</option>
                                 <option value="1,5MP">1,5MP</option>

@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="ttl-info text-left">
-                                <h6><i class="fa fa-calendar"></i> BD</h6><span>none</span>
+                                <h6><i class="fa fa-calendar"></i> NIK</h6><span><?= $user['nik'];?></span>
                               </div>
                             </div>
                           </div>
@@ -39,7 +39,7 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="ttl-info text-left">
-                                <h6><i class="fa fa-phone"></i> Contact Us</h6><span>+62851234567</span>
+                                <h6><i class="fa fa-phone"></i> Member Since</h6><span> <?= date('d-m-Y', $user['created_at']) ?></span>
                               </div>
                             </div>
                             <div class="col-md-6">

@@ -26,6 +26,7 @@ $(document).on("click", "#btnUpdate", function(event) {
     const statuss = $(this).data('status');   
     const jenis_kerusakann = $(this).data('jenis_kerusakan');   
     const status_kompresor = $(this).data('status_kompresor');   
+    var petugas_maintenance = $(this).data('petugas_maintenance');   
     
     $("#modal-update #id").val(id);
     $("#modal-update #label").val(label);    
@@ -50,6 +51,7 @@ $(document).on("click", "#btnUpdate", function(event) {
     $("#modal-update #statuss").val(statuss); 
     $("#modal-update #jenis_kerusakann").val(jenis_kerusakann);
     $("#modal-update #status_kompresor").val(status_kompresor);
+    $("#modal-update #petugas_maintenance").val(petugas_maintenance);
 });
 
 
@@ -70,6 +72,7 @@ $(document).on("click", "#btnDetail", function() {
     const refrigerant = $(this).data('refrigerant');
     const kapasitas = $(this).data('kapasitas');
     const kerusakan = $(this).data('kerusakan');
+    const ptg_maintenance = $(this).data('ptg_maintenance');
     const kompresor = $(this).data('kompresor');
     const insert = $(this).data('insert');
     const updated = $(this).data('update');
@@ -88,6 +91,7 @@ $(document).on("click", "#btnDetail", function() {
     $("#modal-body #kapasitas").text(kapasitas);
     $("#modal-body #petugas").text(petugas);
     $("#modal-body #jenis_kerusakan").text(kerusakan);
+    $("#modal-body #petugas_maintenance").text(ptg_maintenance);
     $("#modal-body #status_kompresor").text(kompresor);
     $("#modal-body #insert_at").text(insert);
     $("#modal-body #updated_at").text(updated);
@@ -156,5 +160,8 @@ $(document).on('click', '#btnDel', function (e) {
 })(jQuery);
 
 
-
- 
+// function petugasMain(){
+//     const petugas = document.querySelector('.petugas_maintenance');
+//     console.log(petugas);
+// }
+//  petugasMain();

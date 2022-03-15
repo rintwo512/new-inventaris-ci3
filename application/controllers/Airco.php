@@ -18,8 +18,8 @@ class Airco extends CI_Controller {
 	}
 
 	public function index()
-	{			
-
+	{	
+		
 		$data['title'] = 'Air Conditioner';
 		
 		$data['airco'] = $this->Airco_model->getAc();
@@ -38,7 +38,7 @@ class Airco extends CI_Controller {
 
 	public function store()
 	{
-
+		date_default_timezone_set("Asia/Makassar");
 		$data['title'] = 'Air Conditioner';
 		$data['airco'] = $this->Airco_model->getAc();
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
@@ -120,6 +120,7 @@ class Airco extends CI_Controller {
 
 	public function update()
 	{
+		date_default_timezone_set("Asia/Makassar");
 		$data['title'] = 'Air Conditioner';
 		$data['airco'] = $this->Airco_model->getAc();
 		$data['user'] = $this->db->get_where('users', ['nik' => $this->session->userdata('nik')])->row_array();
@@ -185,6 +186,7 @@ class Airco extends CI_Controller {
 		       	 "petugas" => $this->input->post('petugas'),
 		       	 "status" => $this->input->post('status'),
 		       	 "jenis_kerusakan" => $this->input->post('jenis_kerusakan'),
+		       	 "petugas_maintenance" => $this->input->post('petugas_maintenance'),
 		       	 "status_kompresor" => $this->input->post('status_kompresor'),
 		       	 "update_by" => $updates .' ' . $this->session->userdata('name') . ' ' . 'pukul' .' ' .$pukul,
 		       	 "updated" => time()
@@ -199,7 +201,10 @@ class Airco extends CI_Controller {
 
 	public function destroy($id)
 	{
+		date_default_timezone_set("Asia/Makassar");
 		$this->Airco_model->deleteData($id);        
         redirect('airco');
 	}
 }
+
+

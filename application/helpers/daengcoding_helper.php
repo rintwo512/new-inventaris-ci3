@@ -18,5 +18,5 @@ function user_access()
 
 function myTime()
 {
-    date_default_timezone_set("Asia/Makassar");
+    date_default_timezone_set("Asia/Jakarta");
 }

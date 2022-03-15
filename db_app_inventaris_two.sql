@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2021 at 07:17 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Waktu pembuatan: 15 Mar 2022 pada 22.50
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_ac`
+-- Struktur dari tabel `tb_ac`
 --
 
 CREATE TABLE `tb_ac` (
@@ -49,6 +49,7 @@ CREATE TABLE `tb_ac` (
   `btu` varchar(100) DEFAULT NULL,
   `tegangan_kerja` varchar(50) NOT NULL,
   `jenis_kerusakan` varchar(300) DEFAULT NULL,
+  `petugas_maintenance` varchar(255) NOT NULL,
   `status_kompresor` varchar(500) NOT NULL,
   `insert_by` varchar(255) NOT NULL,
   `update_by` varchar(100) NOT NULL,
@@ -57,18 +58,17 @@ CREATE TABLE `tb_ac` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_ac`
+-- Dumping data untuk tabel `tb_ac`
 --
 
-INSERT INTO `tb_ac` (`id`, `label`, `aset`, `wing`, `lantai`, `ruangan`, `merk`, `model`, `jenis`, `tgl_pemasangan`, `refrigerant`, `kapasitas`, `product`, `tgl_maintenance`, `status`, `arus`, `phasa`, `pipa`, `btu`, `tegangan_kerja`, `jenis_kerusakan`, `status_kompresor`, `insert_by`, `update_by`, `petugas`, `updated`) VALUES
-(113, 'A1.01', 'GSD', 'W-A', 'Lt1', 'staff', 'Daikin', 'Splite', 'Inverter', '01/01/2015', 'R410', '1pk', 'Jepang', '04/01/2021', 'Normal', '3,2', '1 phasa', '1/4 - 3/8', '', '220', NULL, 'ori', 'Di tambahkan tanggal, 08/Aug/2021 oleh super admin pukul 5:22', 'Di ubah tanggal, 09/Aug/2021  oleh rinto pukul 1:08', 'vendor', '1628442528'),
-(114, 'FDS', 'DSD', 'W-B', 'Lt1', 'staff', 'Daikin', 'Sentral', 'Inverter', '08/03/2020', 'R410', '8pk', 'Jepang', '', 'Rusak', '432', '1 phasa', '1/4 - 3/8', '', '220', 'A4', 'ori', 'Di tambahkan tanggal, 08/Aug/2021 oleh super admin pukul 5:30', 'Di ubah tanggal, 09/Aug/2021  oleh john doe pukul 0:52', '', '1628441532'),
-(117, 'SFF', 'TA', 'W-B', 'Lt1', 'staff', 'Panasonic', 'Sentral', 'Standar', '08/01/2010', 'R22', '8pk', 'Jepang', '08/01/2021', 'Normal', 'sa', '1 phasa', '', '', '220', NULL, '', 'Di tambahkan tanggal, 08/Aug/2021 oleh super admin pukul 22:47', 'Di ubah tanggal, 08/Aug/2021  oleh rinto pukul 22:53', '', '1628434429');
+INSERT INTO `tb_ac` (`id`, `label`, `aset`, `wing`, `lantai`, `ruangan`, `merk`, `model`, `jenis`, `tgl_pemasangan`, `refrigerant`, `kapasitas`, `product`, `tgl_maintenance`, `status`, `arus`, `phasa`, `pipa`, `btu`, `tegangan_kerja`, `jenis_kerusakan`, `petugas_maintenance`, `status_kompresor`, `insert_by`, `update_by`, `petugas`, `updated`) VALUES
+(119, 'A1.01', 'TELKOM', 'W-A', 'Lt1', 'rg.staff RWS', 'Daikin', 'Casette', 'Inverter', '01/01/2017', 'R410', '2,5pk', 'Thailand', '03/16/2022', 'Normal', '', '1 phasa', '', '', '220', NULL, 'andre/rahmat abdullah', 'Normal', 'Di tambahkan tanggal, 16/Mar/2022 oleh Super Admin pukul 2:12', 'Di ubah tanggal, 16/Mar/2022  oleh Super Admin pukul 5:14', 'team ME', '1647378876'),
+(120, 'A1.04', 'TELKOM', 'W-A', 'Lt1', 'rg.staff RWS', 'Daikin', 'Casette', 'Inverter', '01/01/2015', 'R410', '2,5pk', 'Thailand', '03/13/2022', 'Normal', '', '1 phasa', '', '', '220', NULL, 'andre/rahmat abdullah', 'normal', 'Di tambahkan tanggal, 16/Mar/2022 oleh Super Admin pukul 2:17', 'Di ubah tanggal, 16/Mar/2022  oleh Super Admin pukul 4:22', '', '1647375728');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_apart`
+-- Struktur dari tabel `tb_apart`
 --
 
 CREATE TABLE `tb_apart` (
@@ -89,17 +89,10 @@ CREATE TABLE `tb_apart` (
   `catatan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tb_apart`
---
-
-INSERT INTO `tb_apart` (`id`, `no_apart`, `wing`, `lantai`, `lokasi`, `merk`, `jenis`, `berat`, `tgl_expired`, `tgl_pengadaan`, `status`, `created_by`, `updated_by`, `created_at`, `catatan`) VALUES
-(23, '01', 'W-A', 'Lt1', 'area toilet', 'Chubb', 'Powder', '3 kg', '2021-06-01', '2021-06-03', 'Normal', 'Di tambahkan tanggal, 25/Jun/2021 oleh admin pukul 21:06', '', 1624626407, NULL);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_cctv`
+-- Struktur dari tabel `tb_cctv`
 --
 
 CREATE TABLE `tb_cctv` (
@@ -121,7 +114,7 @@ CREATE TABLE `tb_cctv` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_cctv`
+-- Dumping data untuk tabel `tb_cctv`
 --
 
 INSERT INTO `tb_cctv` (`id`, `no_camera`, `wing`, `lantai`, `lokasi`, `merk`, `jenis`, `pwr_supplay`, `sensor_gambar`, `status`, `catatan`, `tgl_pengadaan`, `created_by`, `updated_by`, `created_at`) VALUES
@@ -130,7 +123,7 @@ INSERT INTO `tb_cctv` (`id`, `no_camera`, `wing`, `lantai`, `lokasi`, `merk`, `j
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_charts`
+-- Struktur dari tabel `tb_charts`
 --
 
 CREATE TABLE `tb_charts` (
@@ -141,17 +134,16 @@ CREATE TABLE `tb_charts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_charts`
+-- Dumping data untuk tabel `tb_charts`
 --
 
 INSERT INTO `tb_charts` (`id`, `tahun`, `bulan`, `unit`) VALUES
-(183, '2021', 'Januari', '5'),
-(184, '2021', 'Februari', '4');
+(192, '2022', 'Maret', '2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_daftar_barang`
+-- Struktur dari tabel `tb_daftar_barang`
 --
 
 CREATE TABLE `tb_daftar_barang` (
@@ -169,7 +161,7 @@ CREATE TABLE `tb_daftar_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_daftar_barang`
+-- Dumping data untuk tabel `tb_daftar_barang`
 --
 
 INSERT INTO `tb_daftar_barang` (`id`, `nama_barang`, `catatan`, `merk`, `tgl_pengadaan`, `status`, `daya`, `berat`, `update_by`, `insert_by`, `updated`) VALUES
@@ -178,7 +170,7 @@ INSERT INTO `tb_daftar_barang` (`id`, `nama_barang`, `catatan`, `merk`, `tgl_pen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_daikin_kode`
+-- Struktur dari tabel `tb_daikin_kode`
 --
 
 CREATE TABLE `tb_daikin_kode` (
@@ -189,7 +181,7 @@ CREATE TABLE `tb_daikin_kode` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_daikin_kode`
+-- Dumping data untuk tabel `tb_daikin_kode`
 --
 
 INSERT INTO `tb_daikin_kode` (`id`, `code`, `fault`, `cause`) VALUES
@@ -257,7 +249,7 @@ INSERT INTO `tb_daikin_kode` (`id`, `code`, `fault`, `cause`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_elektronik`
+-- Struktur dari tabel `tb_elektronik`
 --
 
 CREATE TABLE `tb_elektronik` (
@@ -277,7 +269,7 @@ CREATE TABLE `tb_elektronik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_elektronik`
+-- Dumping data untuk tabel `tb_elektronik`
 --
 
 INSERT INTO `tb_elektronik` (`id`, `aset`, `nama`, `merk`, `wing`, `lantai`, `lokasi`, `tegangan`, `watt`, `catatan`, `created_by`, `updated_by`, `created_at`) VALUES
@@ -286,7 +278,7 @@ INSERT INTO `tb_elektronik` (`id`, `aset`, `nama`, `merk`, `wing`, `lantai`, `lo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_panasonic_kode`
+-- Struktur dari tabel `tb_panasonic_kode`
 --
 
 CREATE TABLE `tb_panasonic_kode` (
@@ -296,7 +288,7 @@ CREATE TABLE `tb_panasonic_kode` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_panasonic_kode`
+-- Dumping data untuk tabel `tb_panasonic_kode`
 --
 
 INSERT INTO `tb_panasonic_kode` (`id`, `kode`, `kerusakan`) VALUES
@@ -335,7 +327,7 @@ INSERT INTO `tb_panasonic_kode` (`id`, `kode`, `kerusakan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -353,13 +345,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `nik`, `image`, `password`, `role`, `is_active`, `user_login`, `login_time`, `created_at`) VALUES
-(32, 'rinto', 'ryntooh@example.com', 15920011, 'rinto3.jpg', '$2y$10$/wcHjFcHESqkpQnfWy.iSOKZ1FkHcvA/qdzJqxnEcqarKme0B99hO', 'super admin', 1, 'offline', '2021-08-09 01:16:54', 1624793799),
-(33, 'john doe', 'engineering@gmail.com', 15920001, 'avatar41.png', '$2y$10$be3jsnIrmkPFIGQdjOJrc.C05YbybjX6UVs190Q7A5B1CP73SuRSW', 'admin', 1, 'offline', '2021-08-09 00:57:11', 1624795623),
-(35, 'coding', 'engineering@gmail.com', 15920002, 'avatar61.png', '$2y$10$XkFj7UVyUq.akMzPEad6u...7STjQIJLlkAS6/9d9ulYlcgYF7xn.', 'user', 1, 'offline', '2021-08-07 05:30:51', 1624797495),
+(32, 'Super Admin', 'ryntooh@example.com', 15920011, 'daeng-coding-photo-profile-yt.png', '$2y$10$CNJsNKEqqv3P1ZXTDGbyuuU/8z8U2RQuAFLr2tWmOWOmkbrPb3VBC', 'super admin', 1, 'online', '2022-03-16 04:03:21', 1624793799),
+(33, 'john doe', 'engineering@gmail.com', 15920001, 'avatar41.png', '$2y$10$be3jsnIrmkPFIGQdjOJrc.C05YbybjX6UVs190Q7A5B1CP73SuRSW', 'admin', 1, 'offline', '2022-02-02 04:01:41', 1624795623),
+(35, 'coding', 'coding@gmail.com', 15920002, 'avatar61.png', '$2y$10$XkFj7UVyUq.akMzPEad6u...7STjQIJLlkAS6/9d9ulYlcgYF7xn.', 'user', 1, 'offline', '2022-03-16 04:12:58', 1624797495),
 (38, 'jhen doe', 'engineering@gmail.com', 15920003, 'default.png', '$2y$10$MNHrIjMK/x94wB./cCPQ/OWqF1advlN9orkS66fjL2jAWNgdw1wL.', 'user', 1, 'offline', '2021-08-09 00:47:41', 1628437704);
 
 --
@@ -367,116 +359,116 @@ INSERT INTO `users` (`id`, `name`, `email`, `nik`, `image`, `password`, `role`, 
 --
 
 --
--- Indexes for table `tb_ac`
+-- Indeks untuk tabel `tb_ac`
 --
 ALTER TABLE `tb_ac`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_apart`
+-- Indeks untuk tabel `tb_apart`
 --
 ALTER TABLE `tb_apart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_cctv`
+-- Indeks untuk tabel `tb_cctv`
 --
 ALTER TABLE `tb_cctv`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_charts`
+-- Indeks untuk tabel `tb_charts`
 --
 ALTER TABLE `tb_charts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_daftar_barang`
+-- Indeks untuk tabel `tb_daftar_barang`
 --
 ALTER TABLE `tb_daftar_barang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_daikin_kode`
+-- Indeks untuk tabel `tb_daikin_kode`
 --
 ALTER TABLE `tb_daikin_kode`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_elektronik`
+-- Indeks untuk tabel `tb_elektronik`
 --
 ALTER TABLE `tb_elektronik`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_panasonic_kode`
+-- Indeks untuk tabel `tb_panasonic_kode`
 --
 ALTER TABLE `tb_panasonic_kode`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_ac`
+-- AUTO_INCREMENT untuk tabel `tb_ac`
 --
 ALTER TABLE `tb_ac`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
--- AUTO_INCREMENT for table `tb_apart`
+-- AUTO_INCREMENT untuk tabel `tb_apart`
 --
 ALTER TABLE `tb_apart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `tb_cctv`
+-- AUTO_INCREMENT untuk tabel `tb_cctv`
 --
 ALTER TABLE `tb_cctv`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tb_charts`
+-- AUTO_INCREMENT untuk tabel `tb_charts`
 --
 ALTER TABLE `tb_charts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
--- AUTO_INCREMENT for table `tb_daftar_barang`
+-- AUTO_INCREMENT untuk tabel `tb_daftar_barang`
 --
 ALTER TABLE `tb_daftar_barang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `tb_daikin_kode`
+-- AUTO_INCREMENT untuk tabel `tb_daikin_kode`
 --
 ALTER TABLE `tb_daikin_kode`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
--- AUTO_INCREMENT for table `tb_elektronik`
+-- AUTO_INCREMENT untuk tabel `tb_elektronik`
 --
 ALTER TABLE `tb_elektronik`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tb_panasonic_kode`
+-- AUTO_INCREMENT untuk tabel `tb_panasonic_kode`
 --
 ALTER TABLE `tb_panasonic_kode`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
