@@ -26,10 +26,12 @@ class Auth extends CI_Controller {
 
 	public function postLogin()
 	{
-		$this->form_validation->set_rules('nik', 'Nik', 'required|trim');
+		$this->form_validation->set_rules('nik', 'Nik', 'required|trim',[
+            'required' => 'N.I.K tidak boleh kosong!'
+        ]);
 
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]',[
-			'required' => 'the field is required',
+			'required' => 'Password tidak boleh kosong!',
 			'min_length' => 'Password must be 3 characters'
 		]);
 
